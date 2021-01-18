@@ -1,0 +1,162 @@
+*{
+    box-sizing:content-box;
+  }
+  body{
+    background-color:rgb(245, 227, 157);
+    position:absolute;
+    top:70px;
+    width:100%;
+    min-height:85%;
+  }
+  div{
+    position:absolute;
+    top:490px;
+    left:618px;
+  }
+  button{
+    width:100px;
+    border:2px solid aquamarine;
+    border-radius:5px;
+    height:40px;
+    background-color : aqua;
+    font-size:18px;
+    font-weight:700;
+    font-family:Alike;
+    border:2px solid black;
+  }
+  button:hover{
+    background-color :rgb(150, 150, 255);
+    box-shadow:2px 2px gray;
+  }
+  table.outer{
+    position:absolute;
+    top:0px;
+    left:36%;
+    border:2px solid black;
+    width:27%;
+    height:420px;
+  }
+  caption{
+      font-family:Alike;
+      font-size:28px;
+      color:indigo
+  }
+  table.inner{
+    width:90%;
+    height:80%;
+    border-top:2px solid black;
+    border-bottom:7px solid black;
+    border-left:3px solid rgb(187, 180, 180);
+    border-right:3px solid rgb(177, 172, 172);
+  }
+  ol {
+      list-style :none;
+      padding:0px;
+      margin: 0px;
+    }
+    .seat {
+      padding:8px;
+      position: relative;
+      width:27px;
+      height:27px;
+      color:white;
+    }  
+    input[type=checkbox] {
+      position: absolute;
+      padding:0px;
+    }
+    input[type=checkbox]:checked + label{
+          background-color: rgb(0, 255, 0);   
+          color:blue;   
+          animation-name: rubberBand;
+          animation-duration: 400ms;
+        }
+      .seat input[type=checkbox]:disabled + label {
+          background: #dddddd;
+          text-indent:-9999px;
+          cursor:not-allowed;
+          box-shadow:none;
+      }
+      input[type=checkbox]:disabled::after {
+            content: "X";
+            margin:0px;
+            position:absolute;
+            font-size:18px;
+            width:26px;
+            height:26px;
+            text-align:center;
+            text-indent:0px;
+            font-weight:bold;
+            position: absolute;
+            z-index:1;
+            left:5px;
+            top:23px;
+            transform:translate(-20%,-80%);
+            cursor:not-allowed;
+      }
+      label{    
+        display: block;
+        position: relative;    
+        width: 25px;    
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 25px;
+        padding: 3px 2px;
+        background:#f42536;
+        border-radius: 5px;
+      }
+        label::before {
+          content: "";
+          position: absolute;
+          width: 75%;
+          height: 75%;
+          top: 3px;
+          left: 50%;
+          transform: translate(-50%, 0%);
+          background: rgba(255, 255, 255, 0.3);
+        }
+        label:hover {
+          cursor: pointer;
+        }
+      
+    @keyframes rubberBand {
+      0% {
+        -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+      }
+    
+      30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+                transform: scale3d(1.25, 0.75, 1);
+      }
+    
+      40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+                transform: scale3d(0.75, 1.25, 1);
+      }
+    
+      50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+                transform: scale3d(1.15, 0.85, 1);
+      }
+    
+      65% {
+        -webkit-transform: scale3d(.95, 1.05, 1);
+                transform: scale3d(.95, 1.05, 1);
+      }
+    
+      75% {
+        -webkit-transform: scale3d(1.05, .95, 1);
+                transform: scale3d(1.05, .95, 1);
+      }
+    
+      100% {
+        -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+      }
+    }
+    .rubberBand {
+      -webkit-animation-name: rubberBand;
+              animation-name: rubberBand;
+    }

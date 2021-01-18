@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "AirlineReservation"
+  "defaultProject": "AirlineReservation",
+  "cli": {
+    "analytics": false
+  }
 }

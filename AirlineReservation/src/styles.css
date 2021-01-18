@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    width:100%;
+    min-height:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    margin:0px;
+    padding:0px;
+    background-color:rgb(245, 227, 157);
+    /*
+    background-image: url('./assets/Aeroplane.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    backface-visibility: visible;
+    */
+}
