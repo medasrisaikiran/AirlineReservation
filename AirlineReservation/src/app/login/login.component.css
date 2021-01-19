@@ -1,0 +1,14 @@
+body{
+    position:absolute;
+    top:80px;
+    width:100%;
+    min-height:60%;
+}
+a{
+    width:100px;
+    height:40px;
+    background-color:rgb(245, 227, 157);
+    color:midnightblue;
+    font-size: 18px;
+    padding:5px;
+}

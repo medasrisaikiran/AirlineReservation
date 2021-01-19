@@ -6,6 +6,7 @@ body{
     left:0px;
     margin:0px;
     padding:0px;
+    overflow:auto;
     background-color:rgb(245, 227, 157);
     /*
     background-image: url('./assets/Aeroplane.jpg');
