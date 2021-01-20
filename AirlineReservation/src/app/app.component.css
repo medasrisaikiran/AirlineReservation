@@ -4,7 +4,7 @@ body{
  width:100%;
 }
 .header{
-    position:fixed;
+    position:absolute;
     top:0px;
     left:0px;
     width:100%;
@@ -36,7 +36,7 @@ a{
    border:2px solid #292626
 }
 .footer{
-    position:fixed;
+    position:absolute;
     bottom:0px;
     left:0px;
     width:100%;

@@ -1,5 +1,5 @@
 *{
-    box-sizing:content-box;
+    font-family:Alike;
   }
   body{
     background-color:rgb(245, 227, 157);
@@ -12,32 +12,29 @@
     position:absolute;
     top:490px;
     left:618px;
+    width:10%;
   }
   button{
-    width:100px;
-    border:2px solid aquamarine;
-    border-radius:5px;
+    width:80%;
+    border-radius:7px;
     height:40px;
-    background-color : aqua;
     font-size:18px;
-    font-weight:700;
-    font-family:Alike;
-    border:2px solid black;
+    background-color: #b0e0e6;
+    transition:background-color 0.3s,width 0.5s ease-in-out;
   }
   button:hover{
-    background-color :rgb(150, 150, 255);
-    box-shadow:2px 2px gray;
+    background-color:#47b8c7;
+    width:100%;
   }
   table.outer{
     position:absolute;
     top:0px;
-    left:36%;
+    left:36.5%;
     border:2px solid black;
     width:27%;
     height:420px;
   }
   caption{
-      font-family:Alike;
       font-size:28px;
       color:indigo
   }

@@ -5,15 +5,13 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightSelectComponent } from './flight-select/flight-select.component';
-import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {SeatSelectComponent} from './seat-select/seat-select.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'login/userlogin',component:UserloginComponent},
-  {path:'login/adminlogin',component:AdminloginComponent},
+  {path:'userlogin',component:UserloginComponent},
+  {path:'adminlogin',component:AdminloginComponent},
   {path:'register',component:RegisterComponent},
   {path:'flightsearch',component:FlightSearchComponent},
   {path:'flightselect',component:FlightSelectComponent},

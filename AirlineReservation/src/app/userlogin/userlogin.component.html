@@ -3,12 +3,19 @@
         <title>
             www.Airlines.com
         </title>
+        <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
-        <table class="Table">
+        <table>
+            <tr>
+                <td class="untoggle"><a href="../userlogin">USER</a></td>
+                <td class="toggle"><a href="../adminlogin">ADMIN</a></td>
+            </tr>
            <tr><td>Username</td><td><input type="text"></td></tr>
            <tr><td>Password</td><td><input type="password"></td></tr>
-           <tr><td></td><td><a routerLink="../../flightsearch"><button>Login</button></a><a href="../../register"><button>Sign Up</button></a></td></tr>
+           <tr><td align="center"><a routerLink="../flightsearch"><button>Login</button></a></td>
+            <td align="center"><a href="../register"><button>Sign Up</button></a></td></tr>
            <tr><td></td><td><a href="">Forgot Password?</a></td></tr>
         </table>
     </body>

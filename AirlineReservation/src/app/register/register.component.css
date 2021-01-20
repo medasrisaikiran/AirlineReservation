@@ -1,29 +1,37 @@
+*{
+	font-family:Alike;
+}
 body{
     position:absolute;
     top:80px;
     width:100%;
     min-height:60%;
 }
-h1{
-    background-color: lightgreen;
-    font-family:Monotype Corsiva;
-    font-size:30px;
-    text-align: center;
+button{
+	width:70%;
+	border-radius:7px;
+	height:40px;
+	background-color: #b0e0e6;
+	transition:background-color 0.3s,width 0.5s ease-in-out;
 }
-button{ 
-    background-color: white;
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
+button:hover{
+	background-color:#47b8c7;
+	width:75%;
 }
 td{
-padding: 0px 20px 3px 2px;
+    padding:15px;
+    width:50%;
 }
-.Table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
+table{
+	margin-top:5%;
+	padding:10px;
+}
+table.outer{
+	border:1px solid black;
 }
 input{
-    height:35px;
+	width:90%;
+	height:30px;
+	background-color:rgb(236, 221, 221);
+	border-radius:7px;
 }
