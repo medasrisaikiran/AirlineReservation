@@ -16,7 +16,8 @@ table{
 	position:absolute;
 	top:150px;
 	left:35%;
-    border:1px black solid;
+	border:1px black solid;
+	border-collapse:collapse;
 }
 a{
 	color:rgb(245, 227, 157);

@@ -1,3 +1,43 @@
 *{
 	font-family:Alike;
 }
+body{
+    position:relative;
+    top:80px;
+    height:70%;
+    min-height:80%;
+    width:100%;
+}
+b{
+	color:blue;
+	font-size: 16px;
+	font-weight:500;
+}
+table.outer{
+	margin: 0 5%;
+	width:90%;
+	padding:1%;
+	border-left:10px solid rgb(0, 255, 0);
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	border-right: 1px solid black;
+}
+td{
+	text-align: center;
+}
+table{
+	width:100%;
+	height:50px;
+}
+button{
+	width:13%;
+	border-radius:7px;
+	height:40px;
+	font-size:18px;
+	background-color: #b0e0e6;
+	transition:background-color 0.2s 0.3s,width 0.2s 0.3s ease-in-out;
+}
+button:hover{
+	background-color:#47b8c7;
+	width:15%;
+}

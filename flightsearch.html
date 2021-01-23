@@ -1,17 +1,51 @@
 <html>
-<head>
-    <title>Flight Reservation System</title>    <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        </style>
-</head>
+    
+    <title>Flight Reservation System</title>
+    
     <body>
         
-        <div style="text-align: right;" class="form-btn">
-            <button class="submit-btn">LOGIN /  SIGNUP</button>
+        <style>
+            h1{
+                background-color: lightgreen;
+                font-family:Monotype Corsiva;
+                font-size:30px;
+                text-align: center;
+            }
+            .Table{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 13%;
+            }
+            td{
+                padding: 3px;
+            }
+            button{
+                background-color: white;
+                color: black;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            input{
+                height:30px;
+            }
+            
+            
+            
+        </style>
+
+        
+        <div style="text-align: right" class="form-btn">
+            <button class="submit-btn">LOGIN   /   SIGNUP</button>
         </div>
+        <br>
+        <br>
+
+        <div class="form-btn">
+            <button class="submit-btn">ONE WAY</button> &emsp; &emsp;
+            <button class="submit-btn">ROUND TRIP</button>
+        </div>
+        <br>
+        <br>
 
         <section id="main">
             <div id="booking" class="section">
@@ -20,13 +54,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="booking-form">
-                                    <form action="flightselect.html">
+                                    <form action="searchFlights" onsubmit="validateSearch()">
                                         <div class="form-group">
                                             <div class="form-checkbox">
-                                                    <button class="submit-btn">ONE WAY</button> &emsp; &emsp;
-                                                    <button class="submit-btn">ROUND TRIP</button>      
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -43,44 +76,58 @@
                                                         <option value="pune">Pune</option>
                                                         <option value="goa">Goa</option>
                                                     </select>
+                                                    <!-- <input class="form-control" type="text" id="source" name="source"
+                                                        placeholder="City or airport"> -->
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <span class="form-label">Flyning to</span>
-                                                    <select name="destination" id="destination" class="form-control">
-                                                        <option value="pune">Delhi</option>
-                                                        <option value="mumbai">Mumbai</option>
-                                                        <option value="bengaluru">Bengaluru</option>
-                                                        <option value="chennai">Chennai</option>
-                                                        <option value="kolkata">Kolkata</option>
-                                                        <option value="hyderabad">Hyderabad</option>
-                                                        <option value="cochin">Cochin</option>
-                                                        <option value="ahmedabad">Ahmedabad</option>
-                                                        <option value="pune">Pune</option>
-                                                        <option value="goa">Goa</option>
-                                                    </select>
-                                                </div>
+                                            &emsp;
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <span class="form-label">Flyning to</span>
+                                                <select name="destination" id="destination" class="form-control">
+                                                    <option value="pune">Delhi</option>
+                                                    <option value="mumbai">Mumbai</option>
+                                                    <option value="bengaluru">Bengaluru</option>
+                                                    <option value="chennai">Chennai</option>
+                                                    <option value="kolkata">Kolkata</option>
+                                                    <option value="hyderabad">Hyderabad</option>
+                                                    <option value="cochin">Cochin</option>
+                                                    <option value="ahmedabad">Ahmedabad</option>
+                                                    <option value="pune">Pune</option>
+                                                    <option value="goa">Goa</option>
+                                                </select>
+                                                <!-- <input class="form-control" type="text" id="destination"
+                                                    name="destination" placeholder="City or airport"> -->
                                             </div>
                                         </div>
+                                    </div>
+                                </section>
+<br><br>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <span class="form-label">Departure Date</span>
-                                                    <input class="form-control" type="date" name="date" id="datepicker1" required>
+                                                    <input class="form-control" name="date" id="datepicker1" required>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <span class="form-label">Return Date</span>
-                                                    <input class="form-control" type="date" name="date" id="datepicker1" required>
-                                                </div>
-                                            </div>
-                                        </div>
+                                         &emsp;
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <span class="form-label">Return Date</span>
+                                                    <input class="form-control" name="date" id="datepicker1" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+<br>
+<br>                                        
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <span class="form-label">Number of passengers</span>
                                                     <select class="form-control">
@@ -91,11 +138,11 @@
                                                     <span class="select-arrow"></span>
                                                 </div>
                                             </div>
+<br>
+<br>
                                             <div style="text-align: center" class="form-btn">
                                                 <button class="submit-btn">SEARCH</button>
                                             </div>
-                                    </div>
-                                    </form>
-                                </section>
+
     </body>
 </html>

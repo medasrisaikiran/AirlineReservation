@@ -11,13 +11,14 @@ body{
 	overflow-y:auto;
 }
 table{
-	padding:10px;
+	padding:0 10px;
     width :40%;
 	height:70%;
 	position:absolute;
 	top:70px;
 	left:30%;
-    border:1px black solid;
+	border:1px black solid;
+	border-collapse:collapse;
 }
 a{
 	color:rgb(245, 227, 157);

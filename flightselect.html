@@ -1,39 +1,72 @@
 <html>
     <title>Select flights</title>
     <body>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <style>
+            h1{
+                background-color: lightgreen;
+                font-family:Monotype Corsiva;
+                font-size:30px;
+                text-align: center;
+            }
+            .Table{
+                border:1px black;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 13%;
+            }
+            td{
+                padding: 3px;
+            }
+            button{
+                background-color: white;
+                color: black;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            input{
+                height:30px;
+            }
+            
+            
+            
+        </style>
 
         <div style="text-align: right;" class="form-btn">
             <button class="submit-btn">LOGIN /  SIGNUP</button>
         </div>
 
-    <section class="resultsDisplay">
-        <div class="container">
-            <div class="row flightDetails">
-                <form action="SeatSelect.html">
-                <div class="col-md-12">
-                <h4 class="flightCompany">Pune Airways</h4>
-                </div>
-                <div class="col-md-12">
-                <h4 class="departureTime">12:00</h4>
-                <span class="source">Pune</span>
-                </div>
-                <div class="col-md-12">
-                    <h6 class="duration underline">5 hr 45 min</h6>
-                </div>
-                <div class="col-md-12">
-                    <h4 class="arrivalTime">20:45</h4>
-                    <span class="destination">Ooty</span>
-                </div>
-                <div class="col-md-12">
-                    <h3 class="price"> &#8377; 6000</h4>
-                </div>
-                <div class="col-md-12">
-                    <button class="bookNow">Book Now</button>
-                </div>
-                </form>
+
+
+
+        <table class="Table">
+            <tr>
+            <td>
+            <table>
+            <tr><td><u>12:00</u></td></tr>
+            <td></td>
+            <td></td>
+            <tr><td><u>FROM  :  PUNE</u></td</tr>
+                <td></td>
+                <td></td>
+            <tr><td><u>5 hr 45 min</u></td></tr>
+            <td></td>
+            <td></td>
+            <tr><td><u>20:45</u></td></tr>
+            <td></td>
+            <td></td>
+            <tr><td><u>TO  :  OOTY</u></td></tr>
+            <td></td>
+            <td></td>
+            <tr><td><u>₹6000</u></td></tr>
+            </table>
+            </td>
+            </tr>
+            </table>
+
+
+            <div style="text-align: center;" class="form-btn">
+                <button class="submit-btn">BOOK NOW</button>
             </div>
-        </div>
-    </section>
+
     </body>
 </html>

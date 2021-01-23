@@ -1,3 +1,131 @@
 *{
 	font-family:Alike;
 }
+body{
+    position:absolute;
+    top:80px;
+    height:70%;
+    min-height:80%;
+    width:100%;
+}
+table{
+    width:50%;
+    position:absolute;
+    top:50px;
+	left:25%;
+    border:1px solid black;
+}
+.journey{
+  padding:8px;
+  position: relative;
+  width:27px;
+  height:27px;
+  color:white;
+}  
+input[type="radio"]{
+  position: relative;
+  padding:15px;
+  display:inline;
+}
+input[type="radio"]:checked + .oneway{
+	  background-color: rgb(0, 255, 0);   
+	  color:white;
+	  animation-name: rubberBand;
+	  animation-duration: 400ms;
+}
+input[type="radio"]:checked + .roundtrip{
+    background-color: rgb(0, 255, 0);   
+	color:white;
+	animation-name: rubberBand;
+	animation-duration: 400ms;
+}
+  label[for=oneway]{    
+	display: block;
+	position:absolute;    
+	width: 40%;    
+	left:5%;
+	top:15px;
+	opacity:1;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 50px;
+	background:rgb(255, 0, 0);
+	border-radius: 5px;
+	margin-bottom:5%;
+  }
+  label[for=roundtrip]{    
+	display: block;
+	position:absolute;    
+	width:40%;    
+	left:55%;
+	top:15px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 50px;
+	background:rgb(255, 0, 0);
+	border-radius: 5px;
+	margin-bottom:5%;
+}
+	label:hover {
+	  cursor: pointer;
+	  background-color:rgb(40, 40, 214);
+	  color:white;
+	}
+input,select{
+	width:90%;
+	height:30px;
+	background-color:rgb(236, 221, 221);
+	border-radius:7px;
+}
+td{
+	padding: 15px;
+	width:50%;
+	text-align:center;
+}
+button{
+	width:70%;
+	border-radius:7px;
+	height:40px;
+	font-size:18px;
+	background-color: #b0e0e6;
+	transition:background-color 0.3s,width 0.5s ease-in-out;
+}
+button:hover{
+	background-color:#47b8c7;
+	width:75%;
+}
+@keyframes rubberBand {
+  0% {
+			transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+			transform: scale3d(1.12, 0.88, 1);
+  }
+
+  40% {
+			transform: scale3d(0.88, 1.12, 1);
+  }
+
+  50% {
+			transform: scale3d(1.08, 0.92, 1);
+  }
+
+  65% {
+			transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+			transform: scale3d(1.05, .95, 1);
+  }
+
+  100% {
+			transform: scale3d(1, 1, 1);
+  }
+}
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+		  animation-name: rubberBand;
+}

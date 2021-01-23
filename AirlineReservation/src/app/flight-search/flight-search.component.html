@@ -1,1 +1,64 @@
-<p>flight-search works!</p>
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+    </head>
+    <body>
+        <table>
+            <tr class="journey">
+                <td><input type="radio" name="journeytype" id="oneway"><label for="oneway" class="oneway">One Way</label>
+                </td>
+                <td><input type="radio" name="journeytype" id="roundtrip"><label for="roundtrip" class="roundtrip">Round Trip</label>
+                </td>
+            </tr>
+            <tr>
+                <td>From<br><select name="from">
+                    <option>Hyderabad</option>
+                    <option>Ahmedabad</option>
+                    <option>Kolkata</option>
+                    <option>Mumbai</option>
+                    <option>Chennai</option>
+                    <option>Bengaluru</option>
+                    <option>Delhi</option>
+                    <option>Tirupati</option>
+                    <option>Varanasi</option>
+                    <option>Punjab</option>
+                </select>
+                </td>
+                <td>To<br><select name="to">
+                    <option>Hyderabad</option>
+                    <option>Ahmedabad</option>
+                    <option>Kolkata</option>
+                    <option>Mumbai</option>
+                    <option>Chennai</option>
+                    <option>Bengaluru</option>
+                    <option>Delhi</option>
+                    <option>Tirupati</option>
+                    <option>Varanasi</option>
+                    <option>Punjab</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>departure date<input type="date" value="12/03/2021">
+                </td>
+                <td>return date<input type="date" value="13/03/2021">
+                </td>
+            </tr>
+            <tr>
+                <td>passengers<br>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><a routerLink="../flightselect"><button>search</button></a>
+                </td>
+            </tr>
+        </table>
+        <router-outlet></router-outlet>
+    </body>
+</html>

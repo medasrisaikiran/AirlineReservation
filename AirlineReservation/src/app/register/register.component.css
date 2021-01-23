@@ -5,7 +5,7 @@ body{
     position:absolute;
     top:80px;
     width:100%;
-    min-height:60%;
+    min-height:80%;
 }
 button{
 	width:70%;
@@ -22,8 +22,12 @@ td{
     padding:15px;
     width:50%;
 }
+caption{
+	font-size: 20px;
+	color:rgb(32, 32, 207);
+}
 table{
-	margin-top:5%;
+	margin-top:1%;
 	padding:10px;
 }
 table.outer{
