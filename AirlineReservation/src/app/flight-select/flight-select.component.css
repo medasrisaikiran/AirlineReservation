@@ -2,6 +2,7 @@
 	font-family:Alike;
 }
 body{
+	background-color:rgb(235, 239, 247);
     position:relative;
     top:80px;
     height:70%;
@@ -14,6 +15,7 @@ b{
 	font-weight:500;
 }
 table.outer{
+	background-color:rgb(235, 239, 247);
 	margin: 0 5%;
 	width:90%;
 	padding:1%;

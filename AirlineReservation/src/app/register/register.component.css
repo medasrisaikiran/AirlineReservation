@@ -2,6 +2,7 @@
 	font-family:Alike;
 }
 body{
+	background-color:rgb(235, 239, 247);
     position:absolute;
     top:80px;
     width:100%;
@@ -27,13 +28,15 @@ caption{
 	color:rgb(32, 32, 207);
 }
 table{
+	background-color:rgb(235, 239, 247);
 	margin-top:1%;
 	padding:10px;
+	width:90%;
 }
 table.outer{
 	border:1px solid black;
 }
-input{
+input,select{
 	width:90%;
 	height:30px;
 	background-color:rgb(236, 221, 221);

@@ -2,6 +2,7 @@
 	font-family:Alike;
 }
 body{
+	background-color:rgb(235, 239, 247);
     position:absolute;
     top:100px;
     height:70%;
@@ -9,16 +10,21 @@ body{
     width:100%;
 }
 table{
-    width:30%;
+	background-color:rgb(235, 239, 247);
+    width:50%;
 	position:absolute;
 	padding:0 10px;
     top:50px;
-    left:35%;
+    left:25%;
 	border:1px solid black;
 	border-collapse:collapse;
 }
+td{
+    width:50%;
+    padding:20px 10px 0 10px;
+}
 a{
-	color:rgb(245, 227, 157);
+	color:rgb(235, 239, 247);
 	text-decoration:none;
 	width:100%;
 }
@@ -26,12 +32,15 @@ a{
 	background-color:black;
 	width:max-content;
 	height:50px;
+	padding:15px;
 	text-align:center;
 	border:1px solid black;
+	margin-bottom:10px;
 }
 .untoggle{
-	background-color:rgb(245, 227, 157);
+	background-color:rgb(235, 239, 247);
 	text-align:center;
+	padding:15px;
 }
 .untoggle a{
 	color:black;
@@ -49,10 +58,6 @@ button{
 	height:40px;
 	background-color: #b0e0e6;
 	transition:background-color 0.3s,width 0.3s ease-in-out;
-}
-td{
-    width:50%;
-    padding:10px;
 }
 button:hover{
 	background-color:#47b8c7;

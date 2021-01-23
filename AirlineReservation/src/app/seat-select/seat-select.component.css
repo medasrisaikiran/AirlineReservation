@@ -2,7 +2,7 @@
     font-family:Alike;
   }
   body{
-    background-color:rgb(245, 227, 157);
+    background-color:rgb(235, 239, 247);
     position:absolute;
     top:70px;
     width:100%;
@@ -11,7 +11,7 @@
   div{
     position:absolute;
     top:490px;
-    left:618px;
+    left:45%;
     width:10%;
   }
   button{
@@ -27,6 +27,7 @@
     width:100%;
   }
   table.outer{
+    background-color:rgb(235, 239, 247);
     position:absolute;
     top:0px;
     left:36.5%;
@@ -39,6 +40,7 @@
       color:indigo
   }
   table.inner{
+    background-color:rgb(235, 239, 247);
     width:90%;
     height:80%;
     border-top:2px solid black;
@@ -69,7 +71,7 @@
           animation-duration: 400ms;
         }
       .seat input[type=checkbox]:disabled + label {
-          background: #dddddd;
+          background: #eb0b0b;
           text-indent:-9999px;
           cursor:not-allowed;
           box-shadow:none;
@@ -86,7 +88,7 @@
             font-weight:bold;
             position: absolute;
             z-index:1;
-            left:5px;
+            left:4px;
             top:23px;
             transform:translate(-20%,-80%);
             cursor:not-allowed;
@@ -100,7 +102,7 @@
         font-weight: 600;
         line-height: 25px;
         padding: 3px 2px;
-        background:#f42536;
+        background:#5029dd;
         border-radius: 5px;
       }
         label::before {

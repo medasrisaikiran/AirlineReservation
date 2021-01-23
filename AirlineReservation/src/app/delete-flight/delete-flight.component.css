@@ -3,24 +3,24 @@
 	font-size: 18px;
 }
 body{
-	background-color:rgb(245, 227, 157);
-    position:absolute;
+	background-color:rgb(235, 239, 247);
+	position:absolute;
 	top:200px;
 	width:100%;
 	min-height:60%;
 }
 table{
-    width :30%;
-	height:30%;
+	background-color:rgb(235, 239, 247);
+    width :50%;
 	padding:10px;
 	position:absolute;
 	top:150px;
-	left:35%;
+	left:25%;
 	border:1px black solid;
 	border-collapse:collapse;
 }
 a{
-	color:rgb(245, 227, 157);
+	color:rgb(235, 239, 247);
 	text-decoration:none;
 	width:100%;
 }
@@ -30,10 +30,12 @@ a{
 	height:50px;
 	text-align:center;
 	border:1px solid black;
+	padding-bottom:5px;
 }
 .delete{
-	background-color:rgb(245, 227, 157);
+	background-color:rgb(235, 239, 247);
 	text-align:center;
+	padding-bottom:5px;
 }
 .delete a{
 	color:black;

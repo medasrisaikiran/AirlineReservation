@@ -2,7 +2,7 @@
 	font-family:Alike;
 }
 body{
-	background-color:rgb(245, 227, 157);
+	background-color:rgb(235, 239, 247);
 	display:block;
     position:absolute;
 	top:200px;
@@ -11,6 +11,7 @@ body{
 	overflow-y:auto;
 }
 table{
+	background-color:rgb(235, 239, 247);
 	padding:0 10px;
     width :40%;
 	height:70%;
@@ -21,7 +22,7 @@ table{
 	border-collapse:collapse;
 }
 a{
-	color:rgb(245, 227, 157);
+	color:rgb(235, 239, 247);
 	text-decoration:none;
 	width:100%;
 }
@@ -31,10 +32,12 @@ a{
 	height:50px;
 	text-align:center;
 	border:1px solid black;
+	padding-bottom:5px;
 }
 .untoggle{
-	background-color:rgb(245, 227, 157);
+	background-color:rgb(235, 239, 247);
 	text-align:center;
+	padding-bottom:5px;
 }
 .untoggle a{
 	color:black;

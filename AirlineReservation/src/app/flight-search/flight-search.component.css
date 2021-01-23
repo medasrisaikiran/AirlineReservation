@@ -2,6 +2,7 @@
 	font-family:Alike;
 }
 body{
+	background-color:rgb(235, 239, 247);
     position:absolute;
     top:80px;
     height:70%;
@@ -9,6 +10,7 @@ body{
     width:100%;
 }
 table{
+	background-color:rgb(235, 239, 247);
     width:50%;
     position:absolute;
     top:50px;

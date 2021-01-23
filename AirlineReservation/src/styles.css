@@ -7,13 +7,10 @@ body{
     margin:0px;
     padding:0px;
     overflow:auto;
-    background-color:rgb(245, 227, 157);
-    /*
-    background-image: url('./assets/Aeroplane.jpg');
+    background-image: url('./assets/Aeroplane_white_background.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     backface-visibility: visible;
-    */
 }
