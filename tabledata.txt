@@ -1,0 +1,93 @@
+drop table RegisteredUsers;
+drop table FlightDetails;
+drop table BookingDetails;
+drop table Ticket;
+
+create sequence userid_seq start with 101 increment by 1 cycle norepeat;
+create sequence flightid_seq start with 10001 increment by 1 cycle norepeat;
+
+CREATE TABLE UserDetails(
+userid Number(3),
+firstname VARCHAR(20),
+lastname VARCHAR(20),
+email VARCHAR(20),
+gender VARCHAR(1),
+mobile Number,
+dob varchar2(20)
+);
+
+insert into UserDetails values(userid_seq.nextval,meda sri,sai kiran,ms@gmail.com,m,7330844693,12-03-1999);
+insert into UserDetails values(userid_seq.nextval,samanta,chauhan,sc@gmail.com,f,8421014874,12-03-1999);
+insert into UserDetails values(userid_seq.nextval,rachit,lalla,rl@gmail.com,m,7030111718,12-03-1999);
+insert into UserDetails values(userid_seq.nextval,sushma,sudam,ss@gmail.com,f,9100652434,12-03-1999);
+insert into UserDetails values(userid_seq.nextval,tony,stark,ts@gmail.com,m,1331331331,12-03-1999);
+insert into UserDetails values(userid_seq.nextval,harvard,stark,hs@gmail.com,m,2424242424,12-03-1999);
+
+CREATE TABLE FlightDetails(
+FlightId Number(5),
+FromDateDate VARCHAR(100),
+ToDate VARCHAR(100),
+Capacity Number,
+Duration VARCHAR(100),
+Departure_time VARCHAR(100),
+Arrival_time VARCHAR(100),
+Economy_class_price Number,
+Business_class_price Number,
+Available_seats Number
+);
+
+insert into FlightDetails values(10001,Hyderabad,Mumbai,54,04:00,09:00,14:00,12000,20000,54,y);
+insert into FlightDetails values(10002,Hyderabad,Kolkata,54,05:30,14:00,19:30,16000,30000,54,n);
+insert into FlightDetails values(10003,Hyderabad,Chennai,54,05:00,17:00,21:00,10000,18000,54,n);
+insert into FlightDetails values(10004,Hyderabad,Bengaluru,54,03:30,10:00,13:30,14000,26000,54,y);
+insert into FlightDetails values(10005,Hyderabad,Delhi,54,10:00,11:30,21:30,20000,36000,54,n);
+insert into FlightDetails values(10006,Mumbai,Hyderabad,54,05:00,11:00,16:00,12000,20000,54,y);
+insert into FlightDetails values(10007,Mumbai,Kolkata,54,05:30,12:00,17:30,16000,30000,54,y);
+insert into FlightDetails values(10008,Mumbai,Chennai,54,05:00,13:00,18:00,12000,20000,54,n);
+insert into FlightDetails values(10009,Mumbai,Bengaluru,54,04:00,13:30,17:30,10000,18000,54,n);
+insert into FlightDetails values(10010,Mumbai,Delhi,54,08:00,08:00,16:00,18000,32000,54,y);
+insert into FlightDetails values(10011,Kolkata,Mumbai,54,05:30,11:30,18:00,16000,30000,54,n);
+insert into FlightDetails values(10012,Kolkata,Hyderabad,54,05:30,13:45,19:15,16000,30000,54,y);
+insert into FlightDetails values(10013,Kolkata,Chennai,54,06:00,14:00,20:00,18000,32000,54,y);
+insert into FlightDetails values(10014,Kolkata,Bengaluru,54,06:00,12:30,18:30,16000,30000,54,n);
+insert into FlightDetails values(10015,Kolkata,Delhi,54,05:30,16:00,21:30,12000,20000,54,n);
+insert into FlightDetails values(10016,Chennai,Hyderabad,54,05:00,09:00,14:00,10000,18000,54,y);
+insert into FlightDetails values(10017,Chennai,Mumbai,54,05:00,13:15,18:15,14000,26000,54,n);
+insert into FlightDetails values(10018,Chennai,Kolkata,54,06:00,17:00,23:00,12000,20000,54,y);
+insert into FlightDetails values(10019,Chennai,Bengaluru,54,05:00,15:45,20:45,10000,18000,54,y);
+insert into FlightDetails values(10020,Chennai,Delhi,54,10:00,13:00,23:00,20000,36000,54,n);
+insert into FlightDetails values(10021,Bengaluru,Hyderabad,54,05:00,11:45,16:45,14000,26000,54,n);
+insert into FlightDetails values(10022,Bengaluru,Mumbai,54,04:00,12:00,16:00,10000,18000,54,y);
+insert into FlightDetails values(10023,Bengaluru,Kolkata,54,06:00,13:30,19:30,16000,30000,54,n);
+insert into FlightDetails values(10024,Bengaluru,Chennai,54,05:00,17:15,22:15,10000,18000,54,y);
+insert into FlightDetails values(10025,Bengaluru,Delhi,54,08:00,13:00,21:00,18000,18000,54,y);
+insert into FlightDetails values(10026,Delhi,Hyderabad,54,10:00,10:00,20:00,20000,36000,54,n);
+insert into FlightDetails values(10027,Delhi,Mumbai,54,10:00,11:15,21:15,18000,32000,54,n);
+insert into FlightDetails values(10028,Delhi,Kolkata,54,05:30,*16:00,21:15,12000,20000,54,y);
+insert into FlightDetails values(10029,Delhi,Chennai,54,10:00,13:00,23:00,20000,36000,54,n);
+insert into FlightDetails values(10030,Delhi,Bengaluru,54,08:00,14:00,22:00,18000,32000,54,y);
+
+CREATE TABLE BookingDetails(
+BookingId Number,
+FlightId Number,
+userid Number,
+ticketid Number,
+bookingtime VARCHAR(100),
+status VARCHAR(100)
+);
+
+INSERT INTO BookingDetails VALUES(109, 1, 101, 103, '1/14/21 12:00', 'active');
+
+CREATE TABLE Ticket(
+TicketId Number,
+seatNumber Number,
+Price Number
+);
+
+INSERT INTO Ticket VALUES(103, 1, 35000);
+
+INSERT INTO Ticket VALUES(104, 1, 35000);
+
+INSERT INTO Ticket VALUES(105, 5, 25000);
+
+
