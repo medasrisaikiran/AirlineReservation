@@ -11,6 +11,11 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightSelectComponent } from './flight-select/flight-select.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { ViewAllFlightsComponent } from './view-all-flights/view-all-flights.component';
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +27,16 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
     FlightSearchComponent,
     FlightSelectComponent,
     UserloginComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    ViewAllFlightsComponent,
+    UpdateFlightComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

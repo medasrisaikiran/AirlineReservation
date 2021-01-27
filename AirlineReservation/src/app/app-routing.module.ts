@@ -8,7 +8,8 @@ import { FlightSelectComponent } from './flight-select/flight-select.component';
 import { RegisterComponent } from './register/register.component';
 import {SeatSelectComponent} from './seat-select/seat-select.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
-
+import {ViewAllFlightsComponent} from './view-all-flights/view-all-flights.component';
+import {UpdateFlightComponent} from './update-flight/update-flight.component'
 const routes: Routes = [
   {path:'userlogin',component:UserloginComponent},
   {path:'adminlogin',component:AdminloginComponent},
@@ -18,6 +19,8 @@ const routes: Routes = [
   {path:'seatselect',component:SeatSelectComponent},
   {path:'addflight',component:AddFlightComponent},
   {path:'deleteflight',component:DeleteFlightComponent},
+  {path:'viewflights',component:ViewAllFlightsComponent},
+  {path:'updateflight',component:UpdateFlightComponent}
 ];
 
 @NgModule({

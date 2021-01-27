@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+    </head>
+    <table>
+    <tr>
+        <td class="toggle"><a href="../addflight">Add Flight</a></td>
+        <td class="untoggle"><a href="../updateflight">Update Flight</a></td>
+        <td class="toggle"><a href="../deleteflight">Delete Flight</a></td>
+        <td class="toggle"><a href="../viewflights">View Flights</a></td>
+    </tr>
+    <tr>
+        <td colspan="2">Flight Number</td><td colspan="2"><input type="text" [(ngModel)]="FlightNumber"></td>
+    </tr>
+    <tr>
+        <td colspan="2">Flight Name</td><td colspan="2"><input type="text" [(ngModel)]="FlightName"></td>
+    </tr>
+    <tr>
+        <td colspan="2">From</td><td colspan="2"><select class="select-css" [(ngModel)]="Source">
+            <option>Hyderabad</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>New Delhi</option>
+            <option>Kolkata</option>
+            <option>Ahmedabad</option>
+            <option>Thiruvanantapuram</option>
+            <option>Kochi</option>
+            </select></td>
+    </tr>
+    <tr>
+            <td colspan="2">To</td><td colspan="2"><select class="select-css" [(ngModel)]="Destination">
+            <option>Hyderabad</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>New Delhi</option>
+            <option>Kolkata</option>
+            <option>Ahmedabad</option>
+            <option>Thiruvanantapuram</option>
+            <option>Kochi</option>
+        </select></td>
+    </tr>
+    <tr>
+            <td colspan="2">Depart</td><td colspan="2"><input type="date" [(ngModel)]="Depart"></td>
+    </tr>
+    <tr>
+            <td colspan="2">Arrive</td><td colspan="2"><input type="date" [(ngModel)]="Arrive"></td>
+    </tr>
+    <tr>
+            <td colspan="2">Duration</td><td colspan="2"><input type="time" [(ngModel)]="Duration"></td>
+    </tr>
+    <tr>
+            <td colspan="2">Cabin</td><td><input type="text" [(ngModel)]="Cabin"></td>
+    </tr>
+    <tr>
+            <td colspan="4" align="center"><button>ADD</button></td>
+     </tr>
+</table>
+</html>

@@ -5,61 +5,62 @@ body{
 	background-color:rgb(235, 239, 247);
 	display:block;
     position:absolute;
-	top:200px;
+	top:70px;
 	width:100%;
 	min-height:80%;
 	overflow-y:auto;
 }
 table{
-	background-color:rgb(235, 239, 247);
-	padding:0 10px;
-    width :70%;
-	height:70%;
+	background-color:rgb(250, 251, 252);
 	position:absolute;
-	top:70px;
+	padding:0 10px;
+	min-width:75%;
+    width:70%;
+	top:0px;
 	left:15%;
-	border:1px black solid;
+	border:1px solid black;
 	border-collapse:collapse;
+}
+.inner{
+	background-color:rgb(255, 255, 255);
+	position:absolute;
+    width:100.2%;
+	top:80px;
+	left:0%;
+	margin:0;
+	padding:0;
+	border:0px 2px;
+	border-color:solid black;
+	border-collapse:collapse;
+}
+th{
+	text-align: left;
+	font-weight: 600;
+	border-top:0px;
+	border-bottom:1px solid black;
 }
 a{
 	color:rgb(235, 239, 247);
 	text-decoration:none;
+	width:100%;
 }
 .toggle{
 	background-color:black;
-	width:25%;
+	width:max-content;
 	height:50px;
+	width:25%;
 	text-align:center;
 	border:1px solid black;
-	padding-bottom:5px;
 }
 .untoggle{
 	background-color:rgb(235, 239, 247);
 	text-align:center;
-	padding-bottom:5px;
 	width:25%;
 }
 .untoggle a{
 	color:black;
 }
-input,select{
-	width:75%;
-	height:30px;
-	background-color:rgb(236, 221, 221);
-	border-radius:7px;
-}
-button{
-	width:70%;
-	border-radius:7px;
-	height:40px;
-	background-color: #b0e0e6;
-	transition:background-color 0.3s,width 0.5s ease-in-out;
-}
-button:hover{
-	background-color:#47b8c7;
-	width:75%;
-}
-td{
+td,th{
 	padding:10px 20px;
 	width:25%;
 }
