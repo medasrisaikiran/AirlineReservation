@@ -4,7 +4,7 @@
         <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
-    <form formGroup="">
+    <form #addflightform="ngForm" (ngSubmit)="addFlight(addflightform)">
     <table>
         <tr>
             <td class="untoggle"><a href="../addflight">Add Flight</a></td>
@@ -13,13 +13,10 @@
             <td class="toggle"><a href="../viewflights">View Flights</a></td>
         </tr>
         <tr>
-            <td colspan="2">Flight Number</td><td colspan="2"><input type="text" [(ngModel)]="FlightNumber"></td>
+            <td colspan="2">Flight Number</td><td colspan="2"><input type="text" [(ngModel)]="FlightNumber" name="flightnumber"></td>
         </tr>
         <tr>
-            <td colspan="2">Flight Name</td><td colspan="2"><input type="text" [(ngModel)]="FlightName"></td>
-        </tr>
-        <tr>
-            <td colspan="2">From</td><td colspan="2"><select class="select-css" [(ngModel)]="Source">
+            <td colspan="2">From</td><td colspan="2"><select class="select-css" [(ngModel)]="Source" name="source">
                 <option>Hyderabad</option>
                 <option>Mumbai</option>
                 <option>Pune</option>
@@ -33,7 +30,7 @@
                 </select></td>
         </tr>
         <tr>
-                <td colspan="2">To</td><td colspan="2"><select class="select-css" [(ngModel)]="Destination">
+                <td colspan="2">To</td><td colspan="2"><select class="select-css" [(ngModel)]="Destination" name="destination">
                 <option>Hyderabad</option>
                 <option>Mumbai</option>
                 <option>Pune</option>
@@ -47,19 +44,19 @@
             </select></td>
         </tr>
         <tr>
-                <td colspan="2">Depart</td><td colspan="2"><input type="date" [(ngModel)]="Depart"></td>
+                <td colspan="2">Depart</td><td colspan="2"><input type="date" [(ngModel)]="Depart" name="depart"></td>
         </tr>
         <tr>
-                <td colspan="2">Arrive</td><td colspan="2"><input type="date" [(ngModel)]="Arrive"></td>
+                <td colspan="2">Arrive</td><td colspan="2"><input type="date" [(ngModel)]="Arrive" name="arrive"></td>
         </tr>
         <tr>
-                <td colspan="2">Duration</td><td colspan="2"><input type="time" [(ngModel)]="Duration"></td>
+                <td colspan="2">Duration</td><td colspan="2"><input type="time" [(ngModel)]="Duration" name="duration"></td>
         </tr>
         <tr>
-                <td colspan="2">Cabin</td><td><input type="text" [(ngModel)]="Cabin"></td>
+                <td colspan="2">Cabin</td><td><input type="text" [(ngModel)]="Cabin" name="cabin"></td>
         </tr>
         <tr>
-                <td colspan="4" align="center"><button onclick="addFlight()">ADD</button></td>
+                <td colspan="4" align="center"><button>ADD</button></td>
          </tr>
     </table>
     </form>

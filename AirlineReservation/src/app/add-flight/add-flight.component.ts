@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AirlineService } from '../airline.service';
+import { FlightDetails } from '../flight-details';
 @Component({
   selector: 'app-add-flight',
   templateUrl: './add-flight.component.html',
@@ -9,14 +10,13 @@ import { AirlineService } from '../airline.service';
 export class AddFlightComponent implements OnInit {
 
   FlightNumber:number;
-  FlightName:string;
   Source:string;
   Destination:string;
   Depart:Date;
   Arrive:Date;
   Duration:Time;
   Cabin:string="";
-  addFlight(){
+  addFlight(f:FlightDetails){
     this.as.addFlight(f);
   }
   constructor(private als:AirlineService,private as:AirlineService) {}

@@ -5,16 +5,19 @@ body{
 	background-color:rgb(248, 170, 2);
 	display:block;
     position:absolute;
-	top:200px;
+	top:70px;
 	width:100%;
-	min-height:80%;
+	min-height:70%;
 	overflow-y:auto;
+}
+.error{
+	color:red;
 }
 table{
 	background-color:rgb(248, 170, 2);
 	padding:0 10px;
     width :70%;
-	height:70%;
+	height:60%;
 	position:absolute;
 	top:70px;
 	left:15%;

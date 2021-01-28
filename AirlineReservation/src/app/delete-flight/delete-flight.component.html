@@ -3,6 +3,8 @@
         <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
+    <body>
+<form #deleteflightform="ngForm" (ngSubmit)="deleteFlight(deleteflightform)">
 <table>
     <tr>
         <td class="toggle"><a href="../addflight">Add Flight</a></td>
@@ -11,10 +13,12 @@
         <td class="toggle"><a href="../viewflights">View Flights</a></td>
     </tr>
     <tr>
-        <td colspan="2">Flight Number</td><td colspan="2"><input type="text"></td>
+        <td colspan="2">Flight Number</td><td colspan="2"><input type="text"[(ngModel)]="flightnumber" name="flightnumber"></td>
     </tr>
     <tr>
         <td colspan="4" align="center"><button>delete</button>
     </tr>
 </table>
+</form>
+</body>
 </html>

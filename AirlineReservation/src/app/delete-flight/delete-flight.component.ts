@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AirlineService } from '../airline.service';
+import { FlightDetails } from '../flight-details';
 
 @Component({
   selector: 'app-delete-flight',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteFlightComponent implements OnInit {
 
-  constructor() { }
+  flightnumber:number=0;
+  deleteFlight(f:FlightDetails)
+  {
+    this.a.deleteFlight(f);
+  }
+  constructor(private a:AirlineService) { }
 
   ngOnInit(): void {
   }

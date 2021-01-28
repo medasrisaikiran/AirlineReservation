@@ -13,17 +13,17 @@ export class AirlineService {
   {
     return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights/");
   }
-  addFlight(fd:FlightDetails) :Observable<FlightDetails>
+  addFlight(fd:FlightDetails):Observable<FlightDetails>
   {
-    return this.myhttp.put<FlightDetails>(this.baseurl+"getFlights/",fd);
+    return this.myhttp.post<FlightDetails>(this.baseurl+"getFlights/",fd);
   }
-  deleteFlight(fn:number)
+  deleteFlight(fd:FlightDetails):Observable<FlightDetails>
   {
-    return this.myhttp.put<FlightDetails>(this.baseurl+"getFlights/",fn);
+    return this.myhttp.delete<FlightDetails>(this.baseurl+"getFlights/"+fd);
   }
-  updateFlights(fd:FlightDetails)
+  updateFlights(fd:FlightDetails):Observable<FlightDetails>
   {
-    return this.myhttp.delete<FlightDetails>(this.baseurl+"updateFlight/"+fd);
+    return this.myhttp.put<FlightDetails>(this.baseurl+"updateFlight/",fd);
   }
 
 
