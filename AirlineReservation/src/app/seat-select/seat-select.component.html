@@ -5,9 +5,25 @@
 <title>Seat Select</title>
 </head>
 <body>
-  <form action="Payment.html">
+  <form>
   <table class="outer" align="center">
     <caption>Select seat(s)</caption>
+    <tr>
+      <td>
+        <table class="inner" align="center">
+          <tr *ngFor="let s of seatrows">
+            <td *ngFor="let s2 of seatcols;let i=index">
+              <ol *ngIf="i!=3;else elset"><li class="seat">
+                <input type="checkbox" id="{{((s-1)*(seatcols.length-1))+s2}}" />
+                <label for="{{((s-1)*(seatcols.length-1))+s2}}">{{((s-1)*(seatcols.length-1))+s2}}</label>
+              </li></ol>
+              <ng-template #elset><ul></ul></ng-template>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+<!--    
     <tr>
       <td>
         <table class="inner" align="center">
@@ -365,10 +381,12 @@
         </table>
       </td>
     </tr>
+  -->
   </table>
   <div align="center">
-    <button>payment</button>
+    <button routerLink="../payment" type="submit">payment</button>
   </div>
 </form>
+<router-outlet></router-outlet>
 </body>
 </html>

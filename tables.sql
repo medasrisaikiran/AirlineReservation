@@ -6,41 +6,41 @@ ALTER SESSION SET  NLS_TIMESTAMP_FORMAT ='HH24:MI';
 /* CREATE TABLE */
 CREATE TABLE FlightDetails(
 FlightId Number,
-FromDate VARCHAR(40),
-To VARCHAR(40),
+Source VARCHAR(20),
+Destination VARCHAR(20),
 Capacity Number,
-Duration VARCHAR(40),
+Duration timestamp,
 Departure_time timestamp,
 Arrival_time timestamp,
 Economy_class_price Number,
 Business_class_price Number,
 Available_seats Number,
-Cabin VARCHAR(2)
+Cabin VARCHAR(1)
 );
 
 /* INSERT QUERY NO: 1 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
-10001, 'Hyderabad', 'Mumbai', 54, '4:00', '9:00', '14:00', 12000, 20000, 54, 'y'
+10001, 'Hyderabad', 'Mumbai', 54, to_date('4:00','hh24:mi'), to_date('9:00','hh24:mi'), to_date('14:00','hh24:mi'), 12000, 20000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 2 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
-10002, 'Hyderabad', 'Kolkata', 54, '5:30', '14:00', '19:30', 16000, 30000, 54, 'n'
+10002, 'Hyderabad', 'Kolkata', 54,  to_date('5:30','hh24:mi'), to_date('14:00','hh24:mi'), to_date('19:30','hh24:mi'), 16000, 30000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 3 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10003, 'Hyderabad', 'Chennai', 54, '5:00', '17:00', '21:00', 10000, 18000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 4 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10004, 'Hyderabad', 'Bengaluru', 54, '3:30', '10:00', '13:30', 14000, 26000, 54, 'y'

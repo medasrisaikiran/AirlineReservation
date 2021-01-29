@@ -9,8 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import {SeatSelectComponent} from './seat-select/seat-select.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import {ViewAllFlightsComponent} from './view-all-flights/view-all-flights.component';
-import {UpdateFlightComponent} from './update-flight/update-flight.component'
+import {UpdateFlightComponent} from './update-flight/update-flight.component';
+import {PaymentComponent} from './payment/payment.component';
+import { AppComponent } from './app.component';
 const routes: Routes = [
+  {path:'',component:AppComponent},
   {path:'userlogin',component:UserloginComponent},
   {path:'adminlogin',component:AdminloginComponent},
   {path:'register',component:RegisterComponent},
@@ -20,7 +23,8 @@ const routes: Routes = [
   {path:'addflight',component:AddFlightComponent},
   {path:'deleteflight',component:DeleteFlightComponent},
   {path:'viewflights',component:ViewAllFlightsComponent},
-  {path:'updateflight',component:UpdateFlightComponent}
+  {path:'updateflight',component:UpdateFlightComponent},
+  {path:'payment',component:PaymentComponent}
 ];
 
 @NgModule({
