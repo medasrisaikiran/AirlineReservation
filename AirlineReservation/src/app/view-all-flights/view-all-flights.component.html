@@ -11,8 +11,14 @@
                 <td class="toggle"><a href="../deleteflight">Delete Flight</a></td>
                 <td class="untoggle"><a href="../viewflights">View Flights</a></td>
             </tr>
+            <tr>
+                <td colspan="4"><form #searchform="ngForm" (keyup)="viewFlights()" (blur)="viewFlights()">
+                    <input type="text" class="search" placeholder="search by flightid" [(ngModel)]="searchfor" #search="ngModel" name="search">
+                </form></td>
+            </tr>
             <tr><td>
                 <table class="inner">
+                    
                     <tr>
                         <th>FlightId</th>
                         <th>FlightName</th>

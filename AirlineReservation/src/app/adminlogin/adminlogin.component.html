@@ -7,17 +7,37 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
+        <form #userloginform="ngForm">
         <table align="center">
             <tr>
                 <td class="toggle"><a href="../userlogin">USER</a></td>
                 <td class="untoggle"><a href="../adminlogin">ADMIN</a></td>
             </tr>
-            <tr><td>Username</td><td><input type="text"></td></tr>
-            <tr><td>Password</td><td><input type="password"></td></tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" [(ngModel)]="Username" #username="ngModel" name="username" readonly></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="password" pattern="^[0-9]{8,}$"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div *ngIf="!password?.valid&&(password?.dirty||password?.touched)">
+                        <div *ngIf="password?.errors.required">
+                            <p class="error">please enter password!</p>
+                        </div>
+                        <div *ngIf="password?.errors.pattern">
+                            <p class="error">please enter valid password!</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
             <tr><td align="center"><a routerLink="../addflight"><button>Login</button></a></td>
                 <td align="center"><a routerLink="../register"><button>Sign Up</button></a></td>
             </tr>
-           <tr><td></td><td><a href="">Forgot Password?</a></td></tr>
         </table>
+    </form>
     </body>
 </html>

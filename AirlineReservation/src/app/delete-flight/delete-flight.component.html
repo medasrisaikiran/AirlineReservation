@@ -4,7 +4,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
-<form #deleteflightform="ngForm" (ngSubmit)="deleteFlight(deleteflightform)">
+<form #deleteflightform="ngForm" (ngSubmit)="deleteFlight()">
 <table>
     <tr>
         <td class="toggle"><a href="../addflight">Add Flight</a></td>
@@ -13,10 +13,24 @@
         <td class="toggle"><a href="../viewflights">View Flights</a></td>
     </tr>
     <tr>
-        <td colspan="2">Flight Number</td><td colspan="2"><input type="text"[(ngModel)]="flightnumber" name="flightnumber"></td>
+        <td colspan="2">Flight Number</td>
+        <td colspan="2"><input type="text" [(ngModel)]="FlightNumber" required pattern="^[0-9]{1,}$" #flightnumber="ngModel" placeholder="enter flightid" name="FlightNumber"></td>
     </tr>
     <tr>
-        <td colspan="4" align="center"><button>delete</button>
+        <td colspan="2"></td>
+        <td colspan="2">
+            <div *ngIf="!flightnumber?.valid&&(flightnumber?.dirty||flightnumber?.touched)">
+                <div *ngIf="flightnumber?.errors.required">
+                    <p class="error">flightnumber is required!</p>
+                </div>
+                <div *ngIf="flightnumber?.errors.pattern">
+                    <p class="error">invalid flightnumber</p>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center"><button type="submit" [disabled]="!flightnumber.valid">delete</button>
     </tr>
 </table>
 </form>

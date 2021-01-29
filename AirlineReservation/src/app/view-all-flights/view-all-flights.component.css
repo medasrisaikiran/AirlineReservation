@@ -14,7 +14,6 @@ table{
 	background-color:rgb(250, 251, 252);
 	position:absolute;
 	padding:0 10px;
-	min-width:75%;
     width:70%;
 	top:0px;
 	left:15%;
@@ -24,14 +23,19 @@ table{
 .inner{
 	background-color:rgb(255, 255, 255);
 	position:absolute;
-    width:100.2%;
-	top:80px;
+    width:100%;
+	top:150px;
 	left:0%;
 	margin:0;
 	padding:0;
 	border:0px 2px;
-	border-color:solid black;
 	border-collapse:collapse;
+}
+.inner tr:nth-child(even){
+	background-color:rgb(231, 209, 175)
+}
+.inner th{
+	background-color:rgb(0, 255, 0)
 }
 th{
 	text-align: left;
@@ -50,7 +54,6 @@ a{
 	height:50px;
 	width:25%;
 	text-align:center;
-	border:1px solid black;
 }
 .untoggle{
 	background-color:rgb(235, 239, 247);
@@ -63,4 +66,12 @@ a{
 td,th{
 	padding:10px 20px;
 	width:25%;
+}
+.search{
+	width:200px;
+	height:40px;
+	transition:width 0.4s ease-out;
+}
+.search:focus{
+	width:300px;
 }

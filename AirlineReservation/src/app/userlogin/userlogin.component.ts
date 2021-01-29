@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserloginComponent implements OnInit {
 
+  Username:string;
+  Password:string;
   constructor() { }
 
   ngOnInit(): void {

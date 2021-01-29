@@ -2,30 +2,32 @@
 	font-family:Alike;
 }
 body{
-	background-color:rgb(248, 170, 2);
+	background-color:rgb(231, 209, 175);
 	display:block;
     position:absolute;
-	top:70px;
+	top:50px;
+	bottom:50px;
 	width:100%;
-	min-height:70%;
-	overflow-y:auto;
+	overflow-y:auto
 }
 .error{
 	color:red;
+	font-size:10px;
 }
 table{
-	background-color:rgb(248, 170, 2);
-	padding:0 10px;
-    width :70%;
-	height:60%;
+	background-color:rgb(231, 209, 175);
+    width:70%;
 	position:absolute;
 	top:70px;
 	left:15%;
-	border:1px black solid;
+	max-height:80%;
+	margin:0;
+	padding:0;
+	border:1px solid black;;
 	border-collapse:collapse;
 }
 a{
-	color:rgb(248, 170, 2);
+	color:rgb(231, 209, 175);
 	text-decoration:none;
 }
 .toggle{
@@ -33,11 +35,10 @@ a{
 	width:25%;
 	height:50px;
 	text-align:center;
-	border:1px solid black;
 	padding-bottom:5px;
 }
 .untoggle{
-	background-color:rgb(248, 170, 2);
+	background-color:rgb(231, 209, 175);
 	text-align:center;
 	padding-bottom:5px;
     width:25%;
@@ -63,6 +64,6 @@ button:hover{
 	width:75%;
 }
 td{
-	padding:10px 20px;
+	padding:4px 20px;
 	width:25%;
 }

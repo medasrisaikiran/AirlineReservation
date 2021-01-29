@@ -1,12 +1,12 @@
 export class FlightDetails {
 	
-	private flightNumber:number;
+	public flightNumber:number;
 	
-	private flightName:string;
+	public flightName:string;
 	
-	private sourceName:string;
+	public sourceName:string;
 	
-	private destinationName:string;
+	public destinationName:string;
 
 	public getFlightNumber():number {
 		return this.flightNumber;

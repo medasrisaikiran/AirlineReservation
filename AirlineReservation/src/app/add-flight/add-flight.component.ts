@@ -1,5 +1,5 @@
 import { Time } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵpureFunction1 } from '@angular/core';
 import { AirlineService } from '../airline.service';
 import { FlightDetails } from '../flight-details';
 @Component({
@@ -9,17 +9,22 @@ import { FlightDetails } from '../flight-details';
 })
 export class AddFlightComponent implements OnInit {
 
-  FlightNumber:number;
+  FlightName:string;
   Source:string;
   Destination:string;
   Depart:Date;
   Arrive:Date;
   Duration:Time;
   Cabin:string="";
-  addFlight(f:FlightDetails){
-    this.as.addFlight(f);
+  addFlight(f:any)
+  {
+    let d=new FlightDetails();
+    d.setFlightName(this.FlightName);
+    d.setSourceName(this.Source);
+    d.setDestinationName(this.Destination);
+    this.als.addFlight(d).subscribe(data=>{alert("added successsfully");});
   }
-  constructor(private als:AirlineService,private as:AirlineService) {}
+  constructor(private als:AirlineService) {}
 
   ngOnInit(): void {
 

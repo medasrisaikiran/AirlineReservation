@@ -9,18 +9,34 @@ import {AirlineService} from './../airline.service';
 })
 export class ViewAllFlightsComponent implements OnInit {
 
-  private subscription:Subscription;
   flights:FlightDetails[];
   tempflights:FlightDetails[];
+  searchfor:string="";
+  viewFlights()
+  {
+    if(this.searchfor.length!=0){
+      this.als.findFlights(parseInt(this.searchfor)).subscribe((data:FlightDetails[])=>{
+        this.flights=data;},
+        (err)=>{
+          console.log(err);
+        })
+    }
+    else{
+      this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
+        this.flights=data;
+        this.tempflights=data;},
+        (err)=>{
+          console.log(err);
+        })
+    }
+  }
   constructor(private als:AirlineService) {}
-
   ngOnInit(): void {
-  this.subscription=this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
+  this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
     this.flights=data;
     this.tempflights=data;},
     (err)=>{
       console.log(err);
     })
   }
-
 }

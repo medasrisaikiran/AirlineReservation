@@ -11,17 +11,17 @@ body{
 }
 table{
 	background-color:rgb(235, 239, 247);
-    width:50%;
+    width:60%;
 	position:absolute;
-	padding:0 10px;
-    top:50px;
-    left:25%;
+	padding:10px;
+    top:0px;
+    left:20%;
 	border:1px solid black;
 	border-collapse:collapse;
 }
 td{
     width:50%;
-    padding:20px 10px 0 10px;
+    padding:10px 20px 5px 20px;
 }
 a{
 	color:rgb(235, 239, 247);
@@ -58,8 +58,12 @@ button{
 	height:40px;
 	background-color: #b0e0e6;
 	transition:background-color 0.3s,width 0.3s ease-in-out;
+	margin-bottom:30px;
 }
 button:hover{
 	background-color:#47b8c7;
 	width:75%;
+}
+.error{
+	color:red;
 }

@@ -5,59 +5,130 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <form #addflightform="ngForm" (ngSubmit)="addFlight(addflightform)">
-    <table>
-        <tr>
-            <td class="untoggle"><a href="../addflight">Add Flight</a></td>
-            <td class="toggle"><a href="../updateflight">Update Flight</a></td>
-            <td class="toggle"><a href="../deleteflight">Delete Flight</a></td>
-            <td class="toggle"><a href="../viewflights">View Flights</a></td>
-        </tr>
-        <tr>
-            <td colspan="2">Flight Number</td><td colspan="2"><input type="text" [(ngModel)]="FlightNumber" name="flightnumber"></td>
-        </tr>
-        <tr>
-            <td colspan="2">From</td><td colspan="2"><select class="select-css" [(ngModel)]="Source" name="source">
-                <option>Hyderabad</option>
-                <option>Mumbai</option>
-                <option>Pune</option>
-                <option>Bangalore</option>
-                <option>Chennai</option>
-                <option>New Delhi</option>
-                <option>Kolkata</option>
-                <option>Ahmedabad</option>
-                <option>Thiruvanantapuram</option>
-                <option>Kochi</option>
-                </select></td>
-        </tr>
-        <tr>
-                <td colspan="2">To</td><td colspan="2"><select class="select-css" [(ngModel)]="Destination" name="destination">
-                <option>Hyderabad</option>
-                <option>Mumbai</option>
-                <option>Pune</option>
-                <option>Bangalore</option>
-                <option>Chennai</option>
-                <option>New Delhi</option>
-                <option>Kolkata</option>
-                <option>Ahmedabad</option>
-                <option>Thiruvanantapuram</option>
-                <option>Kochi</option>
-            </select></td>
-        </tr>
-        <tr>
-                <td colspan="2">Depart</td><td colspan="2"><input type="date" [(ngModel)]="Depart" name="depart"></td>
-        </tr>
-        <tr>
-                <td colspan="2">Arrive</td><td colspan="2"><input type="date" [(ngModel)]="Arrive" name="arrive"></td>
-        </tr>
-        <tr>
-                <td colspan="2">Duration</td><td colspan="2"><input type="time" [(ngModel)]="Duration" name="duration"></td>
-        </tr>
-        <tr>
-                <td colspan="2">Cabin</td><td><input type="text" [(ngModel)]="Cabin" name="cabin"></td>
-        </tr>
-        <tr>
-                <td colspan="4" align="center"><button>ADD</button></td>
-         </tr>
-    </table>
+        <table align="center"><tr><td>
+            <table class="inner">
+                <tr>
+                    <td class="untoggle"><a href="../addflight">Add Flight</a></td>
+                    <td class="toggle"><a href="../updateflight">Update Flight</a></td>
+                    <td class="toggle"><a href="../deleteflight">Delete Flight</a></td>
+                    <td class="toggle"><a href="../viewflights">View Flights</a></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Flight Name</td>
+                    <td colspan="2"><input type="text" [(ngModel)]="FlightName" required name="FlightName" #flightname="ngModel"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!flightname?.valid&&(flightname?.dirty||flightname?.touched)">
+                            <div *ngIf="flightname?.errors.required">
+                                <p class="error">please enter flightnumber!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">From</td>
+                    <td colspan="2"><select class="select-css" [(ngModel)]="Source" required name="Source" #source="ngModel">
+                        <option>Hyderabad</option>
+                        <option>Mumbai</option>
+                        <option>Bangalore</option>
+                        <option>Chennai</option>
+                        <option>New Delhi</option>
+                        <option>Kolkata</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!source?.valid&&(source?.dirty||source?.touched)">
+                            <div *ngIf="source?.errors.required">
+                                <p class="error">please enter source!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">To</td>
+                        <td colspan="2"><select class="select-css" [(ngModel)]="Destination" name="Destination" required #destination="ngModel">
+                        <option>Hyderabad</option>
+                        <option>Mumbai</option>
+                        <option>Bangalore</option>
+                        <option>Chennai</option>
+                        <option>New Delhi</option>
+                        <option>Kolkata</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!destination?.valid&&(destination?.dirty||destination?.touched)">
+                            <div *ngIf="destination?.errors.required">
+                                <p class="error">please enter destination!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">Depart</td>
+                        <td colspan="2"><input type="date" [(ngModel)]="Depart" required name="Depart" #depart="ngModel"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!depart?.valid&&(depart?.dirty||depart?.touched)">
+                            <div *ngIf="depart?.errors.required">
+                                <p class="error">please enter depart!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">Arrive</td>
+                        <td colspan="2"><input type="date" [(ngModel)]="Arrive" required name="Arrive" #arrive="ngModel"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!arrive?.valid&&(arrive?.dirty||arrive?.touched)">
+                            <div *ngIf="arrive?.errors.required">
+                                <p class="error">please enter arrive!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">Duration</td>
+                        <td colspan="2"><input type="time" [(ngModel)]="Duration" required name="Duration" #duration="ngModel"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!duration?.valid&&(duration?.dirty||duration?.touched)">
+                            <div *ngIf="duration?.errors.required">
+                                <p class="error">please enter duration!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="2">Cabin</td>
+                        <td colspan="2"><input type="text" [(ngModel)]="Cabin" required name="Cabin" #cabin="ngModel"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <div *ngIf="!cabin?.valid&&(cabin?.dirty||cabin?.touched)">
+                            <div *ngIf="cabin?.errors.required">
+                                <p class="error">please enter cabin!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                        <td colspan="4" align="center"><button type="submit">ADD</button></td>
+                 </tr>
+            </table>
+        </td></tr></table>
     </form>
 </html>

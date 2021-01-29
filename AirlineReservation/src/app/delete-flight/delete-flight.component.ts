@@ -9,10 +9,11 @@ import { FlightDetails } from '../flight-details';
 })
 export class DeleteFlightComponent implements OnInit {
 
-  flightnumber:number=0;
-  deleteFlight(f:FlightDetails)
+  FlightNumber:number;
+  deleteFlight()
   {
-    this.a.deleteFlight(f);
+    console.log("delete in ts");
+    this.a.deleteFlight(this.FlightNumber).subscribe(data=>{alert("deleted successfully");},err=>{alert("fightid is invalid")});
   }
   constructor(private a:AirlineService) { }
 

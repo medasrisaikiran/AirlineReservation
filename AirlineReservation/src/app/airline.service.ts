@@ -11,20 +11,27 @@ export class AirlineService {
   constructor(private myhttp:HttpClient) { }
   findAllFlights() :Observable<FlightDetails[]>
   {
-    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights/");
+    console.log("findall in service");
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights");
   }
-  addFlight(fd:FlightDetails):Observable<FlightDetails>
+  findFlights(fn:number) :Observable<FlightDetails[]>
   {
-    return this.myhttp.post<FlightDetails>(this.baseurl+"getFlights/",fd);
+    console.log("find in service");
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights/"+fn);
   }
-  deleteFlight(fd:FlightDetails):Observable<FlightDetails>
+  addFlight(fd:FlightDetails)
   {
-    return this.myhttp.delete<FlightDetails>(this.baseurl+"getFlights/"+fd);
+    console.log("add in service class");
+    return this.myhttp.post<FlightDetails>(this.baseurl+"addFlight/",fd);
   }
-  updateFlights(fd:FlightDetails):Observable<FlightDetails>
+  deleteFlight(id:number)
   {
+    console.log("delete in service class");
+    return this.myhttp.delete<FlightDetails>(this.baseurl+"deleteFlight/"+id);
+  }
+  updateFlight(fd:FlightDetails)  
+  {
+    console.log("update in service");
     return this.myhttp.put<FlightDetails>(this.baseurl+"updateFlight/",fd);
   }
-
-
 }

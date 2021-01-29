@@ -2,27 +2,39 @@
 	font-family:Alike;
 }
 body{
-	background-color:rgb(235, 239, 247);
-	display:block;
-    position:absolute;
-	top:200px;
+	background-color:rgb(231, 209, 175);
+	display:inline-block;
+    position:fixed;
+	top:70px;
 	width:100%;
 	min-height:80%;
 	overflow-y:auto;
 }
+.error{
+	color:red;
+	font-size:12px;
+	padding:0;
+}
 table{
-	background-color:rgb(235, 239, 247);
-	padding:0 10px;
-    width :70%;
-	height:70%;
+	background-color:rgb(231, 209, 175);
 	position:absolute;
-	top:70px;
+	width:70%;
+	top:80px;
 	left:15%;
-	border:1px black solid;
+	border:1px solid black;
+	border-collapse:collapse;
+}
+.inner{
+	background-color:rgb(231, 209, 175);
+	position:absolute;
+	width:100.2%;
+	top:0%;
+	left:0%;
+	border:1px solid black;
 	border-collapse:collapse;
 }
 a{
-	color:rgb(235, 239, 247);
+	color:rgb(231, 209, 175);
 	text-decoration:none;
 }
 .toggle{
@@ -34,10 +46,10 @@ a{
 	padding-bottom:5px;
 }
 .untoggle{
-	background-color:rgb(235, 239, 247);
+	background-color:rgb(231, 209, 175);
 	text-align:center;
 	padding-bottom:5px;
-	width:25%;
+    width:25%;
 }
 .untoggle a{
 	color:black;
@@ -59,7 +71,8 @@ button:hover{
 	background-color:#47b8c7;
 	width:75%;
 }
-td{
-	padding:10px 20px;
+tr:nth-child(odd) td{
+	padding:5px 20px;
 	width:25%;
 }
+
