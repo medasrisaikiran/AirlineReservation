@@ -75,3 +75,7 @@ td,th{
 .search:focus{
 	width:300px;
 }
+.sort{
+	width:200px;
+	height:40px;
+}

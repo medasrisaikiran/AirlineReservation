@@ -19,7 +19,7 @@ export class UpdateFlightComponent implements OnInit {
   Duration:Time;
   Cabin:string;
   fetch(){
-    this.a.findFlights(this.FlightNumber).subscribe(  
+    this.a.findFlightsById(this.FlightNumber).subscribe(  
       (data)=>{
         this.Destination=data[0].destinationName;
         this.Source=data[0].sourceName;

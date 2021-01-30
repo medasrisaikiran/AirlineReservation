@@ -22,14 +22,14 @@ Cabin VARCHAR(1)
 INSERT INTO FlightDetails
 VALUES
 (
-10001, 'Hyderabad', 'Mumbai', 54, to_date('4:00','hh24:mi'), to_date('9:00','hh24:mi'), to_date('14:00','hh24:mi'), 12000, 20000, 54, 'y'
+10001, 'Hyderabad', 'Mumbai', 54, '4:00', '9:00','14:00', 12000, 20000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 2 */
 INSERT INTO FlightDetails
 VALUES
 (
-10002, 'Hyderabad', 'Kolkata', 54,  to_date('5:30','hh24:mi'), to_date('14:00','hh24:mi'), to_date('19:30','hh24:mi'), 16000, 30000, 54, 'n'
+10002, 'Hyderabad', 'Kolkata', 54,  '5:30','14:00','19:30', 16000, 30000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 3 */

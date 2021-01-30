@@ -14,10 +14,25 @@ export class AirlineService {
     console.log("findall in service");
     return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights");
   }
-  findFlights(fn:number) :Observable<FlightDetails[]>
+  findFlightsById(fn:number) :Observable<FlightDetails[]>
   {
     console.log("find in service");
     return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlights/"+fn);
+  }
+  sortFlightsByFlightname() :Observable<FlightDetails[]>
+  {
+    console.log("find in service");
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlightsByName/");
+  }
+  sortFlightsBySource() :Observable<FlightDetails[]>
+  {
+    console.log("find in service");
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlightsBySrc/");
+  }
+  sortFlightsByDestination() :Observable<FlightDetails[]>
+  {
+    console.log("find in service");
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlightsByDest/");
   }
   addFlight(fd:FlightDetails)
   {
