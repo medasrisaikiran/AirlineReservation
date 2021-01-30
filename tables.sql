@@ -1,6 +1,140 @@
 /* Showing results for Booknew.xlsx */
 
+ALTER SESSION SET NLS_DATE_FORMAT='MM-DD-RR';
+
+/* Showing results for Booknew.xlsx */
+
+/* CREATE TABLE */
+CREATE TABLE userDetails(
+userid Number,
+firstname VARCHAR(30),
+lastname VARCHAR(30),
+email VARCHAR(30),
+gender VARCHAR(2),
+mobile Number,
+dob date,
+add constraint pk_userid primary key(userid),
+add constraint u_mobile unique(mobile),
+add constraint nn_firstname not null(firstname),
+add constraint nn_lastname not null(lastname),
+add constraint u_email unique(email),
+);
+
+/* INSERT QUERY NO: 1 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+101, 'medasri', 'saikiran', 'ms@gmail.com', 'm', 7330844693, '3/12/99'
+);
+
+/* INSERT QUERY NO: 2 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+102, 'samanta', 'chauhan', 'sc@gmail.com', 'f', 8421014874, '3/12/99'
+);
+
+/* INSERT QUERY NO: 3 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+103, 'rachit', 'lalla', 'rl@gmail.com', 'm', 7030111718, '3/12/99'
+);
+
+/* INSERT QUERY NO: 4 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+104, 'sushma', 'sudam', 'ss@gmail.com', 'f', 9100652434, '3/12/99'
+);
+
+/* INSERT QUERY NO: 5 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+105, 'tony', 'stark', 'ts@gmail.com', 'm', 1331331331, '3/12/99'
+);
+
+/* INSERT QUERY NO: 6 */
+INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
+VALUES
+(
+106, 'harvard', 'stark', 'hs@gmail.com', 'm', 2424242424, '3/12/99'
+);
+
+
+/* Showing results for Booknew.xlsx */
+
+/* CREATE TABLE */
+CREATE TABLE userCredentials(
+username VARCHAR(50),
+password VARCHAR(50)
+add constraint u_username unique(username)
+);
+
+/* INSERT QUERY NO: 1 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'medasrisaikiran', 'Saikiran987@'
+);
+
+/* INSERT QUERY NO: 2 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'samantachauhan', 'Samanta123@'
+);
+
+/* INSERT QUERY NO: 3 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'rachitlalla', 'Rachit123@'
+);
+
+/* INSERT QUERY NO: 4 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'sushmasudam', 'Sushma123@'
+);
+
+/* INSERT QUERY NO: 5 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'tonystark', 'Tony987@'
+);
+
+/* INSERT QUERY NO: 6 */
+INSERT INTO userCredentials(username, password)
+VALUES
+(
+'harvardstark', 'Harvard456@'
+);
+
+
+
+/* CREATE TABLE ADMIN CREDENTIALS*/
+
+CREATE TABLE AdminDetails(
+username VARCHAR(30),
+password VARCHAR(30),
+);
+
+/* INSERT QUERY NO: 1 */
+INSERT INTO AdminDetails(username, password)
+VALUES
+(
+'admin', 'Airline123#'
+);
+
+
+
+
 ALTER SESSION SET  NLS_TIMESTAMP_FORMAT ='HH24:MI';
+
 
 
 /* CREATE TABLE */
@@ -16,6 +150,10 @@ Economy_class_price Number,
 Business_class_price Number,
 Available_seats Number,
 Cabin VARCHAR(1)
+add constraint pk_flightid primary key(FlightId),
+add constraint nn_source not null(Source),
+add constraint nn_destination not null(Destination),
+add check check_capacity check(Capacity >0)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -230,215 +368,6 @@ VALUES
 
 
 
-ALTER SESSION SET NLS_DATE_FORMAT='MM-DD-RR';
-
-
-/* Showing results for Booknew.xlsx */
-
-/* CREATE TABLE */
-CREATE TABLE userDetails(
-userid Number,
-firstname VARCHAR(30),
-lastname VARCHAR(30),
-email VARCHAR(30),
-gender VARCHAR(2),
-mobile Number,
-dob date
-);
-
-/* INSERT QUERY NO: 1 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-101, 'medasri', 'saikiran', 'ms@gmail.com', 'm', 7330844693, '3/12/99'
-);
-
-/* INSERT QUERY NO: 2 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-102, 'samanta', 'chauhan', 'sc@gmail.com', 'f', 8421014874, '3/12/99'
-);
-
-/* INSERT QUERY NO: 3 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-103, 'rachit', 'lalla', 'rl@gmail.com', 'm', 7030111718, '3/12/99'
-);
-
-/* INSERT QUERY NO: 4 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-104, 'sushma', 'sudam', 'ss@gmail.com', 'f', 9100652434, '3/12/99'
-);
-
-/* INSERT QUERY NO: 5 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-105, 'tony', 'stark', 'ts@gmail.com', 'm', 1331331331, '3/12/99'
-);
-
-/* INSERT QUERY NO: 6 */
-INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
-VALUES
-(
-106, 'harvard', 'stark', 'hs@gmail.com', 'm', 2424242424, '3/12/99'
-);
-
-
-
-
-
-
-
-
-ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
-
-
-
-
-
-
-/* Showing results for Booknew.xlsx */
-
-/* CREATE TABLE */
-CREATE TABLE bookingDetails(
-BookingId Number,
-FlightId Number,
-userid Number,
-ticketid Number,
-bookingtime timestamp,
-status VARCHAR(50)
-);
-
-/* INSERT QUERY NO: 1 */
-INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
-VALUES
-(
-109, 10001, 101, 103, '1/14/21 12:00', 'active'
-);
-
-/* INSERT QUERY NO: 2 */
-INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
-VALUES
-(
-110, 10001, 101, 104, '12/11/20 9:30', 'cancelled'
-);
-
-/* INSERT QUERY NO: 3 */
-INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
-VALUES
-(
-111, 10010, 103, 105, '1/13/21 12:00', 'completed'
-);
-
-/* INSERT QUERY NO: 4 */
-INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
-VALUES
-(
-112, 10005, 104, 106, '1/14/21 21:00', 'active'
-);
-
-/* INSERT QUERY NO: 5 */
-INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
-VALUES
-(
-113, 10005, 104, 107, '1/14/21 17:00', 'completed'
-);
-
-
-
-
-
-
-
-CREATE TABLE AdminDetails(
-username VARCHAR(30),
-password VARCHAR(30)
-);
-
-/* INSERT QUERY NO: 1 */
-INSERT INTO AdminDetails(username, password)
-VALUES
-(
-'admin', 'Airline123#'
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Showing results for Booknew.xlsx */
-
-/* CREATE TABLE */
-CREATE TABLE userCredentials(
-username VARCHAR(50),
-password VARCHAR(50)
-);
-
-/* INSERT QUERY NO: 1 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'medasrisaikiran', 'Saikiran987@'
-);
-
-/* INSERT QUERY NO: 2 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'samantachauhan', 'Samanta123@'
-);
-
-/* INSERT QUERY NO: 3 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'rachitlalla', 'Rachit123@'
-);
-
-/* INSERT QUERY NO: 4 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'sushmasudam', 'Sushma123@'
-);
-
-/* INSERT QUERY NO: 5 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'tonystark', 'Tony987@'
-);
-
-/* INSERT QUERY NO: 6 */
-INSERT INTO userCredentials(username, password)
-VALUES
-(
-'harvardstark', 'Harvard456@'
-);
-
-
 
 ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
 
@@ -451,6 +380,8 @@ seatNumber Number,
 Price Number,
 departure_date timestamp,
 Return_date timestamp
+add constraint pk_ticketid primary key(TicketId),
+add check_seatnumber check(seatNumber between 1 and 54)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -492,6 +423,62 @@ VALUES
 
 
 
+
+ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
+
+
+/* Showing results for Booknew.xlsx */
+
+/* CREATE TABLE */
+CREATE TABLE bookingDetails(
+BookingId Number,
+FlightId Number,
+userid Number,
+ticketid Number,
+bookingtime timestamp,
+status VARCHAR(50),
+add constraint pk_bookingid primary key(BookingId),
+add constraint fk_flightid foreign key(FlightId) references FlightDetails(FlightId),
+add constraint fk_userid foreign key(userid) references UserDetails(userid),
+add constraint fk_ticketid foreign key(ticketId) references Ticket(ticketid),
+);
+
+/* INSERT QUERY NO: 1 */
+INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
+VALUES
+(
+109, 10001, 101, 103, '1/14/21 12:00', 'active'
+);
+
+/* INSERT QUERY NO: 2 */
+INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
+VALUES
+(
+110, 10001, 101, 104, '12/11/20 9:30', 'cancelled'
+);
+
+/* INSERT QUERY NO: 3 */
+INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
+VALUES
+(
+111, 10010, 103, 105, '1/13/21 12:00', 'completed'
+);
+
+/* INSERT QUERY NO: 4 */
+INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
+VALUES
+(
+112, 10005, 104, 106, '1/14/21 21:00', 'active'
+);
+
+/* INSERT QUERY NO: 5 */
+INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status)
+VALUES
+(
+113, 10005, 104, 107, '1/14/21 17:00', 'completed'
+);
+
+
 /* Showing results for Booknew.xlsx */
 
 /* CREATE TABLE */
@@ -504,6 +491,7 @@ Thursday VARCHAR(2),
 Friday VARCHAR(2),
 Saturday VARCHAR(2),
 Sunday VARCHAR(2)
+add constraint fk_flightid foreign key(flightid) references FlightDetails(FlightId)
 );
 
 /* INSERT QUERY NO: 1 */
