@@ -12,6 +12,7 @@ import {ViewAllFlightsComponent} from './view-all-flights/view-all-flights.compo
 import {UpdateFlightComponent} from './update-flight/update-flight.component';
 import {PaymentComponent} from './payment/payment.component';
 import { AppComponent } from './app.component';
+
 const routes: Routes = [
   {path:'',component:AppComponent},
   {path:'userlogin',component:UserloginComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'deleteflight',component:DeleteFlightComponent},
   {path:'viewflights',component:ViewAllFlightsComponent},
   {path:'updateflight',component:UpdateFlightComponent},
-  {path:'payment',component:PaymentComponent}
+  {path:'payment',component:PaymentComponent},
+  {path:'**',component:AppComponent}
 ];
 
 @NgModule({

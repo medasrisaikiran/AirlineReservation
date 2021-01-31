@@ -60,7 +60,7 @@ button{
 	transition:background-color 0.3s,width 0.3s ease-in-out;
 	margin-bottom:30px;
 }
-button:hover{
+button:enabled:hover{
 	background-color:#47b8c7;
 	width:75%;
 }

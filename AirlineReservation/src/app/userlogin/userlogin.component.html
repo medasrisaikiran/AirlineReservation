@@ -10,12 +10,12 @@
         <form #userloginform="ngForm">
             <table align="center">
                 <tr>
-                    <td class="untoggle"><a href="../userlogin">USER</a></td>
-                    <td class="toggle"><a href="../adminlogin">ADMIN</a></td>
+                    <td class="untoggle"><a routerLink="../userlogin">USER</a></td>
+                    <td class="toggle"><a routerLink="../adminlogin">ADMIN</a></td>
                 </tr>
                 <tr>
                     <td>Username</td>
-                    <td><input type="text" [(ngModel)]="Username" required #username="ngModel" name="username"></td>
+                    <td><input type="text" [(ngModel)]="Username" required #username="ngModel" name="Username"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="password" pattern="^[0-9]{8,}$"></td>
+                    <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="Password" pattern="^[0-9]{8,}$"></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -49,5 +49,6 @@
                 </tr>
             </table>
         </form>
+        <router-outlet></router-outlet>
     </body>
 </html>

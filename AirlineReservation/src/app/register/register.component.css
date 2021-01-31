@@ -15,7 +15,7 @@ button{
 	background-color: #b0e0e6;
 	transition:background-color 0.3s,width 0.5s ease-in-out;
 }
-button:hover{
+button:enabled:hover{
 	background-color:#47b8c7;
 	width:75%;
 }

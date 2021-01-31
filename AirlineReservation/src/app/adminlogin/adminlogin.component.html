@@ -7,7 +7,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
-        <form #userloginform="ngForm">
+        <form #adminloginform="ngForm">
         <table align="center">
             <tr>
                 <td class="toggle"><a href="../userlogin">USER</a></td>
@@ -34,7 +34,7 @@
                     </div>
                 </td>
             </tr>
-            <tr><td align="center"><a routerLink="../addflight"><button>Login</button></a></td>
+            <tr><td align="center"><a routerLink="../addflight"><button [disabled]="!adminloginform.valid">Login</button></a></td>
                 <td align="center"><a routerLink="../register"><button>Sign Up</button></a></td>
             </tr>
         </table>

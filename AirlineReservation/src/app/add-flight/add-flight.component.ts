@@ -16,7 +16,7 @@ export class AddFlightComponent implements OnInit {
   Arrive:Date;
   Duration:Time;
   Cabin:string="";
-  addFlight(f:any)
+  addFlight()
   {
     let d=new FlightDetails();
     d.setFlightName(this.FlightName);

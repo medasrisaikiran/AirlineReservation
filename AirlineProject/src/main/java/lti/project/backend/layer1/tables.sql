@@ -1,3 +1,13 @@
+/*DROPPING TABLES*/
+drop table userdetails cascade constraints;
+drop table userCredentials cascade constraints;
+drop table admindetails cascade constraints;
+drop table flightdetails cascade constraints;
+drop table ticket cascade constraints;
+drop table bookingdetails cascade constraints;
+drop table flightavailability cascade constraints;
+
+
 /* Showing results for Booknew.xlsx */
 
 ALTER SESSION SET NLS_DATE_FORMAT='MM-DD-RR';
@@ -6,19 +16,16 @@ ALTER SESSION SET NLS_DATE_FORMAT='MM-DD-RR';
 
 /* CREATE TABLE */
 CREATE TABLE userDetails(
-userid Number,
-firstname VARCHAR(30),
-lastname VARCHAR(30),
-email VARCHAR(30),
-gender VARCHAR(2),
-mobile Number,
-dob date,
-add constraint pk_userid primary key(userid),
-add constraint u_mobile unique(mobile),
-add constraint nn_firstname not null(firstname),
-add constraint nn_lastname not null(lastname),
-add constraint u_email unique(email),
+userid Number constraint pk_userid primary key,
+firstname VARCHAR2(30) constraint nn_firstname not null,
+lastname VARCHAR2(30) constraint nn_lastname not null,
+email VARCHAR2(30) constraint u_email unique,
+gender VARCHAR2(2),
+mobile Number constraint u_mobile unique,
+dob date
 );
+
+
 
 /* INSERT QUERY NO: 1 */
 INSERT INTO userDetails(userid, firstname, lastname, email, gender, mobile, dob)
@@ -67,9 +74,8 @@ VALUES
 
 /* CREATE TABLE */
 CREATE TABLE userCredentials(
-username VARCHAR(50),
-password VARCHAR(50)
-add constraint u_username unique(username)
+username VARCHAR2(20) constraint u_username unique,
+password VARCHAR2(20)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -119,8 +125,8 @@ VALUES
 /* CREATE TABLE ADMIN CREDENTIALS*/
 
 CREATE TABLE AdminDetails(
-username VARCHAR(30),
-password VARCHAR(30),
+username VARCHAR2(30),
+password VARCHAR2(30)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -139,21 +145,17 @@ ALTER SESSION SET  NLS_TIMESTAMP_FORMAT ='HH24:MI';
 
 /* CREATE TABLE */
 CREATE TABLE FlightDetails(
-FlightId Number,
-Source VARCHAR(20),
-Destination VARCHAR(20),
-Capacity Number,
+FlightId Number constraint pk_flightid primary key,
+Source VARCHAR2(20) constraint nn_source not null,
+Destination VARCHAR2(20) constraint nn_destination not null,
+Capacity Number constraint check_capacity check(Capacity >0),
 Duration timestamp,
 Departure_time timestamp,
 Arrival_time timestamp,
 Economy_class_price Number,
 Business_class_price Number,
 Available_seats Number,
-Cabin VARCHAR(1)
-add constraint pk_flightid primary key(FlightId),
-add constraint nn_source not null(Source),
-add constraint nn_destination not null(Destination),
-add check check_capacity check(Capacity >0)
+Cabin VARCHAR2(1)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -185,182 +187,182 @@ VALUES
 );
 
 /* INSERT QUERY NO: 5 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10005, 'Hyderabad', 'Delhi', 54, '10:00', '11:30', '21:30', 20000, 36000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 6 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10006, 'Mumbai', 'Hyderabad', 54, '5:00', '11:00', '16:00', 12000, 20000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 7 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10007, 'Mumbai', 'Kolkata', 54, '5:30', '12:00', '17:30', 16000, 30000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 8 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10008, 'Mumbai', 'Chennai', 54, '5:00', '13:00', '18:00', 12000, 20000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 9 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10009, 'Mumbai', 'Bengaluru', 54, '4:00', '13:30', '17:30', 10000, 18000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 10 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10010, 'Mumbai', 'Delhi', 54, '8:00', '8:00', '16:00', 18000, 32000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 11 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10011, 'Kolkata', 'Mumbai', 54, '5:30', '11:30', '18:00', 16000, 30000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 12 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10012, 'Kolkata', 'Hyderabad', 54, '5:30', '13:45', '19:15', 16000, 30000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 13 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10013, 'Kolkata', 'Chennai', 54, '6:00', '14:00', '20:00', 18000, 32000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 14 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10014, 'Kolkata', 'Bengaluru', 54, '6:00', '12:30', '18:30', 16000, 30000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 15 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10015, 'Kolkata', 'Delhi', 54, '5:30', '16:00', '21:30', 12000, 20000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 16 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10016, 'Chennai', 'Hyderabad', 54, '5:00', '9:00', '14:00', 10000, 18000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 17 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10017, 'Chennai', 'Mumbai', 54, '5:00', '13:15', '18:15', 14000, 26000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 18 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10018, 'Chennai', 'Kolkata', 54, '6:00', '17:00', '23:00', 12000, 20000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 19 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10019, 'Chennai', 'Bengaluru', 54, '5:00', '15:45', '20:45', 10000, 18000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 20 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10020, 'Chennai', 'Delhi', 54, '10:00', '13:00', '23:00', 20000, 36000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 21 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10021, 'Bengaluru', 'Hyderabad', 54, '5:00', '11:45', '16:45', 14000, 26000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 22 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10022, 'Bengaluru', 'Mumbai', 54, '4:00', '12:00', '16:00', 10000, 18000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 23 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10023, 'Bengaluru', 'Kolkata', 54, '6:00', '13:30', '19:30', 16000, 30000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 24 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10024, 'Bengaluru', 'Chennai', 54, '5:00', '17:15', '22:15', 10000, 18000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 25 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
-VALUESt
+INSERT INTO FlightDetails
+VALUES
 (
 10025, 'Bengaluru', 'Delhi', 54, '8:00', '13:00', '21:00', 18000, 18000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 26 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10026, 'Delhi', 'Hyderabad', 54, '10:00', '10:00', '20:00', 20000, 36000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 27 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10027, 'Delhi', 'Mumbai', 54, '10:00', '11:15', '21:15', 18000, 32000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 28 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10028, 'Delhi', 'Kolkata', 54, '5:30', '16:00', '21:15', 12000, 20000, 54, 'y'
 );
 
 /* INSERT QUERY NO: 29 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10029, 'Delhi', 'Chennai', 54, '10:00', '13:00', '23:00', 20000, 36000, 54, 'n'
 );
 
 /* INSERT QUERY NO: 30 */
-INSERT INTO FlightDetails(FlightId, FromDate, To, Capacity, Duration, Departure_time, Arrival_time, Economy_class_price, Business_class_price, Available_seats, Cabin)
+INSERT INTO FlightDetails
 VALUES
 (
 10030, 'Delhi', 'Bengaluru', 54, '8:00', '14:00', '22:00', 18000, 32000, 54, 'y'
@@ -375,13 +377,11 @@ ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
 
 /* CREATE TABLE */
 CREATE TABLE Ticket(
-TicketId Number,
-seatNumber Number,
+TicketId Number constraint pk_ticketid primary key,
+seatNumber Number constraint check_seatnumber check(seatNumber between 1 and 54),
 Price Number,
 departure_date timestamp,
 Return_date timestamp
-add constraint pk_ticketid primary key(TicketId),
-add check_seatnumber check(seatNumber between 1 and 54)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -431,16 +431,15 @@ ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
 
 /* CREATE TABLE */
 CREATE TABLE bookingDetails(
-BookingId Number,
-FlightId Number,
-userid Number,
-ticketid Number,
+BookingId Number constraint pk_booking_id primary key,
+FlightId Number ,
+userid Number ,
+ticketid Number ,
 bookingtime timestamp,
 status VARCHAR(50),
-add constraint pk_bookingid primary key(BookingId),
-add constraint fk_flightid foreign key(FlightId) references FlightDetails(FlightId),
-add constraint fk_userid foreign key(userid) references UserDetails(userid),
-add constraint fk_ticketid foreign key(ticketId) references Ticket(ticketid),
+constraint fk_flight_id foreign key(FlightId) references FlightDetails(FlightId),
+constraint fk_user_id foreign key(userid) references UserDetails(userid),
+constraint fk_ticket_id foreign key(ticketId) references Ticket(ticketid)
 );
 
 /* INSERT QUERY NO: 1 */
@@ -490,8 +489,8 @@ Wednesday VARCHAR(2),
 Thursday VARCHAR(2),
 Friday VARCHAR(2),
 Saturday VARCHAR(2),
-Sunday VARCHAR(2)
-add constraint fk_flightid foreign key(flightid) references FlightDetails(FlightId)
+Sunday VARCHAR(2),
+constraint fk_flight_id_2 foreign key(flightid) references FlightDetails(FlightId)
 );
 
 /* INSERT QUERY NO: 1 */

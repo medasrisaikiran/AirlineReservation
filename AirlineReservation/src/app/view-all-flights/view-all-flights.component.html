@@ -15,7 +15,7 @@
                 <td colspan="2"><form #searchform="ngForm" (keyup)="viewFlights()" (blur)="viewFlights()">
                     <input type="text" class="search" placeholder="search by flightid" [(ngModel)]="searchfor" #search="ngModel" name="search">
                 </form></td>
-                <td colspan="2" align="right"><form #sortform="ngForm" (keyup)="sortFlights()" (change)="sortFlights()">
+                <td colspan="2" align="right"><form #sortform="ngForm" (change)="sortFlights()">
                     sort by:
                     <select class="sort" [(ngModel)]="sortby" #sort="ngModel" name="sort">
                         <option value="flightid">flightid</option>
