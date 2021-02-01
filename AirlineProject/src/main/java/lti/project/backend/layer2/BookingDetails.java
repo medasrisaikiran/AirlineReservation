@@ -1,62 +1,102 @@
 package lti.project.backend.layer2;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 
+/**
+ * The persistent class for the BOOKINGDETAILS database table.
+ * 
+ */
 @Entity
-@Table(name="bookingdetails")
-public class BookingDetails {
+@Table(name="BOOKINGDETAILS")
+public class Bookingdetails implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
-	@Column(name="bookingid")
-	private int BOOKINGID;
-	@Column(name="bookingtime")
-	private java.time.LocalTime  BOOKINGTIME;
+	private int bookingid;
+
+	private Timestamp bookingtime;
+
+	private Timestamp departuredate;
+
+	@Column(length=20)
+	private String status;
+
+	//bi-directional many-to-one association to Flightdetail
 	@ManyToOne
-	@JoinColumn(name="flightid")
-	private FlightDetails FLIGHTDETAILS;
-	@ManyToOne
-	@JoinColumn(name="userid")
-	private UserDetails USERDETAILS;
+	@JoinColumn(name="FLIGHTID")
+	private Flightdetails flightdetail;
+
+	//bi-directional many-to-one association to Ticket
 	@OneToOne
-	@JoinColumn(name="ticketid")
-	private Ticket TICKET;
-	public int getBOOKINGID() {
-		return BOOKINGID;
+	@JoinColumn(name="TICKETID")
+	private Ticket ticket;
+
+	//bi-directional many-to-one association to Userdetail
+	@ManyToOne
+	@JoinColumn(name="USERID")
+	private Userdetails userdetail;
+
+	public Bookingdetails() {
 	}
-	public java.time.LocalTime getBOOKINGTIME() {
-		return BOOKINGTIME;
+
+	public int getBookingid() {
+		return this.bookingid;
 	}
-	public FlightDetails getFLIGHTDETAILS() {
-		return FLIGHTDETAILS;
+
+	public void setBookingid(int bookingid) {
+		this.bookingid = bookingid;
 	}
-	public UserDetails getUSERDETAILS() {
-		return USERDETAILS;
+
+	public Timestamp getBookingtime() {
+		return this.bookingtime;
 	}
-	public Ticket getTICKET() {
-		return TICKET;
+
+	public void setBookingtime(Timestamp bookingtime) {
+		this.bookingtime = bookingtime;
 	}
-	public void setBOOKINGID(int bOOKINGID) {
-		BOOKINGID = bOOKINGID;
+
+	public Timestamp getDeparturedate() {
+		return this.departuredate;
 	}
-	public void setBOOKINGTIME(java.time.LocalTime bOOKINGTIME) {
-		BOOKINGTIME = bOOKINGTIME;
+
+	public void setDeparturedate(Timestamp departuredate) {
+		this.departuredate = departuredate;
 	}
-	public void setFLIGHTDETAILS(FlightDetails fLIGHTDETAILS) {
-		FLIGHTDETAILS = fLIGHTDETAILS;
+
+	public String getStatus() {
+		return this.status;
 	}
-	public void setUSERDETAILS(UserDetails uSERDETAILS) {
-		USERDETAILS = uSERDETAILS;
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public void setTICKET(Ticket tICKET) {
-		TICKET = tICKET;
+
+	public Flightdetails getFlightdetail() {
+		return this.flightdetail;
 	}
-		
+
+	public void setFlightdetail(Flightdetails flightdetail) {
+		this.flightdetail = flightdetail;
+	}
+
+	public Ticket getTicket() {
+		return this.ticket;
+	}
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+	public Userdetails getUserdetail() {
+		return this.userdetail;
+	}
+
+	public void setUserdetail(Userdetails userdetail) {
+		this.userdetail = userdetail;
+	}
+
 }

@@ -1,86 +1,122 @@
 package lti.project.backend.layer2;
 
-import java.util.Set;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the USERDETAILS database table.
+ * 
+ */
 @Entity
-@Table(name="userdetails")
-public class UserDetails 
-{
+@Table(name="USERDETAILS")
+public class Userdetails implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
-	@Column(name="userid")
-	private int USERID;
-	@Column(name="firstname",length=20)
-	private String FIRSTNAME;
-	@Column(name="lastname",length=20)
-	private String LASTNAME;
-	@Column(name="email",length=25)
-	private String EMAIL;
-	@Column(name="gender",length=1)
-	private String GENDER;
-	@Column(name="mobile")
-	private long MOBILE;
-	@Column(name="dob")
-	private java.util.Date DATEOFBIRTH;
-	@OneToMany(mappedBy="USERDETAILS",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	Set<BookingDetails> BOOKINGDETAILS;
-	public int getUSERID() {
-		return USERID;
-	}
-	public String getFIRSTNAME() {
-		return FIRSTNAME;
-	}
-	public String getLASTNAME() {
-		return LASTNAME;
-	}
-	public String getEMAIL() {
-		return EMAIL;
-	}
-	public String getGENDER() {
-		return GENDER;
-	}
-	public long getMOBILE() {
-		return MOBILE;
-	}
-	public java.util.Date getDATEOFBIRTH() {
-		return DATEOFBIRTH;
-	}
-	public void setUSERID(int uSERID) {
-		USERID = uSERID;
-	}
-	public void setFIRSTNAME(String fIRSTNAME) {
-		FIRSTNAME = fIRSTNAME;
-	}
-	public void setLASTNAME(String lASTNAME) {
-		LASTNAME = lASTNAME;
-	}
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
-	}
-	public void setGENDER(String gENDER) {
-		GENDER = gENDER;
-	}
-	public void setMOBILE(long mOBILE) {
-		MOBILE = mOBILE;
-	}
-	public void setDATEOFBIRTH(java.util.Date dATEOFBIRTH) {
-		DATEOFBIRTH = dATEOFBIRTH;
-	}
-	public Set<BookingDetails> getBOOKINGDETAILS() {
-		return BOOKINGDETAILS;
-	}
-	public void setBOOKINGDETAILS(Set<BookingDetails> bOOKINGDETAILS) {
-		BOOKINGDETAILS = bOOKINGDETAILS;
+	private int userid;
+
+	@Temporal(TemporalType.DATE)
+	private Date dob;
+
+	@Column(length=20)
+	private String email;
+
+	@Column(length=20)
+	private String firstname;
+
+	@Column(length=1)
+	private String gender;
+
+	@Column(length=20)
+	private String lastname;
+
+	@Column(length=10)
+	private String mobile;
+
+	@Column(length=20)
+	private String password;
+
+	//bi-directional many-to-one association to Bookingdetails
+	@OneToMany(mappedBy="userdetail",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<Bookingdetails> bookingdetails;
+
+	public Userdetails() {
 	}
 
-	
+	public int getUserid() {
+		return this.userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public Date getDob() {
+		return this.dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFirstname() {
+		return this.firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getGender() {
+		return this.gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getLastname() {
+		return this.lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getMobile() {
+		return this.mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Bookingdetails> getBookingdetails() {
+		return this.bookingdetails;
+	}
+
+	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
+
 }

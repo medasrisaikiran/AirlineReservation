@@ -1,126 +1,141 @@
 package lti.project.backend.layer2;
 
-import java.util.Set;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the FLIGHTDETAILS database table.
+ * 
+ */
 @Entity
-@Table(name="flightdetails")
-public class FlightDetails {
-@Id
-@GeneratedValue
-@Column(name="flightid")
-private int  FLIGHTID;
-@Column(name="source",length=20)
-private String SOURCE;
-@Column(name="destination",length=20)
-private String DESTINATION;
-@Column(name="capacity")
-private int CAPACITY;
-@Column(name="duration")
-private java.time.LocalTime DURATION;
-@Column(name="departure_time")
-private java.time.LocalTime DEPARTURETIME;
-@Column(name="arrival_time")
-private java.time.LocalTime ARRIVALTIME;
-@Column(name="economy_class_price")
-private int ECONOMYCLASSPRICE;
-@Column(name="business_class_price")
-private int BUSINESSCLASSPRICE;
-@Column(name="available_seats")
-private int AVAILABLESEATS;
-@Column(name="cabin",length=1)
-private String CABIN;
-@OneToMany(mappedBy="FLIGHTDETAILS",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-Set<BookingDetails> BOOKINGDETAILS;
-@OneToOne(mappedBy="FLIGHTDETAILS",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-FlightAvailability FLIGHTAVAILABILITY;
-public int getFLIGHTID() {
-	return FLIGHTID;
-}
-public String getSOURCE() {
-	return SOURCE;
-}
-public String getDESTINATION() {
-	return DESTINATION;
-}
-public int getCAPACITY() {
-	return CAPACITY;
-}
-public java.time.LocalTime getDURATION() {
-	return DURATION;
-}
-public java.time.LocalTime getDEPARTURETIME() {
-	return DEPARTURETIME;
-}
-public java.time.LocalTime getARRIVALTIME() {
-	return ARRIVALTIME;
-}
-public int getECONOMYCLASSPRICE() {
-	return ECONOMYCLASSPRICE;
-}
-public int getBUSINESSCLASSPRICE() {
-	return BUSINESSCLASSPRICE;
-}
-public int getAVAILABLESEATS() {
-	return AVAILABLESEATS;
-}
-public String getCABIN() {
-	return CABIN;
-}
-public void setFLIGHTID(int fLIGHTID) {
-	FLIGHTID = fLIGHTID;
-}
-public void setSOURCE(String sOURCE) {
-	SOURCE = sOURCE;
-}
-public void setDESTINATION(String dESTINATION) {
-	DESTINATION = dESTINATION;
-}
-public void setCAPACITY(int cAPACITY) {
-	CAPACITY = cAPACITY;
-}
-public void setDURATION(java.time.LocalTime dURATION) {
-	DURATION = dURATION;
-}
-public void setDEPARTURETIME(java.time.LocalTime dEPARTURETIME) {
-	DEPARTURETIME = dEPARTURETIME;
-}
-public void setARRIVALTIME(java.time.LocalTime aRRIVALTIME) {
-	ARRIVALTIME = aRRIVALTIME;
-}
-public void setECONOMYCLASSPRICE(int eCONOMYCLASSPRICE) {
-	ECONOMYCLASSPRICE = eCONOMYCLASSPRICE;
-}
-public void setBUSINESSCLASSPRICE(int bUSINESSCLASSPRICE) {
-	BUSINESSCLASSPRICE = bUSINESSCLASSPRICE;
-}
-public void setAVAILABLESEATS(int aVAILABLESEATS) {
-	AVAILABLESEATS = aVAILABLESEATS;
-}
-public void setCABIN(String cABIN) {
-	CABIN = cABIN;
-}
-public Set<BookingDetails> getBOOKINGDETAILS() {
-	return BOOKINGDETAILS;
-}
-public void setBOOKINGDETAILS(Set<BookingDetails> bOOKINGDETAILS) {
-	BOOKINGDETAILS = bOOKINGDETAILS;
-}
-public FlightAvailability getFLIGHTAVAILABILITY() {
-	return FLIGHTAVAILABILITY;
-}
-public void setFLIGHTAVAILABILITY(FlightAvailability fLIGHTAVAILABILITY) {
-	FLIGHTAVAILABILITY = fLIGHTAVAILABILITY;
-}
+@Table(name="FLIGHTDETAILS")
+public class Flightdetails implements Serializable {
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
+	private int flightid;
 
+	@Column(name="ARRIVAL_TIME")
+	private Timestamp arrivalTime;
+
+	@Column(name="BUSINESS_CLASS_PRICE")
+	private int businessClassPrice;
+
+	@Column(length=1)
+	private String cabin;
+
+	private int capacity;
+
+	@Column(name="DEPARTURE_TIME")
+	private Timestamp departureTime;
+
+	@Column(length=20)
+	private String destination;
+
+	private Timestamp duration;
+
+	@Column(name="ECONOMY_CLASS_PRICE")
+	private int economyClassPrice;
+	
+	@Column(length=20)
+	private String source;
+
+	//bi-directional many-to-one association to Bookingdetail
+	@OneToMany(mappedBy="flightdetail",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List<Bookingdetails> bookingdetails;
+
+	public Flightdetails() {
+	}
+
+	public long getFlightid() {
+		return this.flightid;
+	}
+
+	public void setFlightid(int flightid) {
+		this.flightid = flightid;
+	}
+
+	public Timestamp getArrivalTime() {
+		return this.arrivalTime;
+	}
+
+	public void setArrivalTime(Timestamp arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	public int getBusinessClassPrice() {
+		return this.businessClassPrice;
+	}
+
+	public void setBusinessClassPrice(int businessClassPrice) {
+		this.businessClassPrice = businessClassPrice;
+	}
+
+	public String getCabin() {
+		return this.cabin;
+	}
+
+	public void setCabin(String cabin) {
+		this.cabin = cabin;
+	}
+
+	public int getCapacity() {
+		return this.capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public Timestamp getDepartureTime() {
+		return this.departureTime;
+	}
+
+	public void setDepartureTime(Timestamp departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public String getDestination() {
+		return this.destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public Timestamp getDuration() {
+		return this.duration;
+	}
+
+	public void setDuration(Timestamp duration) {
+		this.duration = duration;
+	}
+
+	public int getEconomyClassPrice() {
+		return this.economyClassPrice;
+	}
+
+	public void setEconomyClassPrice(int i) {
+		this.economyClassPrice = i;
+	}
+
+	public String getSource() {
+		return this.source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public List<Bookingdetails> getBookingdetails() {
+		return this.bookingdetails;
+	}
+
+	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
 }

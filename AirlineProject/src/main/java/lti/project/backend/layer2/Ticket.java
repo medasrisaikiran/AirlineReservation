@@ -1,67 +1,86 @@
 package lti.project.backend.layer2;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
+
+/**
+ * The persistent class for the TICKET database table.
+ * 
+ */
 @Entity
-@Table(name="ticket")
-public class Ticket {
+public class Ticket implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
-	@Column(name="ticketid")
-	private int TICKETID;
-	@Column(name="seatnumber")
-	private int SEATNUMBER;
-	@Column(name="price")
-	private int PRICE;
-	@Column(name="departure_date")
-	private java.util.Date DEPARTUREDATE;
-	@Column(name="return_date")
-	private java.util.Date RETURNDATE;
-	@OneToOne(mappedBy="TICKET",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-	BookingDetails BOOKINGDETAILS;
-	public int getTICKETID() {
-		return TICKETID;
+	private int ticketid;
+
+	@Column(name="DEPARTURE_DATE")
+	private Timestamp departureDate;
+
+	private int price;
+
+	@Column(name="RETURN_DATE")
+	private Timestamp returnDate;
+
+	private int seatnumber;
+
+	//bi-directional many-to-one association to Bookingdetail
+	@OneToOne(mappedBy="ticket",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Bookingdetails bookingdetails;
+
+	public Ticket() {
 	}
-	public int getSEATNUMBER() {
-		return SEATNUMBER;
+
+	public int getTicketid() {
+		return this.ticketid;
 	}
-	public int getPRICE() {
-		return PRICE;
+
+	public void setTicketid(int ticketid) {
+		this.ticketid = ticketid;
 	}
-	public java.util.Date getDEPARTUREDATE() {
-		return DEPARTUREDATE;
+
+	public Timestamp getDepartureDate() {
+		return this.departureDate;
 	}
-	public java.util.Date getRETURNDATE() {
-		return RETURNDATE;
+
+	public void setDepartureDate(Timestamp departureDate) {
+		this.departureDate = departureDate;
 	}
-	public BookingDetails getBOOKINGDETAILS() {
-		return BOOKINGDETAILS;
+
+	public int getPrice() {
+		return this.price;
 	}
-	public void setTICKETID(int tICKETID) {
-		TICKETID = tICKETID;
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public void setSEATNUMBER(int sEATNUMBER) {
-		SEATNUMBER = sEATNUMBER;
+
+	public Timestamp getReturnDate() {
+		return this.returnDate;
 	}
-	public void setPRICE(int pRICE) {
-		PRICE = pRICE;
+
+	public void setReturnDate(Timestamp returnDate) {
+		this.returnDate = returnDate;
 	}
-	public void setDEPARTUREDATE(java.util.Date dEPARTUREDATE) {
-		DEPARTUREDATE = dEPARTUREDATE;
+
+	public int getSeatnumber() {
+		return this.seatnumber;
 	}
-	public void setRETURNDATE(java.util.Date rETURNDATE) {
-		RETURNDATE = rETURNDATE;
+
+	public void setSeatnumber(int seatnumber) {
+		this.seatnumber = seatnumber;
 	}
-	public void setBOOKINGDETAILS(BookingDetails bOOKINGDETAILS) {
-		BOOKINGDETAILS = bOOKINGDETAILS;
+
+	public Bookingdetails getBookingdetails() {
+		return this.bookingdetails;
 	}
-	
-	
+
+	public void setBookingdetails(Bookingdetails bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
+
+
 }
