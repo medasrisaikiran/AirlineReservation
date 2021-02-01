@@ -23,7 +23,7 @@ class AirlineProjectApplicationTests {
 	@Autowired
 	UserDetailsRepositoryImpl ud;
 	
-	@Test
+	@Test																									//1
 	void addRowIntoFlightDetails() {
 		Flightdetails f=new Flightdetails();
 		f.setSource("Bengaluru");
@@ -43,7 +43,49 @@ class AirlineProjectApplicationTests {
 		f.setCabin("y");
 		fd.addFlight(f);
 	}
-	@Test
+	@Test																										//2
+	void deleteRowFromFlightDetails() 
+	{
+		fd.deleteFlight(63);
+	}
+	@Test																										//3	
+	void updateRowFromFlightDetails() 
+	{
+		Flightdetails f=new Flightdetails();
+		f.setFlightid(63);
+		f.setSource("Bengaluru");
+		f.setDestination("Kolkata");
+		String as="2021-02-01 12:00:00";
+		Timestamp DepartureTime =Timestamp.valueOf(as);
+		f.setDepartureTime(DepartureTime);
+		as="2021-02-01 18:00:00";
+		Timestamp ArrivalTime =Timestamp.valueOf(as);
+		f.setArrivalTime(ArrivalTime);
+		as="2021-02-01 06:00:00";
+		Timestamp Duration =Timestamp.valueOf(as);
+		f.setDuration(Duration);
+		f.setCapacity(54);
+		f.setBusinessClassPrice(30000);
+		f.setEconomyClassPrice(20000);
+		f.setCabin("y");
+		fd.updateFlight(f);
+	}
+	@Test																											//4
+	void getAllFlightDetails() 
+	{
+		fd.getAllFlights();
+	}
+	@Test																											//5
+	void getFlightDetailsById() 
+	{
+		fd.getFlightById(10001);
+	}
+	@Test																											//6
+	void getFlightDetailsBySrcAndDest() 
+	{
+		fd.getFlightsBySrcAndDest("Kolkata","Delhi");
+	}
+	@Test																											//7
 	void addRowIntoUserDetails() {
 		Userdetails u=new Userdetails();
 		u.setFirstname("rahul");
@@ -55,5 +97,4 @@ class AirlineProjectApplicationTests {
 		u.setPassword("Rdravid@123");
 		ud.addUser(u);
 	}
-	
 }

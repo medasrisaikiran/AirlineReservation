@@ -18,8 +18,10 @@ public class Bookingdetails implements Serializable {
 	@GeneratedValue
 	private int bookingid;
 
+	@Column(length=20)
 	private Timestamp bookingtime;
 
+	@Column(length=20)
 	private Timestamp departuredate;
 
 	@Column(length=20)

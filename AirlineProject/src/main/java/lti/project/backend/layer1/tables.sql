@@ -17,7 +17,7 @@ firstname VARCHAR2(30) constraint nn_firstname not null,
 lastname VARCHAR2(30) constraint nn_lastname not null,
 email VARCHAR2(30) constraint u_email unique,
 gender VARCHAR2(2),
-mobile Number constraint u_mobile unique,
+mobile Varchar2(10) constraint u_mobile unique,
 dob date,
 password VARCHAR2(20)
 );

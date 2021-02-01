@@ -19,7 +19,7 @@ public class Flightdetails implements Serializable {
 	@GeneratedValue
 	private int flightid;
 
-	@Column(name="ARRIVAL_TIME")
+	@Column(name="ARRIVAL_TIME",length=20)
 	private Timestamp arrivalTime;
 
 	@Column(name="BUSINESS_CLASS_PRICE")
@@ -30,12 +30,13 @@ public class Flightdetails implements Serializable {
 
 	private int capacity;
 
-	@Column(name="DEPARTURE_TIME")
+	@Column(name="DEPARTURE_TIME",length=20)
 	private Timestamp departureTime;
 
 	@Column(length=20)
 	private String destination;
 
+	@Column(length=20)
 	private Timestamp duration;
 
 	@Column(name="ECONOMY_CLASS_PRICE")
@@ -45,7 +46,7 @@ public class Flightdetails implements Serializable {
 	private String source;
 
 	//bi-directional many-to-one association to Bookingdetail
-	@OneToMany(mappedBy="flightdetail",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="flightdetail")
 	private List<Bookingdetails> bookingdetails;
 
 	public Flightdetails() {
