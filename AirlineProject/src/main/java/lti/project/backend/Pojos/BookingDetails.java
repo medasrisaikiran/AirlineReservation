@@ -2,6 +2,8 @@ package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.sql.Date;
 import java.sql.Timestamp;
 
 
@@ -16,7 +18,7 @@ public class Bookingdetails implements Serializable {
 
 	private Timestamp bookingtime;
 
-	private Timestamp departuredate;
+	private Date departuredate;
 
 	@Column(length=20)
 	private String status;
@@ -55,11 +57,11 @@ public class Bookingdetails implements Serializable {
 		this.bookingtime = bookingtime;
 	}
 
-	public Timestamp getDeparturedate() {
+	public Date getDeparturedate() {
 		return this.departuredate;
 	}
 
-	public void setDeparturedate(Timestamp departuredate) {
+	public void setDeparturedate(Date departuredate) {
 		this.departuredate = departuredate;
 	}
 

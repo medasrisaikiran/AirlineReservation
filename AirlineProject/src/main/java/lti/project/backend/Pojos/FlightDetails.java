@@ -48,7 +48,7 @@ public class Flightdetails implements Serializable {
 	public Flightdetails() {
 	}
 
-	public long getFlightid() {
+	public int getFlightid() {
 		return this.flightid;
 	}
 

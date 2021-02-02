@@ -1,8 +1,11 @@
 package lti.project.backend.Repository;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import lti.project.backend.Pojos.Flightdetails;
+import lti.project.backend.dto.FlightDetailDto;
 
 public interface FlightDetailsRepository {
 	
@@ -12,4 +15,8 @@ public interface FlightDetailsRepository {
 	public void addFlight(Flightdetails f) ;
 	public void deleteFlight(int n) ;
 	public void updateFlight(Flightdetails f);
+	List<Flightdetails> sortFlightsBySource();
+	List<Flightdetails> sortFlightsByDestination();
+	List<Flightdetails> sortFlightsById();
+	List<FlightDetailDto> getFlightsBySrcAndDestAndDate(String src, String dest, Date t);
 }

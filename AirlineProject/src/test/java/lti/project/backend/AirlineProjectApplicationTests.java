@@ -1,7 +1,11 @@
 package lti.project.backend;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -17,6 +21,7 @@ import lti.project.backend.Repository.BookingDetailsRepositoryImpl;
 import lti.project.backend.Repository.FlightDetailsRepositoryImpl;
 import lti.project.backend.Repository.TicketRepositoryImpl;
 import lti.project.backend.Repository.UserDetailsRepositoryImpl;
+import lti.project.backend.dto.FlightDetailDto;
 
 @SpringBootTest
 class AirlineProjectApplicationTests {
@@ -94,7 +99,24 @@ class AirlineProjectApplicationTests {
 	{
 		fd.getFlightsBySrcAndDest("Kolkata","Delhi");
 	}
-
+	@Test
+	void getFlightDetailsBySrcAndDestAndDate()
+	{
+		List<Flightdetails> f=fd.getFlightsBySrcAndDest("Hyderabad","Delhi");
+		for (Flightdetails flightdetails : f) {
+			int fid=flightdetails.getFlightid();
+		}
+		List<FlightDetailDto> l=fd.getFlightsBySrcAndDestAndDate("Hyderabad","Delhi",sdf);
+		if(l==null)
+		{
+			System.out.println("no records");
+		}
+		for(FlightDetailDto fdd:l)
+		{
+			System.out.println(fdd.getFlightid()+"\t"+fdd.getUserid()+"\t"+fdd.getDeparturedate());
+		}
+	}
+	
 	/*
 	 * =============================================================================
 	 * =========================
@@ -206,9 +228,9 @@ class AirlineProjectApplicationTests {
 		Timestamp bookingtime=Timestamp.from(Instant.now());
 		b.setBookingtime(bookingtime);
 		b.setStatus("active");
-		String str="2021-02-03 11:30:00";
-		Timestamp departuretime=Timestamp.valueOf(str);
-		b.setDeparturedate(departuretime);
+//		String str="2021-02-03 11:30:00";
+//		Timestamp departuretime=Timestamp.valueOf(str);
+//		b.setDeparturedate(departuretime);
 		bd.addBooking(b);
 	}
 	@Test																											//19
@@ -222,9 +244,9 @@ class AirlineProjectApplicationTests {
 		Timestamp bookingtime=Timestamp.from(Instant.now());
 		b.setBookingtime(bookingtime);
 		b.setStatus("active");
-		String str="2021-02-03 11:30:00";
-		Timestamp departuretime=Timestamp.valueOf(str);
-		b.setDeparturedate(departuretime);
+//		String str="2021-02-03 11:30:00";
+//		Timestamp departuretime=Timestamp.valueOf(str);
+//		b.setDeparturedate(departuretime);
 		Flightdetails f=entityManager.find(Flightdetails.class,10001);
 		Userdetails u=entityManager.find(Userdetails.class,106);
 		Ticket t=entityManager.find(Ticket.class,7);

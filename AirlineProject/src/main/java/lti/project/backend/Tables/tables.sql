@@ -17,7 +17,7 @@ drop table bookingdetails cascade constraints;
 
 /* Showing results for Booknew.xlsx */
 
-ALTER SESSION SET NLS_DATE_FORMAT='MM-DD-RR';
+ALTER SESSION SET NLS_DATE_FORMAT='DD-MM-RR';
 
 /* Showing results for Booknew.xlsx */
 
@@ -201,7 +201,7 @@ VALUES
 );
 
 
-ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
+ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'DD-MM-YY HH24:MI';
 
 /* Showing results for Booknew.xlsx */
 
@@ -249,7 +249,7 @@ VALUES
 107, 2, 20000, '1/14/21 17:00', '1/14/21 17:00'
 );
 
-ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'MM-DD-YY HH24:MI';
+ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'DD-MM-YY HH24:MI:SS';
 
 
 /* Showing results for Booknew.xlsx */
@@ -262,42 +262,42 @@ userid Number ,
 ticketid Number ,
 bookingtime timestamp,
 status VARCHAR(50),
-Departuredate timestamp
+Departuredate date
 );
 
 /* INSERT QUERY NO: 1 */
 INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status, Departuredate)
 VALUES
 (
-109, 10001, 101, 103, '1/14/21 12:00', 'active', '7/17/21 15:30'
+109, 10001, 101, 103, '14/1/21 12:00', 'active', '17/7/21'
 );
 
 /* INSERT QUERY NO: 2 */
 INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status, Departuredate)
 VALUES
 (
-110, 10001, 101, 104, '12/11/20 9:30', 'cancelled', '5/21/21 9:00'
+110, 10001, 101, 104, '11/12/20 9:30', 'cancelled', '21/5/21'
 );
 
 /* INSERT QUERY NO: 3 */
 INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status, Departuredate)
 VALUES
 (
-111, 10010, 103, 105, '1/13/21 12:00', 'completed', '6/12/21 13:30'
+111, 10010, 103, 105, '13/1/21 12:00', 'completed', '12/6/21'
 );
 
 /* INSERT QUERY NO: 4 */
 INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status, Departuredate)
 VALUES
 (
-112, 10005, 104, 106, '1/14/21 21:00', 'active', '5/5/21 11:00'
+112, 10005, 104, 106, '14/1/21 21:00', 'active', '5/5/21 '
 );
 
 /* INSERT QUERY NO: 5 */
 INSERT INTO bookingDetails(BookingId, FlightId, userid, ticketid, bookingtime, status, Departuredate)
 VALUES
 (
-113, 10005, 104, 107, '1/14/21 17:00', 'completed', '2/9/21 16:00'
+113, 10005, 104, 107, '14/1/21 17:00', 'completed', '9/2/21'
 );
 
 commit;

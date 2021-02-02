@@ -70,9 +70,8 @@ public class UserDetailsRepositoryImpl implements UserDetailsRepository {
 		// TODO Auto-generated method stub
 		Userdetails u=entityManager.getReference(Userdetails.class, id);
 		entityManager.remove(u);
-		
 	}
-	
+
 	
 
 }
