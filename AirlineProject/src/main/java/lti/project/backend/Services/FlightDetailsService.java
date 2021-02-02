@@ -1,10 +1,10 @@
-package lti.project.backend.layer3;
+package lti.project.backend.Services;
 
 import java.util.List;
 
-import lti.project.backend.layer2.Flightdetails;
+import lti.project.backend.Pojos.Flightdetails;
 
-public interface FlightDetailsRepository {
+public interface FlightDetailsService {
 	
 	public List<Flightdetails> getAllFlights();
 	public Flightdetails getFlightById(int id);

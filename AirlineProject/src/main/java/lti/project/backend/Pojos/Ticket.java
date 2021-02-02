@@ -1,14 +1,10 @@
-package lti.project.backend.layer2;
+package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 
-/**
- * The persistent class for the TICKET database table.
- * 
- */
 @Entity
 public class Ticket implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +16,7 @@ public class Ticket implements Serializable {
 	@Column(name="DEPARTURE_DATE")
 	private Timestamp departureDate;
 
+	@Column(precision=1)
 	private int price;
 
 	@Column(name="RETURN_DATE")
@@ -28,7 +25,7 @@ public class Ticket implements Serializable {
 	private int seatnumber;
 
 	//bi-directional many-to-one association to Bookingdetail
-	@OneToOne(mappedBy="ticket",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToOne(mappedBy="ticket",cascade=CascadeType.ALL)
 	private Bookingdetails bookingdetails;
 
 	public Ticket() {

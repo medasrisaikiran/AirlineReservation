@@ -1,14 +1,10 @@
-package lti.project.backend.layer2;
+package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 
-/**
- * The persistent class for the BOOKINGDETAILS database table.
- * 
- */
 @Entity
 @Table(name="BOOKINGDETAILS")
 public class Bookingdetails implements Serializable {
@@ -18,26 +14,24 @@ public class Bookingdetails implements Serializable {
 	@GeneratedValue
 	private int bookingid;
 
-	@Column(length=20)
 	private Timestamp bookingtime;
 
-	@Column(length=20)
 	private Timestamp departuredate;
 
 	@Column(length=20)
 	private String status;
 
-	//bi-directional many-to-one association to Flightdetail
+	//bi-directional many-to-one association to Flightdetails
 	@ManyToOne
 	@JoinColumn(name="FLIGHTID")
 	private Flightdetails flightdetail;
 
-	//bi-directional many-to-one association to Ticket
-	@OneToOne
+	//bi-directional many-to-one association to Tickets
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="TICKETID")
 	private Ticket ticket;
 
-	//bi-directional many-to-one association to Userdetail
+	//bi-directional many-to-one association to Userdetails
 	@ManyToOne
 	@JoinColumn(name="USERID")
 	private Userdetails userdetail;

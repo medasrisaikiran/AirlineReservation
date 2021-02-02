@@ -1,4 +1,4 @@
-package lti.project.backend.layer2;
+package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,10 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 
-/**
- * The persistent class for the USERDETAILS database table.
- * 
- */
 @Entity
 @Table(name="USERDETAILS")
 public class Userdetails implements Serializable {
@@ -34,14 +30,14 @@ public class Userdetails implements Serializable {
 	@Column(length=20)
 	private String lastname;
 
-	@Column(length=10)
+	@Column(length=10,unique=true)
 	private String mobile;
 
 	@Column(length=20)
 	private String password;
 
 	//bi-directional many-to-one association to Bookingdetails
-	@OneToMany(mappedBy="userdetail",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER)
 	private List<Bookingdetails> bookingdetails;
 
 	public Userdetails() {

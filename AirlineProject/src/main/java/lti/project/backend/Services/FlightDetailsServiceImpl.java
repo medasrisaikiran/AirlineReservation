@@ -1,4 +1,4 @@
-package lti.project.backend.layer3;
+package lti.project.backend.Services;
 
 import java.util.List;
 
@@ -7,13 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import lti.project.backend.Pojos.Flightdetails;
 
-import lti.project.backend.layer2.Flightdetails;
-
-@Repository
-public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
+@Service
+public class FlightDetailsServiceImpl implements FlightDetailsService
 {
 	@PersistenceContext
 	EntityManager entityManager;
@@ -52,7 +51,7 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 	@Transactional
 	public void deleteFlight(int n) 
 	{
-		Flightdetails f=entityManager.find(Flightdetails.class,n);
+		Flightdetails f=entityManager.getReference(Flightdetails.class,n);
 		entityManager.remove(f);
 	}
 	@Override

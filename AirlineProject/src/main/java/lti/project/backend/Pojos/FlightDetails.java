@@ -1,4 +1,4 @@
-package lti.project.backend.layer2;
+package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,10 +6,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-/**
- * The persistent class for the FLIGHTDETAILS database table.
- * 
- */
 @Entity
 @Table(name="FLIGHTDETAILS")
 public class Flightdetails implements Serializable {
@@ -19,34 +15,34 @@ public class Flightdetails implements Serializable {
 	@GeneratedValue
 	private int flightid;
 
-	@Column(name="ARRIVAL_TIME",length=20)
+	@Column(name="ARRIVAL_TIME")
 	private Timestamp arrivalTime;
 
-	@Column(name="BUSINESS_CLASS_PRICE")
+	@Column(name="BUSINESS_CLASS_PRICE",precision=1)
 	private int businessClassPrice;
 
 	@Column(length=1)
 	private String cabin;
 
+	@Column(length=2)
 	private int capacity;
 
 	@Column(name="DEPARTURE_TIME",length=20)
 	private Timestamp departureTime;
 
-	@Column(length=20)
+	@Column(length=10)
 	private String destination;
 
-	@Column(length=20)
 	private Timestamp duration;
 
-	@Column(name="ECONOMY_CLASS_PRICE")
+	@Column(name="ECONOMY_CLASS_PRICE",precision=1)
 	private int economyClassPrice;
 	
-	@Column(length=20)
+	@Column(length=10)
 	private String source;
 
 	//bi-directional many-to-one association to Bookingdetail
-	@OneToMany(mappedBy="flightdetail")
+	@OneToMany(mappedBy="flightdetail",fetch =FetchType.EAGER)
 	private List<Bookingdetails> bookingdetails;
 
 	public Flightdetails() {
