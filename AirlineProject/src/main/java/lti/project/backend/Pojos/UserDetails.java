@@ -2,6 +2,9 @@ package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +40,7 @@ public class Userdetails implements Serializable {
 	private String password;
 
 	//bi-directional many-to-one association to Bookingdetails
-	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Bookingdetails> bookingdetails;
 
 	public Userdetails() {
@@ -45,6 +48,15 @@ public class Userdetails implements Serializable {
 
 	public int getUserid() {
 		return this.userid;
+	}
+
+	@JsonIgnore
+	public List<Bookingdetails> getBookingdetails() {
+		return bookingdetails;
+	}
+
+	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
 	}
 
 	public void setUserid(int userid) {
@@ -107,12 +119,5 @@ public class Userdetails implements Serializable {
 		this.password = password;
 	}
 
-	public List<Bookingdetails> getBookingdetails() {
-		return this.bookingdetails;
-	}
-
-	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
-		this.bookingdetails = bookingdetails;
-	}
 
 }

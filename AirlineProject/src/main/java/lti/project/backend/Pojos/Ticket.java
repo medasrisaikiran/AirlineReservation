@@ -2,6 +2,9 @@ package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 
 
@@ -12,6 +15,15 @@ public class Ticket implements Serializable {
 	@Id
 	@GeneratedValue
 	private int ticketid;
+
+	@JsonIgnore
+	public Bookingdetails getBookingdetails() {
+		return bookingdetails;
+	}
+
+	public void setBookingdetails(Bookingdetails bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
 
 	@Column(name="DEPARTURE_DATE")
 	private Timestamp departureDate;
@@ -69,14 +81,6 @@ public class Ticket implements Serializable {
 
 	public void setSeatnumber(int seatnumber) {
 		this.seatnumber = seatnumber;
-	}
-
-	public Bookingdetails getBookingdetails() {
-		return this.bookingdetails;
-	}
-
-	public void setBookingdetails(Bookingdetails bookingdetails) {
-		this.bookingdetails = bookingdetails;
 	}
 
 

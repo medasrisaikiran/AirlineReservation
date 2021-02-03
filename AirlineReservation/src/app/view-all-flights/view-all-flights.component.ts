@@ -21,14 +21,6 @@ export class ViewAllFlightsComponent implements OnInit {
           console.log(err);
         })
     }
-    else if(this.sortby==='flightname')
-    {
-      this.als.sortFlightsByFlightname().subscribe((data:FlightDetails[])=>{
-        this.flights=data;},
-        (err)=>{
-          console.log(err);
-        })
-    }
     else if(this.sortby==='source')
     {
       this.als.sortFlightsBySource().subscribe((data:FlightDetails[])=>{

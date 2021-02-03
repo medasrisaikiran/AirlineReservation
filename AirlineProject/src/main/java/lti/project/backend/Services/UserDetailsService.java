@@ -2,8 +2,10 @@ package lti.project.backend.Services;
 
 import java.util.List;
 
-import lti.project.backend.Pojos.Userdetails;
+import org.springframework.stereotype.Service;
 
+import lti.project.backend.Pojos.Userdetails;
+@Service
 public interface UserDetailsService {
 	
 	List<Userdetails> getUsers();

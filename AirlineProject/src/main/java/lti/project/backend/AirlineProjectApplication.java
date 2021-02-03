@@ -10,5 +10,4 @@ public class AirlineProjectApplication {
 		SpringApplication.run(AirlineProjectApplication.class, args);
 		System.out.println("Airline Project Started");
 		}
-
 }

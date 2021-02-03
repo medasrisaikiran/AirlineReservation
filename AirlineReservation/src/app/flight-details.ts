@@ -1,44 +1,99 @@
+import { Time } from "@angular/common";
+
 export class FlightDetails {
 	
-	public flightNumber:number;
 	
-	public flightName:string;
-	
-	public sourceName:string;
-	
-	public destinationName:string;
+	public flightid:number;
+	public arrivalTime:Time;
+	public businessClassPrice:number;
+	public cabin:string;
+	public capacity:number;
+	public departureTime:Time;
+	public destination:string;
+	public duration:Time;
+	public economyClassPrice:number;
+	public source:string;
 
-	public getFlightNumber():number {
-		return this.flightNumber;
+	public Flightdetails() {
 	}
 
-	public setFlightNumber(flightNumber:number) {
-		this.flightNumber = flightNumber;
+	public getFlightid():number {
+		return this.flightid;
 	}
 
-	public getFlightName():string {
-		return this.flightName;
+	public setFlightid(flightid:number) {
+		this.flightid = flightid;
 	}
 
-	public setFlightName(flightName:string) {
-		this.flightName = flightName;
+	public getArrivalTime():Time {
+		return this.arrivalTime;
 	}
 
-	public getSourceName():string {
-		return this.sourceName;
+	public setArrivalTime(arrivalTime:Time) {
+		this.arrivalTime = arrivalTime;
 	}
 
-	public setSourceName(sourceName:string) {
-		this.sourceName = sourceName;
+	public getBusinessClassPrice() {
+		return this.businessClassPrice;
 	}
 
-	public getDestinationName():string {
-		return this.destinationName;
+	public setBusinessClassPrice(businessClassPrice:number) {
+		this.businessClassPrice = businessClassPrice;
 	}
 
-	public setDestinationName(destinationName:string) {
-		this.destinationName = destinationName;
+	public getCabin():string {
+		return this.cabin;
 	}
-	
 
+	public setCabin(cabin:string) {
+		this.cabin = cabin;
+	}
+
+	public getCapacity():number {
+		return this.capacity;
+	}
+
+	public setCapacity(capacity:number) {
+		this.capacity = capacity;
+	}
+
+	public getDepartureTime():Time {
+		return this.departureTime;
+	}
+
+	public setDepartureTime(departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public getDestination():string {
+		return this.destination;
+	}
+
+	public setDestination(destination:string) {
+		this.destination = destination;
+	}
+
+	public getDuration():Time {
+		return this.duration;
+	}
+
+	public setDuration(duration:Time) {
+		this.duration = duration;
+	}
+
+	public getEconomyClassPrice():number {
+		return this.economyClassPrice;
+	}
+
+	public setEconomyClassPrice(i:number) {
+		this.economyClassPrice = i;
+	}
+
+	public getSource():string {
+		return this.source;
+	}
+
+	public setSource(source:string) {
+		this.source = source;
+	}
 }

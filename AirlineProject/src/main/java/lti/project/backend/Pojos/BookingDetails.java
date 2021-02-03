@@ -3,6 +3,8 @@ package lti.project.backend.Pojos;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -24,7 +26,7 @@ public class Bookingdetails implements Serializable {
 	private String status;
 
 	//bi-directional many-to-one association to Flightdetails
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="FLIGHTID")
 	private Flightdetails flightdetail;
 
@@ -34,7 +36,7 @@ public class Bookingdetails implements Serializable {
 	private Ticket ticket;
 
 	//bi-directional many-to-one association to Userdetails
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="USERID")
 	private Userdetails userdetail;
 
@@ -81,6 +83,7 @@ public class Bookingdetails implements Serializable {
 		this.flightdetail = flightdetail;
 	}
 
+	@JsonIgnore
 	public Ticket getTicket() {
 		return this.ticket;
 	}
@@ -89,6 +92,7 @@ public class Bookingdetails implements Serializable {
 		this.ticket = ticket;
 	}
 
+	@JsonIgnore
 	public Userdetails getUserdetail() {
 		return this.userdetail;
 	}

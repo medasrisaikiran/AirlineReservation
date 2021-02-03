@@ -2,6 +2,9 @@ package lti.project.backend.Pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -42,7 +45,7 @@ public class Flightdetails implements Serializable {
 	private String source;
 
 	//bi-directional many-to-one association to Bookingdetail
-	@OneToMany(mappedBy="flightdetail",fetch =FetchType.EAGER)
+	@OneToMany(mappedBy="flightdetail",fetch =FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Bookingdetails> bookingdetails;
 
 	public Flightdetails() {
@@ -120,6 +123,15 @@ public class Flightdetails implements Serializable {
 		this.economyClassPrice = i;
 	}
 
+	@JsonIgnore
+	public List<Bookingdetails> getBookingdetails() {
+		return bookingdetails;
+	}
+
+	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
+		this.bookingdetails = bookingdetails;
+	}
+
 	public String getSource() {
 		return this.source;
 	}
@@ -128,11 +140,4 @@ public class Flightdetails implements Serializable {
 		this.source = source;
 	}
 
-	public List<Bookingdetails> getBookingdetails() {
-		return this.bookingdetails;
-	}
-
-	public void setBookingdetails(List<Bookingdetails> bookingdetails) {
-		this.bookingdetails = bookingdetails;
-	}
 }

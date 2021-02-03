@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import lti.project.backend.Pojos.Bookingdetails;
+import lti.project.backend.Pojos.Flightdetails;
 @Repository
 public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
 
@@ -51,4 +52,14 @@ public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
 	{
 		entityManager.merge(f);
 	}
+    @Override
+    @Transactional
+    public List<Bookingdetails> getBookingsbyFlightid(int id)
+    {
+        Flightdetails f=entityManager.find(Flightdetails.class, id);
+        Query query = entityManager.createQuery("select b from Bookingdetails b where b.flightdetail ="+f.getFlightid());
+        @SuppressWarnings("unchecked")
+        List<Bookingdetails> Bookinglist = query.getResultList();
+        return Bookinglist;
+    }
 }

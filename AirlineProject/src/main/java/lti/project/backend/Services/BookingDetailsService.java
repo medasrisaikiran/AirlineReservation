@@ -2,18 +2,17 @@ package lti.project.backend.Services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import lti.project.backend.Pojos.Bookingdetails;
-
+@Service
 public interface BookingDetailsService {
-
-	List<Bookingdetails> getAllBookings();
-
-	Bookingdetails getBookingById(int id);
-
-	void addBooking(Bookingdetails f);
-
-	void deleteBooking(int n);
-
-	void updateBooking(Bookingdetails f);
+	
+	public List<Bookingdetails> getAllBookingsService();
+	public void addBookingService(Bookingdetails b);
+	public void updateBookingService(Bookingdetails b);
+	public List<Bookingdetails> getBookingsbyFlightidService(int id);
+	public Bookingdetails getBookingbyIdService(int id);
+	public void deleteBookingService(int id);
 
 }

@@ -1,63 +1,166 @@
 package lti.project.backend.Services;
 
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lti.project.backend.Exceptions.EmptyFlightDetailsException;
+import lti.project.backend.Exceptions.FlightDetailsNotFoundException;
+import lti.project.backend.Exceptions.FlightDetailsUpdateException;
+import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
+import lti.project.backend.Repository.FlightDetailsRepository;
 
 @Service
 public class FlightDetailsServiceImpl implements FlightDetailsService
 {
-	@PersistenceContext
-	EntityManager entityManager;
+	@Autowired
+	FlightDetailsRepository fd;
+
+	@Override
+	public List<Flightdetails> getAllFlightsService() {
+		List<Flightdetails> l=fd.getAllFlights();
+		try {
+			if(l==null)
+				throw new EmptyFlightDetailsException("no flights");	
+		}
+		catch(EmptyFlightDetailsException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
+	}
+
+	@Override
+	public Flightdetails getFlightByIdService(int id) {
+		Flightdetails l=fd.getFlightById(id);
+		try {
+			if(l==null)
+				throw new FlightDetailsNotFoundException("no flights");	
+		}
+		catch(FlightDetailsNotFoundException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
+	}
+
+	@Override
+	public List<Flightdetails> getFlightsBySrcAndDestService(String src, String dest) {
+		List<Flightdetails> l=fd.getFlightsBySrcAndDest(src, dest);
+		try {
+			if(l==null)
+				throw new FlightDetailsNotFoundException("no flights");	
+		}
+		catch(FlightDetailsNotFoundException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
+	}
+
+	@Override
+	public void addFlightService(Flightdetails f) {
+		try {
+			fd.addFlight(f);	
+		}	
+		catch(Exception e) {
+			System.out.println("error in adding flightdetails"+e);
+		}
+	}
+
+	@Override
+	public void deleteFlightService(int n) {
+		try 
+		{
+			fd.deleteFlight(n);
+		}
+		catch(Exception e)
+		{
+			try {
+				throw new FlightDetailsNotFoundException("flight not found");
+			}
+			catch(FlightDetailsNotFoundException fe)
+			{
+				System.out.println("error"+e);	
+			};
+		}		
+	}
 	
 	@Override
-	@Transactional
-	public List<Flightdetails> getAllFlights() { //this man will only communicate with CHEF 
-		Query query = entityManager.createQuery(" from Flightdetails f");
-		@SuppressWarnings("unchecked")
-		List<Flightdetails> flightList = query.getResultList();
-		return flightList;
+	public void updateFlightService(Flightdetails f) {
+		try 
+		{
+			fd.updateFlight(f);
+		}
+		catch(Exception e)
+		{
+			try {
+				throw new FlightDetailsUpdateException("invalid flight details");
+			}
+			catch(FlightDetailsUpdateException fe) 
+			{
+			System.out.println("error");
+			}
+		}
 	}
+
 	@Override
-	@Transactional
-	public Flightdetails getFlightById(int id) 
-	{
-		Flightdetails f=entityManager.find(Flightdetails.class,id);
-		return f;
+	public List<Flightdetails> sortFlightsBySourceService() {
+		List<Flightdetails> l=fd.sortFlightsBySource();
+		try {
+			if(l==null)
+				throw new EmptyFlightDetailsException("no flights");	
+		}
+		catch(EmptyFlightDetailsException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
 	}
+
 	@Override
-	@Transactional
-	public List<Flightdetails> getFlightsBySrcAndDest(String src,String dest) 
-	{
-		String queryString = "select f from Flightdetails f where f.source=:src and f.destination=:dst";
-		  @SuppressWarnings("unchecked") List<Flightdetails> list =
-		  entityManager.createQuery(queryString) .setParameter("src", src).setParameter("dst", dest) .getResultList();
-		  return list;
+	public List<Flightdetails> sortFlightsByDestinationService() {
+		List<Flightdetails> l=fd.sortFlightsByDestination();
+		try {
+			if(l==null)
+				throw new EmptyFlightDetailsException("no flights");	
+		}
+		catch(EmptyFlightDetailsException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
 	}
+
 	@Override
-	@Transactional
-	public void addFlight(Flightdetails f) 
-	{
-		entityManager.persist(f);
+	public List<Flightdetails> sortFlightsByIdService() {
+		List<Flightdetails> l=fd.sortFlightsById();
+		try {
+			if(l==null)
+				throw new EmptyFlightDetailsException("no flights");	
+		}
+		catch(EmptyFlightDetailsException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
 	}
+
 	@Override
-	@Transactional
-	public void deleteFlight(int n) 
-	{
-		Flightdetails f=entityManager.getReference(Flightdetails.class,n);
-		entityManager.remove(f);
-	}
-	@Override
-	@Transactional
-	public void updateFlight(Flightdetails f) 
-	{
-		entityManager.merge(f);
+	public List<Bookingdetails> getFlightsBySrcAndDestAndDateService(String src, String dest, Date t) {
+		List<Bookingdetails> l=fd.getFlightsBySrcAndDestAndDate(src, dest,t);
+		try {
+			if(l==null)
+				throw new FlightDetailsNotFoundException("no flights");	
+		}
+		catch(FlightDetailsNotFoundException e)
+		{
+			System.out.println("no flights");
+		}
+		return l;
 	}
 }

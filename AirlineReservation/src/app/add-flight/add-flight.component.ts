@@ -9,19 +9,24 @@ import { FlightDetails } from '../flight-details';
 })
 export class AddFlightComponent implements OnInit {
 
-  FlightName:string;
   Source:string;
   Destination:string;
-  Depart:Date;
-  Arrive:Date;
+  Depart:Time;
+  Arrive:Time;
   Duration:Time;
-  Cabin:string="";
+  Cabin:string;
   addFlight()
   {
     let d=new FlightDetails();
-    d.setFlightName(this.FlightName);
-    d.setSourceName(this.Source);
-    d.setDestinationName(this.Destination);
+    d.capacity=54;
+    d.cabin=this.Cabin;
+    d.destination=this.Destination;
+    d.source=this.Source;
+    d.arrivalTime=this.Arrive;
+    d.departureTime=this.Depart;
+    d.duration=this.Duration;
+
+
     this.als.addFlight(d).subscribe(data=>{alert("added successsfully");});
   }
   constructor(private als:AirlineService) {}

@@ -19,7 +19,6 @@
                     sort by:
                     <select class="sort" [(ngModel)]="sortby" #sort="ngModel" name="sort">
                         <option value="flightid">flightid</option>
-                        <option value="flightname">flightname</option>
                         <option value="source">source</option>
                         <option value="destination">destination</option>
                     </select>
@@ -30,15 +29,27 @@
                     
                     <tr>
                         <th>FlightId</th>
-                        <th>FlightName</th>
-                        <th>FlightSource</th>
-                        <th>FlightDestination</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>ArrivalTime</th>
+                        <th>DepartureTime</th>
+                        <th>Duration</th>
+                        <th>Economyclassprice</th>
+                        <th>Businessclassprice</th>
+                        <th>Seats</th>
+                        <th>cabin?</th>
                     </tr>
                     <tr *ngFor="let f of flights">
-                        <td>{{f.flightNumber}}</td>
-                        <td>{{f.flightName}}</td>
-                        <td>{{f.sourceName}}</td>
-                        <td>{{f.destinationName}}</td>
+                        <td>{{f.flightId}}</td>
+                        <td>{{f.fource}}</td>
+                        <td>{{f.destination}}</td>
+                        <td>{{f.arrivalTime}}</td>
+                        <td>{{f.departureTime}}</td>
+                        <td>{{f.duration}}</td>
+                        <td>{{f.economyClassPrice}}</td>
+                        <td>{{f.businessClassPrice}}</td>
+                        <td>{{f.capacity}}</td>
+                        <td>{{f.cabin}}</td>
                     </tr>
                 </table>
             </td></tr>

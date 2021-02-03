@@ -1,7 +1,6 @@
 package lti.project.backend.Repository;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,16 +9,19 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
-import lti.project.backend.dto.FlightDetailDto;
 
 @Repository
 public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 {
 	@PersistenceContext
 	EntityManager entityManager;
+	@Autowired
+	BookingDetailsRepositoryImpl bd;
 	
 	@Override
 	@Transactional
@@ -47,17 +49,22 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 	}
 	@Override
 	@Transactional
-	public List<FlightDetailDto> getFlightsBySrcAndDestAndDate(String src,String dest,Date t) 
+	public List<Bookingdetails> getFlightsBySrcAndDestAndDate(String src,String dest,Date t) 
 	{
-		System.out.println(t.toString());
-		java.sql.Date sqldate=new java.sql.Date(t.getTime());
-		String str="select f.flightid,b.userid,b.departuredate from flightdetails f,bookingdetails b where f.source="+"'"+src+"'"+
-				" and f.destination="+"'"+dest+"'"+" and f.flightid=b.flightid and to_char(b.departuredate,'yyyy-mm-dd')="+"'"+sqldate+"'";
-		System.out.println(str);
-		Query query=entityManager.createNativeQuery(str,FlightDetailDto.class);
-		@SuppressWarnings("unchecked")
-		List<FlightDetailDto> list =query.getResultList();
-		  return list;
+		List<Flightdetails> l=getFlightsBySrcAndDest(src, dest);
+		List<Bookingdetails> b=new ArrayList<Bookingdetails>();
+		java.sql.Date d=new java.sql.Date(t.getTime());
+		System.out.println("sqldate is:"+d.toString());
+		for (Flightdetails flightdetails : l) {
+			List<Bookingdetails> li=bd.getBookingsbyFlightid(flightdetails.getFlightid());
+			for (Bookingdetails bookingdetails : li) {
+				if(bookingdetails.getDeparturedate().equals(d)) {
+					System.out.println("sqldate from oracle"+bookingdetails.getDeparturedate().toString());
+					System.out.println(bookingdetails.getBookingid()+"\t"+bookingdetails.getDeparturedate()+"\t"+bookingdetails.getFlightdetail().getFlightid());
+					b.add(bookingdetails);
+				}
+		}}
+		return b;
 	}
 	@Override
 	@Transactional

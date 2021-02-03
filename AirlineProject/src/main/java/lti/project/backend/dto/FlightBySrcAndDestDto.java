@@ -1,16 +1,8 @@
 package lti.project.backend.dto;
 
-public class FlightDetailDto {
-
-	String departuredate;
+public class FlightBySrcAndDestDto {
 	String source;
 	String destination;
-	public String getDeparturedate() {
-		return departuredate;
-	}
-	public void setDeparturedate(String departuredate) {
-		this.departuredate = departuredate;
-	}
 	public String getSource() {
 		return source;
 	}

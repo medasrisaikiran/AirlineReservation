@@ -6,10 +6,9 @@ import lti.project.backend.Pojos.Ticket;
 
 public interface TicketService 
 {
-	public List<Ticket> getAllTicket();
-	public Ticket getTicketById(int id);
-	public void addTicket(Ticket t) ;
-	public void deleteTicket(int n) ;
-	public void updateTicket(Ticket t);
-	
+	public List<Ticket> getAllTicketService();
+	public Ticket getTicketByIdService(int id);
+	public void addTicketService(Ticket t) ;
+	public void deleteTicketService(int n) ;
+	public void updateTicketService(Ticket t);
 }

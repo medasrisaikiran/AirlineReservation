@@ -2,50 +2,96 @@ package lti.project.backend.Services;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import lti.project.backend.Exceptions.EmptyTicketException;
+import lti.project.backend.Exceptions.TicketAlreadyPresentException;
+import lti.project.backend.Exceptions.TicketNotFoundException;
+import lti.project.backend.Exceptions.TicketUpdateException;
 import lti.project.backend.Pojos.Ticket;
+import lti.project.backend.Repository.TicketRepositoryImpl;
 
 @Service
-public class TicketServiceImpl 
+public class TicketServiceImpl implements TicketService 
 {
-	@PersistenceContext
-	EntityManager entityManager;
-	@Transactional
-	public List<Ticket> getAllTicket() { 
-		Query query = entityManager.createQuery(" from Ticket t ");
-		@SuppressWarnings("unchecked")
-		List<Ticket> ticketlist = query.getResultList();
-		return ticketlist;
+	@Autowired
+	TicketRepositoryImpl T;
+    @Override
+	public List<Ticket> getAllTicketService() {
+		List<Ticket> tr=T.getAllTicket();
+		try {
+		if(tr==null) {
+			throw new EmptyTicketException("No Ticket is Done...");
+		}
+		}
+		catch(EmptyTicketException e) {
+			System.out.println(e);
+		}
+		return tr;
 	}
-	
-	@Transactional
-	public Ticket getTicketById(int id) 
+
+	@Override
+	public Ticket getTicketByIdService(int id) 
 	{
-		Ticket t=entityManager.find(Ticket.class,id);
-		return t;
+		// TODO Auto-generated method stub
+				Ticket tt=T.getTicketById(id);
+				try {
+				if(tt==null) {
+					throw new TicketNotFoundException("No Tickets with this Ticket id");
+				}
+				}
+				catch(TicketNotFoundException e) {
+					System.out.println(e);
+				}
+				return tt;
 	}
-	
-	@Transactional
-	public void addTicket(Ticket t) 
-	{
-		entityManager.persist(t);
+
+	@Override
+	public void addTicketService(Ticket t) {
+		try {
+			T.addTicket(t);
+			}
+			catch(Exception e) { //InvalidDataAccessApiUsageException
+				try {
+				throw new TicketAlreadyPresentException("Ticket exist already");
+				}
+				catch(TicketAlreadyPresentException msg) {
+					System.out.println(msg);
+				}
+			}
+		
 	}
-	@Transactional
-	public void deleteTicket(int n) 
-	{
-		Ticket t=entityManager.getReference(Ticket.class,n);
-		entityManager.remove(t);
+
+	@Override
+	public void deleteTicketService(int n) {
+		try {
+			T.deleteTicket(n);
+		}
+		catch(Exception e) { //EntityNotFoundException
+			try {
+			throw new TicketNotFoundException("No Ticket with this id");
+			}
+			catch(TicketNotFoundException e1) {
+				System.out.println(e1);
+			}
+		}
+		
 	}
-	
-	@Transactional
-	public void updateTicket(Ticket t) 
-	{
-		entityManager.merge(t);
+
+	@Override
+	public void updateTicketService(Ticket t) {
+		try {
+			T.updateTicket(t);
+			}
+			catch(Exception e) { //InvalidDataAccessApiUsageException 
+				try {
+				throw new TicketUpdateException("Data already exist...Recheck the updated data");
+				}
+				catch(TicketUpdateException msg) {
+					System.out.println(msg);
+				}
+			}
+		
 	}
+
 }

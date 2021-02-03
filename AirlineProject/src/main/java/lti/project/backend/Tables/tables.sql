@@ -218,35 +218,35 @@ Return_date timestamp
 INSERT INTO Ticket(TicketId, seatNumber, Price, departure_date, Return_date)
 VALUES
 (
-103, 1, 12000, '1/14/21 12:00', '1/14/21 12:00'
+103, 1, 12000, '14/1/21 12:00', '14/1/21 12:00'
 );
 
 /* INSERT QUERY NO: 2 */
 INSERT INTO Ticket(TicketId, seatNumber, Price, departure_date, Return_date)
 VALUES
 (
-104, 2, 12000, '12/11/20 9:30', '12/11/20 9:30'
+104, 2, 12000, '11/12/20 9:30', '11/12/20 9:30'
 );
 
 /* INSERT QUERY NO: 3 */
 INSERT INTO Ticket(TicketId, seatNumber, Price, departure_date, Return_date)
 VALUES
 (
-105, 1, 18000, '1/13/21 12:00', '1/13/21 12:00'
+105, 1, 18000, '13/1/21 12:00', '13/1/21 12:00'
 );
 
 /* INSERT QUERY NO: 4 */
 INSERT INTO Ticket(TicketId, seatNumber, Price, departure_date, Return_date)
 VALUES
 (
-106, 1, 20000, '1/14/21 21:00', '1/14/21 21:00'
+106, 1, 20000, '14/1/21 21:00', '14/1/21 21:00'
 );
 
 /* INSERT QUERY NO: 5 */
 INSERT INTO Ticket(TicketId, seatNumber, Price, departure_date, Return_date)
 VALUES
 (
-107, 2, 20000, '1/14/21 17:00', '1/14/21 17:00'
+107, 2, 20000, '14/1/21 17:00', '14/1/21 17:00'
 );
 
 ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'DD-MM-YY HH24:MI:SS';
@@ -261,7 +261,7 @@ FlightId Number ,
 userid Number ,
 ticketid Number ,
 bookingtime timestamp,
-status VARCHAR(50),
+status VARCHAR(20),
 Departuredate date
 );
 

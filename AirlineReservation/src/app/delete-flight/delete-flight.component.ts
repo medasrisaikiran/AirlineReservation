@@ -13,11 +13,11 @@ export class DeleteFlightComponent implements OnInit {
   deleteFlight()
   {
     console.log("delete in ts");
-    this.a.deleteFlight(this.FlightNumber).subscribe(data=>{alert("deleted successfully");},err=>{alert("fightid is invalid")});
+    this.a.deleteFlight(this.FlightNumber).subscribe(data=>
+      {alert("deleted successfully");},err=>{alert("fightid is invalid")});
   }
   constructor(private a:AirlineService) { }
 
   ngOnInit(): void {
   }
-
 }

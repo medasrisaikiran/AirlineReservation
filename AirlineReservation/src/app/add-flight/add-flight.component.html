@@ -14,20 +14,6 @@
                     <td class="toggle"><a href="../viewflights">View Flights</a></td>
                 </tr>
                 <tr>
-                    <td colspan="2">Flight Name</td>
-                    <td colspan="2"><input type="text" [(ngModel)]="FlightName" required name="FlightName" #flightname="ngModel"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td colspan="2">
-                        <div *ngIf="!flightname?.valid&&(flightname?.dirty||flightname?.touched)">
-                            <div *ngIf="flightname?.errors.required">
-                                <p class="error">please enter flightnumber!</p>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
                     <td colspan="2">From</td>
                     <td colspan="2"><select class="select-css" [(ngModel)]="Source" required name="Source" #source="ngModel">
                         <option>Hyderabad</option>
@@ -70,8 +56,8 @@
                     </td>
                 </tr>
                 <tr>
-                        <td colspan="2">Depart</td>
-                        <td colspan="2"><input type="date" [(ngModel)]="Depart" required name="Depart" #depart="ngModel"></td>
+                        <td colspan="2">Departure Time</td>
+                        <td colspan="2"><input type="time" [(ngModel)]="Depart" required name="Depart" #depart="ngModel"></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>
@@ -84,8 +70,8 @@
                     </td>
                 </tr>
                 <tr>
-                        <td colspan="2">Arrive</td>
-                        <td colspan="2"><input type="date" [(ngModel)]="Arrive" required name="Arrive" #arrive="ngModel"></td>
+                        <td colspan="2">Arrival Time</td>
+                        <td colspan="2"><input type="time" [(ngModel)]="Arrive" required name="Arrive" #arrive="ngModel"></td>
                 </tr>
                 <tr>
                     <td colspan="2"></td>

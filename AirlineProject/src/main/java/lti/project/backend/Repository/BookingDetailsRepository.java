@@ -15,4 +15,6 @@ public interface BookingDetailsRepository {
 	void deleteBooking(int n);
 
 	void updateBooking(Bookingdetails f);
+
+	List<Bookingdetails> getBookingsbyFlightid(int id);
 }

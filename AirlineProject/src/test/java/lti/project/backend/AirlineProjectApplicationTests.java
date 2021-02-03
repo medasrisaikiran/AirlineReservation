@@ -21,7 +21,6 @@ import lti.project.backend.Repository.BookingDetailsRepositoryImpl;
 import lti.project.backend.Repository.FlightDetailsRepositoryImpl;
 import lti.project.backend.Repository.TicketRepositoryImpl;
 import lti.project.backend.Repository.UserDetailsRepositoryImpl;
-import lti.project.backend.dto.FlightDetailDto;
 
 @SpringBootTest
 class AirlineProjectApplicationTests {
@@ -92,7 +91,8 @@ class AirlineProjectApplicationTests {
 	@Test																											//5
 	void getFlightDetailsById() 
 	{
-		fd.getFlightById(2);
+		Flightdetails f=fd.getFlightById(10005);
+		System.out.println(f.getSource()+" "+f.getDestination());
 	}
 	@Test																											//6
 	void getFlightDetailsBySrcAndDest() 
@@ -100,20 +100,16 @@ class AirlineProjectApplicationTests {
 		fd.getFlightsBySrcAndDest("Kolkata","Delhi");
 	}
 	@Test
-	void getFlightDetailsBySrcAndDestAndDate()
+	void getFlightDetailsBySrcAndDestAndDate() throws ParseException
 	{
-		List<Flightdetails> f=fd.getFlightsBySrcAndDest("Hyderabad","Delhi");
-		for (Flightdetails flightdetails : f) {
-			int fid=flightdetails.getFlightid();
-		}
-		List<FlightDetailDto> l=fd.getFlightsBySrcAndDestAndDate("Hyderabad","Delhi",sdf);
-		if(l==null)
+		String s="09-02-2021";
+		Date d=new SimpleDateFormat("dd-MM-yy").parse(s);
+		System.out.println("java.util.Date: "+d.toString());
+		List<Bookingdetails> l=fd.getFlightsBySrcAndDestAndDate("Hyderabad","Delhi",d);
+		for(Bookingdetails fdd:l)
 		{
-			System.out.println("no records");
-		}
-		for(FlightDetailDto fdd:l)
-		{
-			System.out.println(fdd.getFlightid()+"\t"+fdd.getUserid()+"\t"+fdd.getDeparturedate());
+			System.out.println("from testcases");
+			System.out.println(fdd.getBookingid()+"\t"+fdd.getDeparturedate()+"\t"+fdd.getFlightdetail().getFlightid());
 		}
 	}
 	
@@ -262,5 +258,9 @@ class AirlineProjectApplicationTests {
 	@Test																											//22
 	void getBookingById() {
 		bd.getBookingById(109);
+	}
+	@Test
+	void getBookingsByFlightId() {
+		bd.getBookingsbyFlightid(10005);
 	}
 }
