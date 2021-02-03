@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td colspan="2"><form #searchform="ngForm" (keyup)="viewFlights()" (blur)="viewFlights()">
-                    <input type="text" class="search" placeholder="search by flightid" [(ngModel)]="searchfor" #search="ngModel" name="search">
+                    <input type="text" class="search" placeholder="search by flightid" [(ngModel)]="searchfor" #search="ngModel" name="searchfor">
                 </form></td>
                 <td colspan="2" align="right"><form #sortform="ngForm" (change)="sortFlights()">
                     sort by:
@@ -40,12 +40,12 @@
                         <th>cabin?</th>
                     </tr>
                     <tr *ngFor="let f of flights">
-                        <td>{{f.flightId}}</td>
-                        <td>{{f.fource}}</td>
+                        <td>{{f.flightid}}</td>
+                        <td>{{f.source}}</td>
                         <td>{{f.destination}}</td>
-                        <td>{{f.arrivalTime}}</td>
-                        <td>{{f.departureTime}}</td>
-                        <td>{{f.duration}}</td>
+                        <td>{{f.arrivalTime|date:'shortTime'}}</td>
+                        <td>{{f.departureTime|date:'shortTime'}}</td>
+                        <td>{{f.duration|date:'shortTime'}}</td>
                         <td>{{f.economyClassPrice}}</td>
                         <td>{{f.businessClassPrice}}</td>
                         <td>{{f.capacity}}</td>

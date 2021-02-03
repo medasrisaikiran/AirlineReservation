@@ -25,8 +25,8 @@ export class AddFlightComponent implements OnInit {
     d.arrivalTime=this.Arrive;
     d.departureTime=this.Depart;
     d.duration=this.Duration;
-
-
+    d.businessClassPrice=30000;
+    d.economyClassPrice=20000;
     this.als.addFlight(d).subscribe(data=>{alert("added successsfully");});
   }
   constructor(private als:AirlineService) {}

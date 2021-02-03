@@ -19,13 +19,13 @@ export class UpdateFlightComponent implements OnInit {
   Cabin:string;
   fetch(){
     this.a.findFlightsById(this.FlightNumber).subscribe(  
-      (data)=>{
-        this.Destination=data[0].destination;
-        this.Source=data[0].source;
-        this.Depart=data[0].departureTime;
-        this.Cabin=data[0].cabin;
-        this.Duration=data[0].duration;
-        this.Arrive=data[0].arrivalTime;
+      (data:FlightDetails)=>{
+        this.Destination=data.destination;
+        this.Source=data.source;
+        this.Depart=data.departureTime;
+        this.Cabin=data.cabin;
+        this.Duration=data.duration;
+        this.Arrive=data.arrivalTime;
         },(err)=>{
           alert("invalid flightid"+err);
           })

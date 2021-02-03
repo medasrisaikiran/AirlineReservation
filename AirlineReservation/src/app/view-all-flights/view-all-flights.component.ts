@@ -10,7 +10,7 @@ export class ViewAllFlightsComponent implements OnInit {
 
   flights:FlightDetails[];
   tempflights:FlightDetails[];
-  searchfor:string="";
+  searchfor:string;
   sortby:string="flightid";
   sortFlights(){
     if(this.sortby==='flightid')
@@ -34,26 +34,23 @@ export class ViewAllFlightsComponent implements OnInit {
       this.als.sortFlightsByDestination().subscribe((data:FlightDetails[])=>{
         this.flights=data;},
         (err)=>{
-          console.log(err);
+          this.flights.length=0;
         })
     }
   }
   viewFlights()
   {
     if(this.searchfor.length!=0){
-      this.als.findFlightsById(parseInt(this.searchfor)).subscribe((data:FlightDetails[])=>{
-        this.flights=data;},
+      this.als.findFlightsById(parseInt(this.searchfor)).subscribe((data:FlightDetails)=>{
+      this.flights[0]=data;  
+      this.flights.length=1;
+      },
         (err)=>{
           console.log(err);
         })
     }
     else{
-      this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
-        this.flights=data;
-        this.tempflights=data;},
-        (err)=>{
-          console.log(err);
-        })
+      this.ngOnInit();
     }
   }
   constructor(private als:AirlineService) {}
