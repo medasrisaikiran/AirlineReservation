@@ -7,7 +7,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
-        <form #userloginform="ngForm">
+        <form #userloginform="ngForm" (ngSubmit)="login()">
             <table align="center">
                 <tr>
                     <td class="untoggle"><a routerLink="../userlogin">USER</a></td>
@@ -29,23 +29,25 @@
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="Password" pattern="^[0-9]{8,}$"></td>
+                    <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="Password" 
+                        pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%^&*]).{8,}$"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
                         <div *ngIf="!password?.valid&&(password?.dirty||password?.touched)">
                             <div *ngIf="password?.errors.required">
-                                <p class="error">please enter password!</p>
+                                <p class="error">password mandatory!</p>
                             </div>
                             <div *ngIf="password?.errors.pattern">
-                                <p class="error">please enter valid password!</p>
+                                <p class="error" title="password must have atleast one captial letter,one small letter,one digit,one special character">
+                                    password must have atleast one captial letter,one small letter,one digit,one special character!</p>
                             </div>
                         </div>
                     </td>
                 </tr>
-                <tr><td align="center"><a routerLink="../addflight"><button>Login</button></a></td>
-                    <td align="center"><a routerLink="../register"><button>Sign Up</button></a></td>
+                <tr><td align="center"><button type="submit" [disabled]="!userloginform.valid">Login</button></td>
+                    <td align="center"><button routerLink="../register">Sign Up</button></td>
                 </tr>
             </table>
         </form>

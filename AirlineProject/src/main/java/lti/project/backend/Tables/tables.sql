@@ -200,6 +200,112 @@ VALUES
 10015, 'Kolkata', 'Delhi', 54, '5:30', '16:00', '21:30', 12000, 20000, 'n'
 );
 
+/* INSERT QUERY NO: 16 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10016, 'Chennai', 'Hyderabad', 54, '9:00', '2:00', '5:00', 10000, 18000, 'y'
+);
+
+/* INSERT QUERY NO: 17 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10017, 'Chennai', 'Mumbai', 54, '1:15', '6:15', '5:00', 14000, 26000, 'n'
+);
+
+/* INSERT QUERY NO: 18 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10018, 'Chennai', 'Kolkata', 54, '5:00', '11:00', '6:00', 12000, 20000, 'y'
+);
+
+/* INSERT QUERY NO: 19 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10019, 'Chennai', 'Bengaluru', 54, '3:45', '8:45', '5:00', 10000, 18000, 'y'
+);
+
+/* INSERT QUERY NO: 20 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10020, 'Chennai', 'Delhi', 54, '1:00', '11:00', '10:00', 20000, 36000, 'n'
+);
+
+/* INSERT QUERY NO: 21 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10021, 'Bengaluru', 'Hyderabad', 54, '11:45', '4:45', '5:00', 14000, 26000, 'n'
+);
+
+/* INSERT QUERY NO: 22 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10022, 'Bengaluru', 'Mumbai', 54, '12:00', '4:00', '4:00', 10000, 18000, 'y'
+);
+
+/* INSERT QUERY NO: 23 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10023, 'Bengaluru', 'Kolkata', 54, '1:30', '7:30', '6:00', 16000, 30000, 'n'
+);
+
+/* INSERT QUERY NO: 24 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10024, 'Bengaluru', 'Chennai', 54, '5:15', '10:15', '5:00', 10000, 18000, 'y'
+);
+
+/* INSERT QUERY NO: 25 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10025, 'Bengaluru', 'Delhi', 54, '1:00', '9:00', '8:00', 18000, 18000, 'y'
+);
+
+/* INSERT QUERY NO: 26 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10026, 'Delhi', 'Hyderabad', 54, '10:00', '8:00', '10:00', 20000, 36000, 'n'
+);
+
+/* INSERT QUERY NO: 27 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10027, 'Delhi', 'Mumbai', 54, '11:15', '9:15', '10:00', 18000, 32000, 'n'
+);
+
+/* INSERT QUERY NO: 28 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10028, 'Delhi', 'Kolkata', 54, '4:00', '9:15', '5:30', 12000, 20000, 'y'
+);
+
+/* INSERT QUERY NO: 29 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10029, 'Delhi', 'Chennai', 54, '1:00', '11:00', '10:00', 20000, 36000, 'n'
+);
+
+/* INSERT QUERY NO: 30 */
+INSERT INTO flightdetails(flightid, source, destination, capacity, departure_time, arrival_time, duration, economy_class_price, business_class_price, cabin)
+VALUES
+(
+10030, 'Delhi', 'Bengaluru', 54, '2:00', '10:00', '8:00', 18000, 32000, 'y'
+);
+
+
 
 ALTER SESSION SET  NLS_TIMESTAMP_FORMAT = 'DD-MM-YY HH24:MI';
 

@@ -1,5 +1,6 @@
 package lti.project.backend.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import lti.project.backend.Exceptions.EmptyTicketException;
 import lti.project.backend.Exceptions.TicketAlreadyPresentException;
 import lti.project.backend.Exceptions.TicketNotFoundException;
 import lti.project.backend.Exceptions.TicketUpdateException;
+import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
 import lti.project.backend.Repository.TicketRepositoryImpl;
 
@@ -45,7 +47,36 @@ public class TicketServiceImpl implements TicketService
 				}
 				return tt;
 	}
-
+	@Override
+	public Flightdetails getFlightByTicketIdService(int id) 
+	{
+		// TODO Auto-generated method stub
+				Flightdetails tt=T.getFlightByTicketId(id);
+				try {
+				if(tt==null) {
+					throw new TicketNotFoundException("No Flights with this Ticket id");
+				}
+				}
+				catch(TicketNotFoundException e) {
+					System.out.println(e);
+				}
+				return tt;
+	}
+	@Override
+	public ArrayList<Integer> getSeatsByFlightIdService(int id) 
+	{
+		// TODO Auto-generated method stub
+				ArrayList<Integer> tt=T.getSeatsByFlightId(id);
+				try {
+				if(tt==null) {
+					throw new TicketNotFoundException("No seats booked");
+				}
+				}
+				catch(TicketNotFoundException e) {
+					System.out.println(e);
+				}
+				return tt;
+	}
 	@Override
 	public void addTicketService(Ticket t) {
 		try {

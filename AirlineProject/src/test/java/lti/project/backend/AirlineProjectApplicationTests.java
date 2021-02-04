@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -212,6 +213,18 @@ class AirlineProjectApplicationTests {
 		t.setSeatnumber(25);	
 		td.updateTicket(t);
 	}
+	@Test
+	void getFlightByTickettId() {
+		Flightdetails f=td.getFlightByTicketId(107);
+		System.out.println(f.getFlightid());
+	}
+	@Test
+	void getSeatsByFlightId() {
+		ArrayList<Integer> a=td.getSeatsByFlightId(10001);
+		for (Integer integer : a) {
+		System.out.println(integer);	
+		}
+	}
 	
 	/*
 	 * =============================================================================
@@ -263,4 +276,5 @@ class AirlineProjectApplicationTests {
 	void getBookingsByFlightId() {
 		bd.getBookingsbyFlightid(10005);
 	}
+	
 }

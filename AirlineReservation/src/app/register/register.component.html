@@ -5,6 +5,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
+        <form #registerform="ngForm" (ngsubmit)="register()">
         <table align="center" class="outer">
             <caption align="center">Registration</caption>
             <tr>
@@ -12,23 +13,69 @@
             <table>
                 <tr>
                     <td>Title</td>
-                    <td><select name="title">
+                    <td><select name="title" #title="ngModel" name="Title" required [(ngModel)]="Title">
                         <option>Mr.</option>
                         <option>Ms.</option>
                         <option>Mrs.</option>
                     </select></td>
                 </tr>
                 <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!title?.valid&&(title?.dirty||title?.touched)">
+                            <div *ngIf="title?.errors.required">
+                                <p class="error">title mandatory!</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
                     <td>First Name</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" #firstname="ngModel" name="Firstname" pattern="^[a-zA-Z]{3,}$" required [(ngModel)]="Firstname"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!firstname?.valid&&(firstname?.dirty||firstname?.touched)">
+                            <div *ngIf="firstname?.errors.required">
+                                <p class="error">firstname mandatory!</p>
+                            </div>
+                            <div *ngIf="firstname?.errors.pattern">
+                                <p class="error">firstname must be atleast 3 characters!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Last Name</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" #lastname="ngModel" name="Lastname"  pattern="^[a-zA-Z]{3,}$" required [(ngModel)]="Lastname"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!lastname?.valid&&(lastname?.dirty||lastname?.touched)">
+                            <div *ngIf="lastname?.errors.required">
+                                <p class="error">lastname mandatory!</p>
+                            </div>
+                            <div *ngIf="lastname?.errors.pattern">
+                                <p class="error">lastname must be atleast 3 characters!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Date Of Birth</td>
-                    <td><input type="date"></td>
+                    <td><input type="date" #dob="ngModel" name="Dateofbirth" required [(ngModel)]="Dateofbirth"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!dob?.valid&&(dob?.dirty||dob?.touched)">
+                            <div *ngIf="dob?.errors.required">
+                                <p class="error">date of birth mandatory!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             </table>
             </td>
@@ -36,34 +83,89 @@
             <table>         
                 <tr>
                     <td>Password</td>
-                    <td><input type="password"></td>
+                    <td><input type="password" #password="ngModel" name="Password" required 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!#%^&*]).{8,}$" [(ngModel)]="Password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!password?.valid&&(password?.dirty||password?.touched)">
+                            <div *ngIf="password?.errors.required">
+                                <p class="error">password mandatory!</p>
+                            </div>
+                            <div *ngIf="password?.errors.pattern">
+                                <p class="error" title="password must have atleast one captial letter,one small letter,one digit,one special character">
+                                    password must have atleast one captial letter,one small letter,one digit,one special character!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Confirm Password</td>
-                    <td><input type="password"></td>
+                    <td><input type="password" #cnfpassword="ngModel" name="Cnfpassword" required 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!#%^&*]).{8,}$" [(ngModel)]="Cnfpassword"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!cnfpassword?.valid&&(cnfpassword?.dirty||cnfpassword?.touched)">
+                            <div *ngIf="cnfpassword?.errors.required">
+                                <p class="error">password mandatory!</p>
+                            </div>
+                            <div *ngIf="cnfpassword?.errors.pattern">
+                                <p class="error" title="password must have atleast one captial letter,one small letter,one digit,one special character">
+                                    password must have atleast one captial letter,one small letter,one digit,one special character!</p>
+                            </div>
+                            <div *ngIf="password!.equals(cnfpassword)">
+                                <p class="error">passwords should match</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text"></td>
+                    <td><input type="email" #email="ngModel" name="Email" required [(ngModel)]="Email"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!email?.valid&&(email?.dirty||email?.touched)">
+                            <div *ngIf="email?.errors.required">
+                                <p class="error">email mandatory!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text"></td>
+                    <td><input type="text" #mobile="ngModel" name="Mobile" required 
+                        pattern="^[0-9]{10}$" [(ngModel)]="Mobile"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div *ngIf="!mobile?.valid&&(mobile?.dirty||mobile?.touched)">
+                            <div *ngIf="mobile?.errors.required">
+                                <p class="error">phone number mandatory!</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             </table>
             </td>
             </tr>            
             <tr>
                 <td align="center"><a routerLink="../userlogin">
-                    <button>Sign Up</button>
+                    <button type="submit" [disabled]="!registerform.valid">Sign Up</button>
                     </a>
                 </td>
                 <td align="center"><a routerLink="../register">
-                    <button>Cancel</button>
+                    <button type="reset">Cancel</button>
                     </a>
                 </td>
             </tr>
         </table>
+    </form>
             <router-outlet></router-outlet>
     </body>
 </html>

@@ -5,19 +5,250 @@
 <title>Seat Select</title>
 </head>
 <body>
-  <form #seatselectform="ngForm">
+  <form #seatselectform="ngForm" (ngSubmit)="seatselect()">
   <table class="outer" align="center">
     <caption>Select seat(s)</caption>
     <tr>
       <td>
         <table class="inner" align="center">
-          <tr *ngFor="let s of seatrows">
-            <td *ngFor="let s2 of seatcols;let i=index">
-              <ol *ngIf="i!=3;else elset"><li class="seat">
-                <input type="checkbox" id="{{((s-1)*(seatcols.length-1))+s2}}" />
-                <label for="{{((s-1)*(seatcols.length-1))+s2}}">{{((s-1)*(seatcols.length-1))+s2}}</label>
-              </li></ol>
-              <ng-template #elset><ul></ul></ng-template>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="1" />
+                <label for="1">1</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="2" />
+                <label for="2">2</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="3" />
+                <label for="3">3</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="4" />
+                <label for="4">4</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="5" />
+                <label for="5">5</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="6" />
+                <label for="6">6</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="7" />
+                <label for="7">7</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="8" />
+                <label for="8">8</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="9" />
+                <label for="9">9</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="10" />
+                <label for="10">10</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="11"/>
+                <label for="11">11</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="12" />
+                <label for="12">12</label>
+            </td>
+          </tr><tr>
+            <td class="seat">
+                <input type="checkbox" id="13" />
+                <label for="13">13</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="14" />
+                <label for="14">14</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="15" />
+                <label for="15">15</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="16" />
+                <label for="16">16</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="17" />
+                <label for="17">17</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="18" />
+                <label for="18">18</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="19" />
+                <label for="19">19</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="20" />
+                <label for="20">20</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="21" />
+                <label for="21">21</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="22" />
+                <label for="22">22</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="23" />
+                <label for="23">23</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="24" />
+                <label for="24">24</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="25" />
+                <label for="25">25</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="26" />
+                <label for="26">26</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="27" />
+                <label for="27">27</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="28" />
+                <label for="28">28</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="29"/>
+                <label for="29">29</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="30" />
+                <label for="30">30</label>
+            </td>
+          </tr><tr>
+            <td class="seat">
+                <input type="checkbox" id="31" />
+                <label for="31">31</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="32" />
+                <label for="32">32</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="33" />
+                <label for="33">33</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="34" />
+                <label for="34">34</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="35" />
+                <label for="35">35</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="36" />
+                <label for="36">36</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="37" />
+                <label for="37">37</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="38" />
+                <label for="38">38</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="39" />
+                <label for="39">39</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="40" />
+                <label for="40">40</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="41" />
+                <label for="41">41</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="42" />
+                <label for="42">42</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="seat">
+                <input type="checkbox" id="43" />
+                <label for="43">43</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="44" />
+                <label for="44">44</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="45" />
+                <label for="45">45</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="46" />
+                <label for="46">46</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="47"/>
+                <label for="47">47</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="48" />
+                <label for="48">48</label>
+            </td>
+          </tr><tr>
+            <td class="seat">
+                <input type="checkbox" id="49" />
+                <label for="49">49</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="50"/>
+                <label for="50">50</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="51" />
+                <label for="51">51</label>
+            </td>
+            <td><ul></ul></td>
+            <td class="seat">
+                <input type="checkbox" id="52" />
+                <label for="52">52</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="53" />
+                <label for="53">53</label>
+            </td>
+            <td class="seat">
+                <input type="checkbox" id="54" />
+                <label for="54">54</label>
             </td>
           </tr>
         </table>

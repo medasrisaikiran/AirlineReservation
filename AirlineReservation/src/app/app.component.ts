@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AirlineReservation';
+  user:string="sai";
   time:Date=new Date();
 }

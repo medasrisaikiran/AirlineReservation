@@ -40,7 +40,7 @@ public class Userdetails implements Serializable {
 	private String password;
 
 	//bi-directional many-to-one association to Bookingdetails
-	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER,cascade=CascadeType.MERGE)
 	private List<Bookingdetails> bookingdetails;
 
 	public Userdetails() {

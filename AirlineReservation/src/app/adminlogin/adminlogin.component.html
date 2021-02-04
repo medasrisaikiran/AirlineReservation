@@ -19,7 +19,8 @@
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="password" pattern="^[0-9]{8,}$"></td>
+                <td><input type="password" [(ngModel)]="Password" required #password="ngModel" name="password"
+                     pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$"></td>
             </tr>
             <tr>
                 <td></td>
@@ -29,13 +30,13 @@
                             <p class="error">please enter password!</p>
                         </div>
                         <div *ngIf="password?.errors.pattern">
-                            <p class="error">please enter valid password!</p>
+                            <p class="error" title="password must have atleast one captial letter,one small letter,one digit,one special character">
+                                password must have atleast one captial letter,one small letter,one digit,one special character!</p>
                         </div>
                     </div>
                 </td>
             </tr>
-            <tr><td align="center"><a routerLink="../addflight"><button [disabled]="!adminloginform.valid">Login</button></a></td>
-                <td align="center"><a routerLink="../register"><button>Sign Up</button></a></td>
+            <tr><td colspan="2" align="center"><a routerLink="../addflight"><button [disabled]="!adminloginform.valid">Login</button></a></td>
             </tr>
         </table>
     </form>

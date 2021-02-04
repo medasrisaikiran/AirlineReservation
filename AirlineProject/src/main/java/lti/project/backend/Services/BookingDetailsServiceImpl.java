@@ -36,17 +36,17 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 	@Override
 	public void addBookingService(Bookingdetails b){
 		// TODO Auto-generated method stub
-		try {
+		//try {
 		br.addBooking(b);
-		}
-		catch(Exception e) { //InvalidDataAccessApiUsageException
-			try {
-			throw new BookingAlreadyExistException("Booking exist already");
-			}
-			catch(BookingAlreadyExistException msg) {
-				System.out.println(msg);
-			}
-		}
+		//}
+		//catch(Exception e) { //InvalidDataAccessApiUsageException
+//			try {
+//			throw new BookingAlreadyExistException("Booking exist already");
+//			}
+//			catch(BookingAlreadyExistException msg) {
+//				System.out.println(msg);
+//			}
+//		}
 		
 	}
                            
