@@ -20,9 +20,8 @@ public class TicketRepositoryImpl
 {
 	@PersistenceContext
 	EntityManager entityManager;
-	@Autowired FlightDetailsRepositoryImpl fd;
 	@Autowired BookingDetailsRepositoryImpl bd;
-	
+	@Autowired FlightDetailsRepositoryImpl fd;
 	@Transactional
 	public List<Ticket> getAllTicket() { 
 		Query query = entityManager.createQuery(" from Ticket t ");
@@ -55,13 +54,14 @@ public class TicketRepositoryImpl
 	{
 		entityManager.merge(t);
 	}
-	@Transactional
+
 	public Flightdetails getFlightByTicketId(int n) 
 	{
 		Bookingdetails b=bd.getBookingsbyTicketid(n);
 		Flightdetails f=b.getFlightdetail();
 		return f;
 	}
+
 	@Transactional
 	public ArrayList<Integer> getSeatsByFlightId(int id) {
 		Flightdetails f=fd.getFlightById(id);

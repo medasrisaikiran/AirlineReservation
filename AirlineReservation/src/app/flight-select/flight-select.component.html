@@ -1,30 +1,33 @@
 <html>
     <head></head>
-    <body>
-        <table class="outer">
+    <body (load)="getFlights()">
+        <form #flightselectform="ngForm">
+        <table class="outer" *ngFor="let flight of flights">
             <tr>
                 <td>
                     <table>
                         <tr>
-                            <td><b>Pune Express</b></td>
+                            <td><b>{{flight.flightid}}</b></td>
                         </tr>
                         <tr>    
-                            <td>12:00am - 7:00am</td>
+                            <td>{{flight.source}}-{{flight.destination}}</td>
+                        </tr>
+                        <tr>    
+                            <td>{{flight.arrivalTime|date:'shortTime'}}-{{flight.departureTime|date:'shortTime'}}</td>
                         </tr>
                         <tr>
-                            <td>7 hours</td>
+                            <td>{{flight.duration|date:'shortTime'}}</td>
                         </tr>
                     </table>
                 </td>
-                <td><b>Economy class price:</b><br>50000&#8377;</td>
-                <td><b>Economy class price:</b><br>75000&#8377;</td>
+                <td><input type="radio" name="type" id="economy" value="economy" (click)="assign('economy')"><b>Economy class price:</b><br>{{flight.economyClassPrice}}&#8377;</td>
+                <td><input type="radio" name="type" id="business" value="business" (click)="assign('business')"><b>Business class price:</b><br>{{flight.businessClassPrice}}&#8377;</td>
+            </tr>
+            <tr align="center">
+                <td colspan="3"><button type="submit" (click)="booknow(flight)">BOOK NOW</button></td>
             </tr>
         </table>
-        <table align="center">
-            <tr>
-                <td colspan="3"><a routerLink="../seatselect"><button type="submit">continue</button></a></td>
-            </tr>
-        </table>
+        </form>
         <router-outlet></router-outlet>
     </body>
 </html>

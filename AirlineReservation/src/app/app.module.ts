@@ -17,7 +17,6 @@ import {HttpClientModule} from '@angular/common/http';
 import { UpdateFlightComponent } from './update-flight/update-flight.component';
 import {FormsModule} from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +30,7 @@ import { PaymentComponent } from './payment/payment.component';
     AdminloginComponent,
     ViewAllFlightsComponent,
     UpdateFlightComponent,
-    PaymentComponent
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

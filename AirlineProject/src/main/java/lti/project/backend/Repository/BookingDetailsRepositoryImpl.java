@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
+
+
 @Repository
 public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
 
@@ -63,11 +65,10 @@ public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
         List<Bookingdetails> Bookinglist = query.getResultList();
         return Bookinglist;
     }
-    public Bookingdetails getBookingsbyTicketid(int id)
-    {
-        Ticket f=entityManager.find(Ticket.class, id);
+	public Bookingdetails getBookingsbyTicketid(int n) {
+		Ticket f=entityManager.find(Ticket.class, n);
         Query query = entityManager.createQuery("select b from Bookingdetails b where b.ticket ="+f.getTicketid());
         Bookingdetails Bookinglist = (Bookingdetails)query.getSingleResult();
         return Bookinglist;
-    }
+	}
 }

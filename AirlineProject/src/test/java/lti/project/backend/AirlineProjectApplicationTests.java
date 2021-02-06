@@ -1,10 +1,8 @@
 package lti.project.backend;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,15 +11,11 @@ import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.expression.ParseException;
 
-import lti.project.backend.Pojos.Bookingdetails;
-import lti.project.backend.Pojos.Flightdetails;
-import lti.project.backend.Pojos.Ticket;
-import lti.project.backend.Pojos.Userdetails;
-import lti.project.backend.Repository.BookingDetailsRepositoryImpl;
-import lti.project.backend.Repository.FlightDetailsRepositoryImpl;
-import lti.project.backend.Repository.TicketRepositoryImpl;
-import lti.project.backend.Repository.UserDetailsRepositoryImpl;
+import lti.project.backend.Pojos.*;
+import lti.project.backend.Repository.*;
+import lti.project.backend.Exceptions.UserDetailsException;
 
 @SpringBootTest
 class AirlineProjectApplicationTests {
@@ -104,7 +98,7 @@ class AirlineProjectApplicationTests {
 	void getFlightDetailsBySrcAndDestAndDate() throws ParseException
 	{
 		String s="09-02-2021";
-		Date d=new SimpleDateFormat("dd-MM-yy").parse(s);
+		Date d=null;
 		System.out.println("java.util.Date: "+d.toString());
 		List<Bookingdetails> l=fd.getFlightsBySrcAndDestAndDate("Hyderabad","Delhi",d);
 		for(Bookingdetails fdd:l)
@@ -120,7 +114,7 @@ class AirlineProjectApplicationTests {
 	 */	
 	
 	@Test																											//7
-	void addRowIntoUserDetails() {
+	void addRowIntoUserDetails() throws UserDetailsException {
 		Userdetails u=new Userdetails();
 		u.setFirstname("rahul");
 		u.setLastname("Dravid");
@@ -132,12 +126,12 @@ class AirlineProjectApplicationTests {
 		ud.addUsers(u);
 	}
 	@Test																											//8
-	void deleteRowFromUserDetails() 
+	void deleteRowFromUserDetails() throws UserDetailsException 
 	{
 		ud.deleteUsers(11);
 	}
 	@Test																											//9	
-	void updateRowFromUserDetails() 
+	void updateRowFromUserDetails() throws UserDetailsException 
 	{
 		Userdetails u=new Userdetails();
 		u.setUserid(4);
@@ -151,17 +145,17 @@ class AirlineProjectApplicationTests {
 		ud.updateUsers(u);
 	}
 	@Test																											//10
-	void getAllUserDetails() 
+	void getAllUserDetails() throws UserDetailsException 
 	{
 		ud.getUsers();
 	}
 	@Test																											//11
-	void getUserDetailsById() 
+	void getUserDetailsById() throws UserDetailsException 
 	{
 		ud.getUserbyId(20);
 	}
 	@Test																											//12	
-	void getUserDetailsByEmail() 
+	void getUserDetailsByEmail() throws UserDetailsException 
 	{
 		ud.getUserbyEmail("ms@gmail.com");
 	}
@@ -212,18 +206,6 @@ class AirlineProjectApplicationTests {
 		t.setReturnDate(returnDate);
 		t.setSeatnumber(25);	
 		td.updateTicket(t);
-	}
-	@Test
-	void getFlightByTickettId() {
-		Flightdetails f=td.getFlightByTicketId(107);
-		System.out.println(f.getFlightid());
-	}
-	@Test
-	void getSeatsByFlightId() {
-		ArrayList<Integer> a=td.getSeatsByFlightId(10001);
-		for (Integer integer : a) {
-		System.out.println(integer);	
-		}
 	}
 	
 	/*
@@ -276,5 +258,5 @@ class AirlineProjectApplicationTests {
 	void getBookingsByFlightId() {
 		bd.getBookingsbyFlightid(10005);
 	}
-	
 }
+

@@ -2,75 +2,89 @@ package lti.project.backend.Services;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.Transactional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import lti.project.backend.Exceptions.UserDetailsException;
 import lti.project.backend.Pojos.Userdetails;
+import lti.project.backend.Repository.UserDetailsRepositoryImpl;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@PersistenceContext
-	EntityManager entityManager;
+	@Autowired
+	UserDetailsRepositoryImpl userDetailsRepository;
 	
-	@Override
-	@Transactional
-	public List<Userdetails> getUsers() {
-		// TODO Auto-generated method stub
-		Query query = entityManager.createQuery(" from Userdetails");
-		@SuppressWarnings("unchecked")
-		List<Userdetails> userslist = query.getResultList();
-		return userslist;
-	}
+	
 
 	@Override
 	@Transactional
-	public List<Userdetails> getUserbyId(int id) {
-		// TODO Auto-generated method stub
-		String queryString = "select u from Userdetails u where u.userid ="+id;
-	    @SuppressWarnings("unchecked")
-		List<Userdetails> list = entityManager.createQuery(queryString).getResultList();
+	public List<Userdetails> getUsersService() throws UserDetailsException{
+		
+		List<Userdetails> userDetails;
+		
+		
+		 userDetails=userDetailsRepository.getUsers(); 
+		 
+		
+		
+		return userDetails;
+	}
+
+	@Override
+	public Userdetails getUserbyEmailIdAndPasswordService(String emailid, String password)
+			throws UserDetailsException {
+		
+		return userDetailsRepository.getUserbyEmailIdAndPassword(emailid, password);
+
+		
+	}
+
+	
+	@Override
+	@Transactional
+	public List<Userdetails> getUserbyIdService(int id) throws UserDetailsException{
+		
+		List<Userdetails> list = userDetailsRepository.getUserbyId(id);
 	    return list;	
 	}
  
 	@Override
 	@Transactional
-	public List<Userdetails> getUserbyEmail(String mail) {
-		// TODO Auto-generated method stub
-		String queryString = "select u from Userdetails u where u.email=:emailid";
-	    @SuppressWarnings("unchecked")
-		List<Userdetails> list = entityManager.createQuery(queryString)
-	    		.setParameter("emailid", mail)
-	    		.getResultList();
+	public List<Userdetails> getUserbyEmailService(String mail) throws UserDetailsException{
+		List<Userdetails> list = userDetailsRepository.getUserbyEmail(mail);
 	    return list;
 	}
 
 	@Override
 	@Transactional
-	public void addUsers(Userdetails u) {
+	public void addUsersService(Userdetails u) throws UserDetailsException{
 		// TODO Auto-generated method stub
-		entityManager.persist(u);
+		userDetailsRepository.addUsers(u);
 	}
 
 	@Override
 	@Transactional
-	public void updateUsers(Userdetails u) {
-		// TODO Auto-generated method stub
-		entityManager.merge(u);
-		
+	public void updateUsersService(Userdetails u) throws UserDetailsException{
+		userDetailsRepository.updateUsers(u);
 	}
 
 	@Override
 	@Transactional
-	public void deleteUsers(int id) {
-		// TODO Auto-generated method stub
-		Userdetails u=entityManager.getReference(Userdetails.class, id);
-		entityManager.remove(u);
+	public void deleteUsersService(int id) throws UserDetailsException{
+		userDetailsRepository.deleteUsers(id);
+	}
+
+	@Override
+	public List<Userdetails> sortUsersByEmailService() throws UserDetailsException {
 		
+		return userDetailsRepository.getUsersSortedByEmail();
+	}
+
+	@Override
+	public List<Userdetails> sortUsersByIdService() throws UserDetailsException {
+		return userDetailsRepository.getUserDetailsSortedById();
 	}
 	
 	

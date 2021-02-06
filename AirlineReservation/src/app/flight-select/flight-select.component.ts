@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AirlineService } from '../airline.service';
+import { FlightBySrcAndDestDto } from '../flight-by-src-and-dest-dto';
+import { FlightDetails } from '../flight-details';
 
 @Component({
   selector: 'app-flight-select',
@@ -7,9 +11,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightSelectComponent implements OnInit {
 
-  constructor() { }
 
+  flights:FlightDetails[];
+  constructor(private a:AirlineService,private router:Router) {
+   }
+   getFlights(){
+     let source=localStorage.getItem("source");
+     let destination=localStorage.getItem("destination");
+     let f=new FlightBySrcAndDestDto();
+     f.source=source;
+    f.destination=destination;
+    this.a.getFlightsBySrcDest(f).subscribe(data=>{
+    console.log(data);
+    this.flights=data;
+    });    
+   }
+   type:string;
+   classprice:string;
+   assign(s:string){
+     if(s=="economy")
+    this.type="economy";
+    else
+    this.type="business";
+   }
+   booknow(flight:FlightDetails){
+     localStorage.setItem("class",this.type);
+     if(this.type=="economy")
+     {
+       localStorage.setItem("classprice",flight.economyClassPrice.toString())
+       this.classprice=flight.economyClassPrice.toString();
+     }
+     else{
+      localStorage.setItem("classprice",flight.businessClassPrice.toString())
+      this.classprice=flight.businessClassPrice.toString();  
+     }
+     console.log(this.type)
+     console.log(this.classprice)
+     this.router.navigate(['seatselect'])
+   }
   ngOnInit(): void {
+    this.getFlights()
+    }
   }
-
-}

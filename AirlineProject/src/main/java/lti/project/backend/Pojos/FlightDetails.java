@@ -3,6 +3,9 @@ package lti.project.backend.Pojos;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
@@ -19,6 +22,7 @@ public class Flightdetails implements Serializable {
 	private int flightid;
 
 	@Column(name="ARRIVAL_TIME")
+	@JsonFormat(shape = Shape.STRING,pattern="yyyy-MM-dd'T'HH:mm:ss",timezone="Asia/Kolkata")
 	private Timestamp arrivalTime;
 
 	@Column(name="BUSINESS_CLASS_PRICE",precision=1)
@@ -31,11 +35,13 @@ public class Flightdetails implements Serializable {
 	private int capacity;
 
 	@Column(name="DEPARTURE_TIME",length=20)
+	@JsonFormat(shape = Shape.STRING,pattern="yyyy-MM-dd'T'HH:mm:ss",timezone="Asia/Kolkata")
 	private Timestamp departureTime;
 
 	@Column(length=10)
 	private String destination;
 
+	@JsonFormat(shape = Shape.STRING,pattern="yyyy-MM-dd'T'HH:mm:ss",timezone="Asia/Kolkata")
 	private Timestamp duration;
 
 	@Column(name="ECONOMY_CLASS_PRICE",precision=1)

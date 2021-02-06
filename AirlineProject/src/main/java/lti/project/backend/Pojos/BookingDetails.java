@@ -3,7 +3,9 @@ package lti.project.backend.Pojos;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -18,6 +20,7 @@ public class Bookingdetails implements Serializable {
 	@GeneratedValue
 	private int bookingid;
 
+	@JsonFormat(shape = Shape.STRING,pattern="yyyy-MM-dd'T'HH:ss",timezone="Asia/Kolkata")
 	private Timestamp bookingtime;
 
 	private Date departuredate;

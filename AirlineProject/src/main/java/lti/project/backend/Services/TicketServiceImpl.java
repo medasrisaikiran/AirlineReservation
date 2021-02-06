@@ -47,6 +47,7 @@ public class TicketServiceImpl implements TicketService
 				}
 				return tt;
 	}
+
 	@Override
 	public Flightdetails getFlightByTicketIdService(int id) 
 	{
@@ -62,21 +63,7 @@ public class TicketServiceImpl implements TicketService
 				}
 				return tt;
 	}
-	@Override
-	public ArrayList<Integer> getSeatsByFlightIdService(int id) 
-	{
-		// TODO Auto-generated method stub
-				ArrayList<Integer> tt=T.getSeatsByFlightId(id);
-				try {
-				if(tt==null) {
-					throw new TicketNotFoundException("No seats booked");
-				}
-				}
-				catch(TicketNotFoundException e) {
-					System.out.println(e);
-				}
-				return tt;
-	}
+
 	@Override
 	public void addTicketService(Ticket t) {
 		try {
@@ -123,6 +110,21 @@ public class TicketServiceImpl implements TicketService
 				}
 			}
 		
+	}
+
+	@Override
+	public ArrayList<Integer> getSeatsByFlightIdService(int id) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> tt=T.getSeatsByFlightId(id);
+		try {
+		if(tt==null) {
+			throw new TicketNotFoundException("No seats booked");
+		}
+		}
+		catch(TicketNotFoundException e) {
+			System.out.println(e);
+		}
+		return tt;
 	}
 
 }

@@ -8,6 +8,8 @@ public class AirlineProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AirlineProjectApplication.class, args);
-		System.out.println("Airline Project Started");
-		}
+		System.out.println("Airline Project Has Started");
+		
+	}
+
 }

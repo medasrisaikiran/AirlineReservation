@@ -1,5 +1,4 @@
-export class FlightDto {
+export class FlightBySrcAndDestDto {
     public source:string;
     public destination:string;
-    public departuredate:string;
 }

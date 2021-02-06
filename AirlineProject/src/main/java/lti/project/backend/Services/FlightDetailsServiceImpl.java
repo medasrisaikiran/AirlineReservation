@@ -3,7 +3,6 @@ package lti.project.backend.Services;
 import java.util.Date;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +10,15 @@ import lti.project.backend.Exceptions.EmptyFlightDetailsException;
 import lti.project.backend.Exceptions.FlightDetailsNotFoundException;
 import lti.project.backend.Exceptions.FlightDetailsUpdateException;
 import lti.project.backend.Pojos.Bookingdetails;
+//import lti.project.backend.layer3.BookingdetailsRepository;
 import lti.project.backend.Pojos.Flightdetails;
-import lti.project.backend.Repository.FlightDetailsRepository;
+import lti.project.backend.Repository.FlightDetailsRepositoryImpl;
 
 @Service
 public class FlightDetailsServiceImpl implements FlightDetailsService
 {
 	@Autowired
-	FlightDetailsRepository fd;
+	FlightDetailsRepositoryImpl fd;
 
 	@Override
 	public List<Flightdetails> getAllFlightsService() {

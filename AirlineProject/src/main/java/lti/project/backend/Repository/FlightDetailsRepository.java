@@ -5,7 +5,6 @@ import java.util.List;
 
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
-import lti.project.backend.dto.FlightDetailDto;
 
 public interface FlightDetailsRepository {
 	

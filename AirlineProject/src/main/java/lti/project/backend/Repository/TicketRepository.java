@@ -1,7 +1,6 @@
 package lti.project.backend.Repository;
 
 import java.util.List;
-
 import lti.project.backend.Pojos.Ticket;
 
 public interface TicketRepository 

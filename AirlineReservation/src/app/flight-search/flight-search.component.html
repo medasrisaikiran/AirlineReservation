@@ -4,49 +4,94 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
+        <form #flightsearchform="ngForm" (ngSubmit)="flightsearch()">
         <table>
             <tr class="journey">
-                <td><input type="radio" name="journeytype" id="oneway"><label for="oneway" class="oneway">One Way</label>
+                <td><input type="radio" name="journey" id="oneway" value="oneway" (click)="assign('oneway')">
+                    <label for="oneway" class="oneway">One Way</label>
                 </td>
-                <td><input type="radio" name="journeytype" id="roundtrip"><label for="roundtrip" class="roundtrip">Round Trip</label>
-                </td>
-            </tr>
-            <tr>
-                <td>From<br><select name="from">
-                    <option>Hyderabad</option>
-                    <option>Kolkata</option>
-                    <option>Mumbai</option>
-                    <option>Chennai</option>
-                    <option>Bengaluru</option>
-                    <option>Delhi</option>
-                </select>
-                </td>
-                <td>To<br><select name="to">
-                    <option>Hyderabad</option>
-                    <option>Kolkata</option>
-                    <option>Mumbai</option>
-                    <option>Chennai</option>
-                    <option>Bengaluru</option>
-                    <option>Delhi</option>
-                </select>
+                <td><input type="radio" name="journey" id="roundtrip" value="roundtrip" (click)="assign('roundtrip')">
+                    <label for="roundtrip" class="roundtrip">Round Trip</label>
                 </td>
             </tr>
             <tr>
-                <td>departure date<input type="date" value="12/03/2021">
+                <td>From<br><select [(ngModel)]="Source" required name="Source" #source="ngModel">
+                    <option value="Hyderabad">Hyderabad</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Delhi">New Delhi</option>
+                        <option value="Kolkata">Kolkata</option>
+                </select>
                 </td>
-                <td>return date<input type="date" value="13/03/2021">
+                <td>To<br><select [(ngModel)]="Destination" required name="Destination" #destination="ngModel">
+                    <option value="Hyderabad">Hyderabad</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bengaluru">Bangalore</option>
+                        <option value="Chennai">Chennai</option>
+                        <option value="Delhi">New Delhi</option>
+                        <option value="Kolkata">Kolkata</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="error">
+                    <div *ngIf="!source?.valid&&(source?.dirty||source?.touched)">
+                        <div *ngIf="source?.errors.required">
+                            <p>please enter source!</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="error">
+                    <div *ngIf="!destination?.valid&&(destination?.dirty||destination?.touched)">
+                        <div *ngIf="destination?.errors.required">
+                            <p>please enter source!</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>departure date<input type="date" required [(ngModel)]="Departuredate" name="Departuredate" #ddate="ngModel">
+                </td>
+                <td>return date<input type="date" required [(ngModel)]="Returndate" 
+                    min=ddate name="Returndate" #rdate="ngModel">
+                </td>
+            </tr>
+            <tr>
+                <td class="error">
+                    <div *ngIf="!ddate?.valid&&(ddate?.dirty||ddate?.touched)">
+                        <div *ngIf="ddate?.errors.required">
+                            <p>please enter source!</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="error">
+                    <div *ngIf="!rdate?.valid&&(rdate?.dirty||rdate?.touched)">
+                        <div *ngIf="rdate?.errors.required">
+                            <p>please enter source!</p>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>passengers<br>
-                <input type="number" max="10" name="passengers">
+                <input type="text" maxlength="1" [(ngModel)]="Passengers" required name="Passengers" #passengers="ngModel">
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><a routerLink="../flightselect"><button>search</button></a>
+                <td class="error">
+                    <div *ngIf="!passengers?.valid&&(passengers?.dirty||passengers?.touched)">
+                        <div *ngIf="passengers?.errors.required">
+                            <p>please enter source!</p>
+                        </div>
+                    </div>
                 </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit" [disabled]="!flightsearchform.valid">search</button></td>
             </tr>
         </table>
         <router-outlet></router-outlet>
+        </form>
     </body>
 </html>

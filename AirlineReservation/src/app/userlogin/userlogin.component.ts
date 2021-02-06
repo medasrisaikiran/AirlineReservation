@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AirlineService } from '../airline.service';
+import { Userdetails } from '../userdetails';
+import { UsersByEmailIdAndPasswordDto } from '../users-by-email-id-and-password-dto';
 
 @Component({
   selector: 'app-userlogin',
@@ -9,14 +11,17 @@ import { AirlineService } from '../airline.service';
 })
 export class UserloginComponent implements OnInit {
 
+  user = new UsersByEmailIdAndPasswordDto();
   Username:string;
   Password:string;
   login()
   {
-    this.as.getUser().subscribe(data=>{
-      if((data.email==this.Username)&&(data.password==this.Password))
+    this.user.emailId=this.Username;
+    this.user.password=this.Password;
+    this.as.getUser(this.user).subscribe(data=>{
+      if(data!=null)
       {
-        alert("login success");
+        alert(data.firstname  +" login success");
         this.router.navigate(['']);
       }
       else{

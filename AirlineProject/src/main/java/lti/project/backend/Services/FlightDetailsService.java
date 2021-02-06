@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
+
 @Service
 public interface FlightDetailsService {
 

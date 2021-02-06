@@ -5,7 +5,7 @@
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     </head>
     <body>
-        <form #registerform="ngForm" (ngsubmit)="register()">
+        <form #registerform="ngForm" (ngSubmit)="register()">
         <table align="center" class="outer">
             <caption align="center">Registration</caption>
             <tr>
@@ -116,7 +116,7 @@
                                 <p class="error" title="password must have atleast one captial letter,one small letter,one digit,one special character">
                                     password must have atleast one captial letter,one small letter,one digit,one special character!</p>
                             </div>
-                            <div *ngIf="password!.equals(cnfpassword)">
+                            <div *ngIf="password===cnfpassword">
                                 <p class="error">passwords should match</p>
                             </div>
                         </div>
@@ -155,9 +155,9 @@
             </td>
             </tr>            
             <tr>
-                <td align="center"><a routerLink="../userlogin">
+                <td align="center"><!--<a routerLink="../userlogin">-->
                     <button type="submit" [disabled]="!registerform.valid">Sign Up</button>
-                    </a>
+                    <!--</a>-->
                 </td>
                 <td align="center"><a routerLink="../register">
                     <button type="reset">Cancel</button>

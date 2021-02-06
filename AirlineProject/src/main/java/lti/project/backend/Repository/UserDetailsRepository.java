@@ -1,17 +1,17 @@
 package lti.project.backend.Repository;
-
-import java.util.ArrayList;
 import java.util.List;
 
+import lti.project.backend.Exceptions.UserDetailsException;
 import lti.project.backend.Pojos.Userdetails;
-
-public interface UserDetailsRepository {
-	
-	List<Userdetails> getUsers();
-	List<Userdetails> getUserbyId(int id);
-	List<Userdetails> getUserbyEmail(String mail);
-	void addUsers(Userdetails u);
-	void updateUsers(Userdetails u);
-	void deleteUsers(int id);
-
+public interface UserDetailsRepository 
+{
+	List<Userdetails> getUsers() throws UserDetailsException;
+	List<Userdetails> getUserbyId(int id) throws UserDetailsException;
+	List<Userdetails> getUserbyEmail(String mail) throws UserDetailsException;
+	void addUsers(Userdetails u) throws UserDetailsException;
+	void updateUsers(Userdetails u) throws UserDetailsException;
+	void deleteUsers(int id) throws UserDetailsException;
+	Userdetails getUserbyEmailIdAndPassword(String emailid, String password) throws UserDetailsException;
+	List<Userdetails> getUsersSortedByEmail() throws UserDetailsException;
+	List<Userdetails> getUserDetailsSortedById() throws UserDetailsException;
 }

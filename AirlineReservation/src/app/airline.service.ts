@@ -5,13 +5,15 @@ import { FlightDetails } from './flight-details';
 import { BookingDetails } from './booking-details';
 import { Ticket } from './ticket';
 import { Userdetails } from './userdetails';
-import { FlightDto } from './flight-dto';
-import { FlightRouteDto } from './flight-route-dto';
+import { FlightDetailDto } from './flight-detail-dto';
+import { FlightBySrcAndDestDto } from './flight-by-src-and-dest-dto';
+import { UsersByEmailIdAndPasswordDto } from './users-by-email-id-and-password-dto';
 @Injectable({
   providedIn: 'root'
 })
 export class AirlineService {
 
+  flights:Observable<FlightDetails[]>;
   baseurl:string='http://localhost:8080/';
   constructor(private myhttp:HttpClient) { }
   findAllFlights() :Observable<FlightDetails[]>
@@ -30,15 +32,15 @@ export class AirlineService {
   {
     return this.myhttp.get<FlightDetails[]>(this.baseurl+"sortflightsByDest");
   }
-  getFlightsBySrcDestDate(f:FlightDto):Observable<BookingDetails[]>
+  getFlightsBySrcDestDate(f:FlightDetailDto):Observable<BookingDetails[]>
   {
     return this.myhttp.get<BookingDetails[]>(this.baseurl+"getAllFlightsBySrcAndDestAndDate/"+f);
   }
-  getFlightsBySrcDest(f:FlightRouteDto):Observable<FlightDetails[]>
+  getFlightsBySrcDest(f:FlightBySrcAndDestDto):Observable<FlightDetails[]>
   {
-    return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlightsBySrcAndDest/"+f);
-  }
-  addFlight(fd:FlightDetails)
+    return this.myhttp.post<FlightDetails[]>(this.baseurl+"getFlightsBySrcAndDest/",f);
+  }                                      
+  addFlight(fd:FlightDetails):Observable<FlightDetails>
   {
     return this.myhttp.post<FlightDetails>(this.baseurl+"addflight/",fd);
   }
@@ -72,7 +74,7 @@ export class AirlineService {
   }
   getBookingByFlight(f:number)
   {
-    return this.myhttp.get<BookingDetails>(this.baseurl+"getBookingByFlight/"+f);
+    return this.myhttp.get<BookingDetails>(this.baseurl+"getBookingByFlight/"+f);;
   }
   getAllTickets() :Observable<Ticket[]>
   {
@@ -94,8 +96,12 @@ export class AirlineService {
   {
     return this.myhttp.put<Ticket>(this.baseurl+"updateticket/",t);
   }
-  getUser():Observable<Userdetails>
+  addUser(user:Userdetails)
   {
-    return this.myhttp.get<Userdetails>(this.baseurl+"getUser/");
-  }  
+    return this.myhttp.post<Userdetails>(this.baseurl+"addUser/", user);
+  }
+  getUser(useremailandpassword : UsersByEmailIdAndPasswordDto):Observable<Userdetails>
+  {
+    return this.myhttp.post<Userdetails>(this.baseurl+"getUsersByEmailIdAndPassword/", useremailandpassword);
+  }
 }

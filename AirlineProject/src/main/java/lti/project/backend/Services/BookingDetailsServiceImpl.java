@@ -1,6 +1,5 @@
 package lti.project.backend.Services;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,13 @@ import lti.project.backend.Exceptions.BookingAlreadyExistException;
 import lti.project.backend.Exceptions.InSufficientDataException;
 import lti.project.backend.Exceptions.NoBookingFoundException;
 import lti.project.backend.Pojos.Bookingdetails;
-import lti.project.backend.Repository.BookingDetailsRepository;
+import lti.project.backend.Repository.BookingDetailsRepositoryImpl;
 
 @Service
 public class BookingDetailsServiceImpl implements BookingDetailsService {
 	
 	@Autowired
-	BookingDetailsRepository br;
+	BookingDetailsRepositoryImpl br;
 
 	@Override
 	public List<Bookingdetails> getAllBookingsService(){
@@ -36,17 +35,17 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 	@Override
 	public void addBookingService(Bookingdetails b){
 		// TODO Auto-generated method stub
-		//try {
+		try {
 		br.addBooking(b);
-		//}
-		//catch(Exception e) { //InvalidDataAccessApiUsageException
-//			try {
-//			throw new BookingAlreadyExistException("Booking exist already");
-//			}
-//			catch(BookingAlreadyExistException msg) {
-//				System.out.println(msg);
-//			}
-//		}
+		}
+		catch(Exception e) { //InvalidDataAccessApiUsageException
+			try {
+			throw new BookingAlreadyExistException("Booking exist already");
+			}
+			catch(BookingAlreadyExistException msg) {
+				System.out.println(msg);
+			}
+		}
 		
 	}
                            

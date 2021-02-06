@@ -3,9 +3,12 @@ package lti.project.backend.Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
 
+@Service
 public interface TicketService 
 {
 	public List<Ticket> getAllTicketService();
@@ -13,6 +16,6 @@ public interface TicketService
 	public void addTicketService(Ticket t) ;
 	public void deleteTicketService(int n) ;
 	public void updateTicketService(Ticket t);
-	Flightdetails getFlightByTicketIdService(int id);
-	ArrayList<Integer> getSeatsByFlightIdService(int id);
+	public Flightdetails getFlightByTicketIdService(int id);
+	public ArrayList<Integer> getSeatsByFlightIdService(int id);
 }

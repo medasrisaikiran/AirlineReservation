@@ -16,29 +16,27 @@ import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 
 @Repository
-public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
+public class FlightDetailsRepositoryImpl 
 {
 	@PersistenceContext
 	EntityManager entityManager;
+	
 	@Autowired
 	BookingDetailsRepositoryImpl bd;
 	
-	@Override
 	@Transactional
 	public List<Flightdetails> getAllFlights() { //this man will only communicate with CHEF 
-		Query query = entityManager.createQuery(" from Flightdetails f");
+		Query query = entityManager.createQuery(" from Flightdetails f ");
 		@SuppressWarnings("unchecked")
 		List<Flightdetails> flightList = query.getResultList();
 		return flightList;
 	}
-	@Override
 	@Transactional
 	public Flightdetails getFlightById(int id) 
 	{
 		Flightdetails f=entityManager.find(Flightdetails.class,id);
 		return f;
 	}
-	@Override
 	@Transactional
 	public List<Flightdetails> getFlightsBySrcAndDest(String src,String dest) 
 	{
@@ -47,7 +45,25 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 		  entityManager.createQuery(queryString) .setParameter("src", src).setParameter("dst", dest) .getResultList();
 		  return list;
 	}
-	@Override
+	@Transactional
+	public void addFlight(Flightdetails f) 
+	{
+		entityManager.persist(f);
+	}
+	
+	@Transactional
+	public void updateFlight(Flightdetails f) 
+	{
+		entityManager.merge(f);
+	}
+	@Transactional
+	public void deleteFlight(int n) 
+	{
+		Flightdetails f=entityManager.getReference(Flightdetails.class,n);
+		entityManager.remove(f);
+	}
+	
+	
 	@Transactional
 	public List<Bookingdetails> getFlightsBySrcAndDestAndDate(String src,String dest,Date t) 
 	{
@@ -66,27 +82,8 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 		}}
 		return b;
 	}
-	@Override
+	
 	@Transactional
-	public void addFlight(Flightdetails f) 
-	{
-		entityManager.persist(f);
-	}
-	@Override
-	@Transactional
-	public void deleteFlight(int n) 
-	{
-		Flightdetails f=entityManager.getReference(Flightdetails.class,n);
-		entityManager.remove(f);
-	}
-	@Override
-	@Transactional
-	public void updateFlight(Flightdetails f) 
-	{
-		entityManager.merge(f);
-	}
-	@Transactional
-	@Override
 	public List<Flightdetails> sortFlightsById() {
 		String queryString ="select f from Flightdetails f order by flightid";
 		  @SuppressWarnings("unchecked") 
@@ -95,7 +92,6 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 	}
 
 	@Transactional
-	@Override
 	public List<Flightdetails> sortFlightsBySource() {
 		Query query = entityManager.createQuery(" from Flightdetails f order by f.source");
 		@SuppressWarnings("unchecked")
@@ -104,12 +100,10 @@ public class FlightDetailsRepositoryImpl implements FlightDetailsRepository
 	}
 
 	@Transactional
-	@Override
 	public List<Flightdetails> sortFlightsByDestination() {
 		Query query = entityManager.createQuery(" from Flightdetails f order by f.destination");
 		@SuppressWarnings("unchecked")
 		List<Flightdetails> flightList = query.getResultList();
 		return flightList;
 	}
-
 }

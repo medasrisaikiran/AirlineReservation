@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lti.project.backend.Exceptions.UserDetailsException;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
@@ -26,6 +27,7 @@ import lti.project.backend.Services.TicketService;
 import lti.project.backend.Services.UserDetailsService;
 import lti.project.backend.dto.FlightBySrcAndDestDto;
 import lti.project.backend.dto.FlightDetailDto;
+import lti.project.backend.dto.UsersByEmailIdAndPasswordDto;
 
 
 @RestController
@@ -45,7 +47,7 @@ public class AirlineController {
 	public Flightdetails getFlights(@PathVariable("flno") int flno) {
 		return flightService.getFlightByIdService(flno);
 	}
-	@GetMapping(path="/getFlightsBySrcAndDest")
+	@PostMapping(path="/getFlightsBySrcAndDest/")
 	public List<Flightdetails> getFlightsBySrcAndDest(@RequestBody FlightBySrcAndDestDto f) {
 		return flightService.getFlightsBySrcAndDestService(f.getSource(),f.getDestination());
 	}
@@ -80,59 +82,6 @@ public class AirlineController {
 	public List<Flightdetails> sortFlightsById() {
 		return flightService.sortFlightsByIdService();
 	}
-	@GetMapping("/getAllBookings")
-	public List<Bookingdetails> getAllBookings(){
-		return bookingservice.getAllBookingsService();
-	}
-	@PostMapping(path="/addBooking")
-	public String addBooking(@RequestBody Bookingdetails b) {
-		// boob.getFlightdetail().forEach(Flightdetail -> Flightdetail.setBookingdetails(b));
-		bookingservice.addBookingService(b);
-		return "Booking added";
-	}
-	@PutMapping(path="/updateBooking")
-	public void updateBooking(@RequestBody Bookingdetails b) {
-		bookingservice.updateBookingService(b);
-	}
-	@DeleteMapping(path="/deleteBooking/{id}")
-	public void deleteBooking(@PathVariable("id") int id) {
-		bookingservice.deleteBookingService(id);
-	}
-	@GetMapping(path="/getBooking/{id}")
-	public Bookingdetails getBookingbyId(@PathVariable("id") int id) {
-		 Bookingdetails b=bookingservice.getBookingbyIdService(id);
-		 return b;
-	}
-	
-	@GetMapping(path="/getBookingByFlight/{fid}")
-	public List<Bookingdetails> getBookingsbyFlightId(@PathVariable("fid") int id){
-		List<Bookingdetails> b=bookingservice.getBookingsbyFlightidService(id);
-		return b;
-	}
-
-	
-	@GetMapping(path="/getAllTicket")
-	public List<Ticket> getAllTicket() {
-		return ticketService.getAllTicketService();
-	}
-	
-	@GetMapping(path="/getTicketById/{tno}")
-	public Ticket getTicket(@PathVariable("tno") int tno) {
-		return ticketService.getTicketByIdService(tno);
-	}
-	
-	@PostMapping(path="/addticket")
-	public void addTicket(@RequestBody Ticket t) {
-		ticketService.addTicketService(t);
-	}
-	@DeleteMapping(path="/deleteticket/{id}")
-	public void deleteTicket(@PathVariable("id") int id) {
-		ticketService.deleteTicketService(id);
-	}
-	@PutMapping(path="/updateticket")
-	public void updateTicket(@RequestBody Ticket t) {
-		ticketService.updateTicketService(t);
-	}
 	@GetMapping(path="/getFlightByTicketId/{id}")
 	public void getFlightByTicketId(@PathVariable("id") int id) {
 		ticketService.getFlightByTicketIdService(id);
@@ -140,9 +89,5 @@ public class AirlineController {
 	@GetMapping(path="/getSeatsByFlightId/{id}")
 	public ArrayList<Integer> getSeatsByFlightId(@PathVariable("id") int id) {
 		return ticketService.getSeatsByFlightIdService(id);
-	}
-	@PostMapping(path="/addUser")
-	public void register(@RequestBody Userdetails u) {
-		userService.addUsers(u);
 	}
 }
