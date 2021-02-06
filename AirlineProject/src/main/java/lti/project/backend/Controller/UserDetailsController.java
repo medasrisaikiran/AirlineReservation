@@ -28,17 +28,19 @@ public class UserDetailsController {
 	public List<Userdetails> getAllUsers() throws UserDetailsException  {
 		return UserService.getUsersService();
 	}
-	
 
 	@GetMapping(path="/getUsersById/{Id}")
-	public List<Userdetails> getUsers(@PathVariable("Id") int id) throws UserDetailsException {
+	public Userdetails getUsers(@PathVariable("Id") int id) throws UserDetailsException {
 		return UserService.getUserbyIdService(id);
 	}
-	@GetMapping(path="/getUsersByEmailIdAndPassword")
+	@PostMapping(path="/getUsersByEmailIdAndPassword")
 	public Userdetails getUserByEmailIdAndPassword(@RequestBody UsersByEmailIdAndPasswordDto udto) throws UserDetailsException{
 		return UserService.getUserbyEmailIdAndPasswordService(udto.getEmailId(),udto.getPassword());
 	}
-
+	@GetMapping(path="/getUsersByEmail/{id}")
+	public List<Userdetails> getUserByEmail(@PathVariable("id") String udto) throws UserDetailsException{
+		return UserService.getUserbyEmailService(udto);
+	}
 	@PostMapping(path="/addUser")
 	public void addUsers(@RequestBody Userdetails f) throws UserDetailsException {
 		UserService.addUsersService(f);

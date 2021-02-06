@@ -8,11 +8,12 @@ import { Userdetails } from './userdetails';
 import { FlightDetailDto } from './flight-detail-dto';
 import { FlightBySrcAndDestDto } from './flight-by-src-and-dest-dto';
 import { UsersByEmailIdAndPasswordDto } from './users-by-email-id-and-password-dto';
+import { BookingDto } from './booking-dto';
 @Injectable({
   providedIn: 'root'
 })
-export class AirlineService {
-
+export class AirlineService 
+{
   flights:Observable<FlightDetails[]>;
   baseurl:string='http://localhost:8080/';
   constructor(private myhttp:HttpClient) { }
@@ -60,9 +61,9 @@ export class AirlineService {
   {
     return this.myhttp.get<BookingDetails>(this.baseurl+"getBooking/"+fn);
   }
-  addBooking(fd:BookingDetails)
+  addBooking(fd:BookingDto)
   {
-    return this.myhttp.post<BookingDetails>(this.baseurl+"addBooking/",fd);
+    return this.myhttp.post<BookingDto>(this.baseurl+"addBooking/",fd);
   }
   deleteBooking(id:number)
   {
@@ -104,4 +105,40 @@ export class AirlineService {
   {
     return this.myhttp.post<Userdetails>(this.baseurl+"getUsersByEmailIdAndPassword/", useremailandpassword);
   }
+  getUserById(id:number):Observable<Userdetails>
+  {
+    return this.myhttp.post<Userdetails>(this.baseurl+"getUserById/",id);
+  }
+  getUserByEmail(mail:string):Observable<Userdetails[]> 
+  {
+    return this.myhttp.get<Userdetails[]>(this.baseurl+"getUsersByEmail/"+mail);
+  }
+  updateUser(u:Userdetails):Observable<Userdetails>   
+  {
+    return this.myhttp.put<Userdetails>(this.baseurl+"updateUser/",u);
+  }
+  deleteUser(ud:number):Observable<Userdetails> 
+  {
+    return this.myhttp.delete<Userdetails>(this.baseurl+"deleteUser/"+ud);
+  }
+  getUserByEmailIdAndPassword(uep:UsersByEmailIdAndPasswordDto)
+  {
+    return this.myhttp.post<Userdetails>(this.baseurl+"getUserByEmailIdAndPassword/",uep);
+  }
+  sortUsersByEmail():Observable<Userdetails[]>
+  {
+    return this.myhttp.get<Userdetails[]>(this.baseurl+"sortUsersByEmail");
+  }
+  sortUsersById():Observable<Userdetails[]>
+  {
+    return this.myhttp.get<Userdetails[]>(this.baseurl+"sortUsersById");
+  }
+  getFlightByTicketId(id:number) :Observable<FlightDetails[]>
+ {
+   return this.myhttp.get<FlightDetails[]>(this.baseurl+"getFlightByTicketId"+id);
+ }
+ getSeatsByFlightId(id:number) :Observable<number[]>
+ {
+   return this.myhttp.get<number[]>(this.baseurl+"getSeatsByFlightId"+id);
+ }
 }

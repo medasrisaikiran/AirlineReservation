@@ -6,11 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lti.project.backend.Exceptions.EmptyTicketException;
+import lti.project.backend.Exceptions.NoBookingFoundException;
 import lti.project.backend.Exceptions.TicketAlreadyPresentException;
 import lti.project.backend.Exceptions.TicketNotFoundException;
 import lti.project.backend.Exceptions.TicketUpdateException;
+import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
+import lti.project.backend.Repository.BookingDetailsRepositoryImpl;
 import lti.project.backend.Repository.TicketRepositoryImpl;
 
 @Service
@@ -18,6 +21,7 @@ public class TicketServiceImpl implements TicketService
 {
 	@Autowired
 	TicketRepositoryImpl T;
+	@Autowired BookingDetailsRepositoryImpl br;
     @Override
 	public List<Ticket> getAllTicketService() {
 		List<Ticket> tr=T.getAllTicket();
@@ -126,5 +130,32 @@ public class TicketServiceImpl implements TicketService
 		}
 		return tt;
 	}
-
+	@Override
+	public List<Bookingdetails> getBookingsbyUserIdService(int userid) {
+		// TODO Auto-generated method stub
+		List<Bookingdetails> b=br.getBookingsbyUserId(userid);
+		try {
+		if(b==null) {
+			throw new NoBookingFoundException("No Bookings are Done...");
+		}
+		}
+		catch(NoBookingFoundException e) {
+			System.out.println(e);
+		}
+		return b;
+	}
+	@Override
+	public List<Ticket> getTicketByUserId(int userid) {
+		// TODO Auto-generated method stub
+		List<Ticket> tr=T.getTicketByUserId(userid);
+		try {
+		if(tr==null) {
+			throw new EmptyTicketException("No Tickets Booked by User...");
+		}
+		}
+		catch(EmptyTicketException e) {
+			System.out.println(e);
+		}
+		return tr;
+	}
 }

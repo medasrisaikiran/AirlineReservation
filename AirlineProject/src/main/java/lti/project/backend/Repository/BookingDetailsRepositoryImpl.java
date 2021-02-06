@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
+import lti.project.backend.Pojos.Userdetails;
 
 
 @Repository
@@ -40,7 +41,8 @@ public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
 	@Transactional
 	public void addBooking(Bookingdetails f) 
 	{
-		entityManager.persist(f);
+		
+		entityManager.merge(f);
 	}
 	@Override
 	@Transactional
@@ -65,10 +67,22 @@ public class BookingDetailsRepositoryImpl implements BookingDetailsRepository{
         List<Bookingdetails> Bookinglist = query.getResultList();
         return Bookinglist;
     }
+	@Override
+    @Transactional
 	public Bookingdetails getBookingsbyTicketid(int n) {
 		Ticket f=entityManager.find(Ticket.class, n);
         Query query = entityManager.createQuery("select b from Bookingdetails b where b.ticket ="+f.getTicketid());
         Bookingdetails Bookinglist = (Bookingdetails)query.getSingleResult();
         return Bookinglist;
 	}
+    @Override
+    @Transactional
+	public List<Bookingdetails> getBookingsbyUserId(int userid) {
+			// TODO Auto-generated method stub
+			Userdetails u=entityManager.find(Userdetails.class, userid);
+			Query query = entityManager.createQuery("select b from Bookingdetails b where b.userdetail ="+ u.getUserid());
+			@SuppressWarnings("unchecked")
+	        List<Bookingdetails> Bookinglist = query.getResultList();
+	        return Bookinglist;
+		}
 }

@@ -5,10 +5,10 @@ import { Userdetails } from "./userdetails";
 
 export class BookingDetails {
     public bookingid:number;
-    public bookingtime:Time
+    public bookingtime:Date
     public status:string;
     public departuredate:Date;
     public ticket:Ticket;
     public flightdetail:FlightDetails;
-    public user:Userdetails;
+    public userdetail:Userdetails;
 }

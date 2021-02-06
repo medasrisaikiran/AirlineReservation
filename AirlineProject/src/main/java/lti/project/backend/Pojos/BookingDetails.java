@@ -29,7 +29,7 @@ public class Bookingdetails implements Serializable {
 	private String status;
 
 	//bi-directional many-to-one association to Flightdetails
-	@ManyToOne(cascade = {CascadeType.MERGE})
+	@ManyToOne//(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="FLIGHTID")
 	private Flightdetails flightdetail;
 
@@ -39,7 +39,7 @@ public class Bookingdetails implements Serializable {
 	private Ticket ticket;
 
 	//bi-directional many-to-one association to Userdetails
-	@ManyToOne(cascade ={CascadeType.MERGE})
+	@ManyToOne//(cascade =CascadeType.PERSIST)
 	@JoinColumn(name="USERID")
 	private Userdetails userdetail;
 

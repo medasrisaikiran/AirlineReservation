@@ -23,31 +23,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public List<Userdetails> getUsersService() throws UserDetailsException{
 		
 		List<Userdetails> userDetails;
-		
-		
 		 userDetails=userDetailsRepository.getUsers(); 
-		 
-		
-		
 		return userDetails;
 	}
 
 	@Override
 	public Userdetails getUserbyEmailIdAndPasswordService(String emailid, String password)
 			throws UserDetailsException {
-		
 		return userDetailsRepository.getUserbyEmailIdAndPassword(emailid, password);
-
-		
 	}
 
-	
 	@Override
 	@Transactional
-	public List<Userdetails> getUserbyIdService(int id) throws UserDetailsException{
+	public Userdetails getUserbyIdService(int id) throws UserDetailsException{
 		
-		List<Userdetails> list = userDetailsRepository.getUserbyId(id);
-	    return list;	
+		return userDetailsRepository.getUserbyId(id);
 	}
  
 	@Override
@@ -77,8 +67,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	@Override
-	public List<Userdetails> sortUsersByEmailService() throws UserDetailsException {
-		
+	public List<Userdetails> sortUsersByEmailService() throws UserDetailsException {		
 		return userDetailsRepository.getUsersSortedByEmail();
 	}
 
@@ -86,7 +75,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public List<Userdetails> sortUsersByIdService() throws UserDetailsException {
 		return userDetailsRepository.getUserDetailsSortedById();
 	}
-	
-	
-
 }

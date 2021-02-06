@@ -45,5 +45,9 @@ public class TicketController
 	public void updateTicket(@RequestBody Ticket t) {
 		ticketService.updateTicketService(t);
 	}
+	@GetMapping(path="/getTicketByUserId/{userid}")
+	public List<Ticket> getTicketByUserId(@PathVariable("userid") int userid) {
+		return ticketService.getTicketByUserId(userid);
+	}
 
 }

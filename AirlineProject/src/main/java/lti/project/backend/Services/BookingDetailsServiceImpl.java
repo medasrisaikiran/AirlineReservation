@@ -3,6 +3,7 @@ package lti.project.backend.Services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import lti.project.backend.Exceptions.BookingAlreadyExistException;
@@ -35,11 +36,12 @@ public class BookingDetailsServiceImpl implements BookingDetailsService {
 	@Override
 	public void addBookingService(Bookingdetails b){
 		// TODO Auto-generated method stub
-		try {
+		try{
 		br.addBooking(b);
 		}
-		catch(Exception e) { //InvalidDataAccessApiUsageException
+		catch(InvalidDataAccessApiUsageException e) { //InvalidDataAccessApiUsageException
 			try {
+				e.printStackTrace();
 			throw new BookingAlreadyExistException("Booking exist already");
 			}
 			catch(BookingAlreadyExistException msg) {

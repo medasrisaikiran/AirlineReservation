@@ -1,4 +1,44 @@
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+</head>
 <body>
-you have successfully booked ur ticket <a routerLink="../">back to home page</a>
-<router-outlet></router-outlet>
+    <form #paymentform="ngForm" (ngSubmit)="bookTicket()">
+    <table>
+        <tr>
+            <td>
+    <table class="inner">
+        <tr>
+            <th>FLIGHTID</th>
+            <th>SOURCE</th>
+            <th>DESTINATION</th>
+            <th>DEPARTURE_TIME</th>
+            <th>ARRIVAL_TIME</th>
+            <th>JOURNEY_DATE</th>
+            <th>RETURN_DATE</th>
+            <th>PRICE/SEAT</th>
+            <th>CLASS</th>
+            <th>NO_OF_SEATS</th>
+        </tr>
+        <tr *ngFor="let f of flight;let i=index">
+            <td>{{flight[i][0]}}</td>
+            <td>{{flight[i][1]}}</td>
+            <td>{{flight[i][2]}}</td>
+            <td>{{flight[i][3]|date:'shortTime'}}</td>
+            <td>{{flight[i][4]|date:'shortTime'}}</td>
+            <td>{{flight[i][5]|date:'dd:MM:yyyy'}}</td>
+            <td>{{flight[i][6]|date:'dd:MM:yyyy'}}</td>
+            <td>{{flight[i][7]}}</td>
+            <td>{{flight[i][8]}}</td>
+            <td>{{flight[i][9]}}</td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    <tr>
+        <td colspan="9" align="center"><button type="submit" [disabled]="!paymentform.valid">pay {{totalprice}}</button></td>
+    </tr>
+    </table>
+    </form>
 </body>
+<router-outlet></router-outlet>

@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import lti.project.backend.Exceptions.EmptyTicketException;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;
@@ -73,4 +74,14 @@ public class TicketRepositoryImpl
 		}
 		return a;
 	}
+
+	public List<Ticket> getTicketByUserId(int userid) {
+			List<Ticket> ticketslist = new ArrayList<Ticket>();
+			List<Bookingdetails> bookings=bd.getBookingsbyUserId(userid);
+			for(Bookingdetails b:bookings) {
+				Ticket t=getTicketById(b.getTicket().getTicketid());
+				ticketslist.add(t);
+			}
+			return ticketslist;
+}
 }

@@ -51,7 +51,7 @@ public class Flightdetails implements Serializable {
 	private String source;
 
 	//bi-directional many-to-one association to Bookingdetail
-	@OneToMany(mappedBy="flightdetail",fetch =FetchType.EAGER,cascade = CascadeType.MERGE)
+	@OneToMany(mappedBy="flightdetail",fetch =FetchType.LAZY,cascade = CascadeType.MERGE)
 	private List<Bookingdetails> bookingdetails;
 
 	public Flightdetails() {

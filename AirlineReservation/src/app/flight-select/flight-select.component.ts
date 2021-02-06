@@ -47,6 +47,13 @@ export class FlightSelectComponent implements OnInit {
      }
      console.log(this.type)
      console.log(this.classprice)
+     localStorage.setItem("flightid",flight.flightid.toString());
+     localStorage.setItem("source",flight.source.toString());
+     localStorage.setItem("destination",flight.destination.toString());
+     localStorage.setItem("arrivaltime",flight.arrivalTime.toString());
+     localStorage.setItem("departuretime",flight.departureTime.toString());
+     localStorage.setItem("price",this.classprice.toString());
+     localStorage.setItem("type",this.type);
      this.router.navigate(['seatselect'])
    }
   ngOnInit(): void {

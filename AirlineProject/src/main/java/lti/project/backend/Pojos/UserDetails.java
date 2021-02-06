@@ -21,7 +21,7 @@ public class Userdetails implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dob;
 
-	@Column(length=20)
+	@Column(length=20,unique=true)
 	private String email;
 
 	@Column(length=20)
@@ -40,7 +40,7 @@ public class Userdetails implements Serializable {
 	private String password;
 
 	//bi-directional many-to-one association to Bookingdetails
-	@OneToMany(mappedBy="userdetail",fetch=FetchType.EAGER,cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy="userdetail",fetch=FetchType.LAZY,cascade=CascadeType.MERGE)
 	private List<Bookingdetails> bookingdetails;
 
 	public Userdetails() {

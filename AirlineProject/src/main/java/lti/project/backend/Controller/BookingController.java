@@ -1,5 +1,8 @@
 package lti.project.backend.Controller;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lti.project.backend.Pojos.Bookingdetails;
+import lti.project.backend.Pojos.Flightdetails;
+import lti.project.backend.Pojos.Ticket;
+import lti.project.backend.Pojos.Userdetails;
 import lti.project.backend.Services.BookingDetailsService;
+import lti.project.backend.Services.FlightDetailsService;
+import lti.project.backend.Services.UserDetailsService;
+import lti.project.backend.dto.BookingDto;
 
 @RestController
 @CrossOrigin
@@ -21,6 +30,11 @@ public class BookingController {
 	
 	@Autowired
 	BookingDetailsService bookingservice;
+	@Autowired
+	FlightDetailsService fd;
+	@Autowired
+	UserDetailsService us;
+
 	
 	/*============================Booking Controller====================================*/
 	
@@ -30,10 +44,24 @@ public class BookingController {
 	}
 	
 	@PostMapping(path="/addBooking")
-	public String addBooking(@RequestBody Bookingdetails b) {
-		// boob.getFlightdetail().forEach(Flightdetail -> Flightdetail.setBookingdetails(b));
-		bookingservice.addBookingService(b);
-		return "Booking added";
+	public void addBooking(@RequestBody BookingDto b) {
+		int userid=b.getUserid();
+		int flightid=b.getFlightid();
+		Flightdetails f=fd.getFlightByIdService(flightid);
+		Userdetails d=us.getUserbyIdService(userid);
+		Bookingdetails book=new Bookingdetails();
+		book.setFlightdetail(f);
+		book.setUserdetail(d);
+		book.setDeparturedate(b.getDeparturedate());
+		book.setBookingtime(Timestamp.from(Instant.now()));
+		book.setStatus(b.getStatus());
+		Ticket t=new Ticket();
+		t.setDepartureDate(new Timestamp(b.getDeparturedate().getTime()));
+		t.setPrice(b.getPrice());
+		t.setReturnDate(new Timestamp(b.getReturndate().getTime()));
+		t.setSeatnumber(b.getSeatno());
+		book.setTicket(t);
+		bookingservice.addBookingService(book);
 	}
 	
 	@PutMapping(path="/updateBooking")

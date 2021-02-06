@@ -22,6 +22,9 @@ export class UserloginComponent implements OnInit {
       if(data!=null)
       {
         alert(data.firstname  +" login success");
+        localStorage.setItem("user",data.email);
+        localStorage.setItem("userid",data.userid.toString());
+        console.log(data.email);
         this.router.navigate(['']);
       }
       else{

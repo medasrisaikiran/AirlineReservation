@@ -17,4 +17,8 @@ public interface BookingDetailsRepository {
 	void updateBooking(Bookingdetails f);
 
 	List<Bookingdetails> getBookingsbyFlightid(int id);
+
+	List<Bookingdetails> getBookingsbyUserId(int userid);
+
+	Bookingdetails getBookingsbyTicketid(int n);
 }

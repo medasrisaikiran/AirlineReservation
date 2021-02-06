@@ -32,13 +32,17 @@ export class FlightSearchComponent implements OnInit {
     let f=new FlightBySrcAndDestDto();
     f.source=this.Source;
     f.destination=this.Destination;
+    localStorage.setItem("journeytype",this.trip.toString())
     localStorage.setItem("source",this.Source);
     localStorage.setItem("destination",this.Destination)
+    localStorage.setItem("noofpassengers",this.Passengers.toString())
+    localStorage.setItem("departuredate",this.Departuredate.toString())
+    localStorage.setItem("returndate",this.Returndate.toString())
     console.log(f.source+" "+f.destination);
     this.a.getFlightsBySrcDest(f).subscribe(data=>{
     console.log(data);
     this.flights=data;
-    });    
+    });
     this.router.navigate(['flightselect']);
   }
   constructor(private a:AirlineService,private router:Router) { }
