@@ -13,64 +13,64 @@
         <table class="inner" align="center">
           <tr>
             <td class="seat">
-                <input type="checkbox" id="1" (click)="addseat(1)" [disabled]="disabledseats[1]"/>
+                <input type="checkbox" id="1" [ngModelOptions]="{standalone: true}" [(ngModel)]="seat1"  (click)="addseat(1)" [disabled]="disabledseats[0]"/>
                 <label for="1">1</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="2" (click)="addseat(2)" [disabled]="disabledseats[2]"/>
+                <input type="checkbox" id="2" [ngModelOptions]="{standalone: true}" [(ngModel)]="seat2"  (click)="addseat(2)" [disabled]="disabledseats[1]"/>
                 <label for="2">2</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="3" (click)="addseat(3)" [disabled]="disabledseats[3]"/>
+                <input type="checkbox" id="3" [ngModelOptions]="{standalone: true}" [(ngModel)]="seat3"  (click)="addseat(3)" [disabled]="disabledseats[2]"/>
                 <label for="3">3</label>
             </td>
             <td><ul></ul></td>
             <td class="seat">
-                <input type="checkbox" id="4" (click)="addseat(4)" [disabled]="disabledseats[4]"/>
+                <input type="checkbox" id="4" [(ngModel)]="seat4" [ngModelOptions]="{standalone: true}" (click)="addseat(4)" [disabled]="disabledseats[3]"/>
                 <label for="4">4</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="5" (click)="addseat(5)" [disabled]="disabledseats[5]"/>
+                <input type="checkbox" id="5" [(ngModel)]="seat5" [ngModelOptions]="{standalone: true}" (click)="addseat(5)" [disabled]="disabledseats[4]"/>
                 <label for="5">5</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="6" (click)="addseat(6)" [disabled]="disabledseats[6]"/>
+                <input type="checkbox" id="6" [ngModelOptions]="{standalone: true}" [(ngModel)]="seat6" (click)="addseat(6)" [disabled]="disabledseats[5]"/>
                 <label for="6">6</label>
             </td>
           </tr>
           <tr>
             <td class="seat">
-                <input type="checkbox" id="7" (click)="addseat(7)" [disabled]="disabledseats[7]"/>
+                <input type="checkbox" id="7" (click)="addseat(7)" [disabled]="disabledseats[6]"/>
                 <label for="7">7</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="8" (click)="addseat(8)" [disabled]="disabledseats[8]"/>
+                <input type="checkbox" id="8" (click)="addseat(8)" [disabled]="disabledseats[7]"/>
                 <label for="8">8</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="9" (click)="addseat(9)" [disabled]="disabledseats[9]"/>
+                <input type="checkbox" id="9" (click)="addseat(9)" [disabled]="disabledseats[8]"/>
                 <label for="9">9</label>
             </td>
             <td><ul></ul></td>
             <td class="seat">
-                <input type="checkbox" id="10" (click)="addseat(10)" [disabled]="disabledseats[10]"/>
+                <input type="checkbox" id="10" (click)="addseat(10)" [disabled]="disabledseats[9]"/>
                 <label for="10">10</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="11"(click)="addseat(11)" [disabled]="disabledseats[11]"/>
+                <input type="checkbox" id="11"(click)="addseat(11)" [disabled]="disabledseats[10]"/>
                 <label for="11">11</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="12" (click)="addseat(12)" [disabled]="disabledseats[12]"/>
+                <input type="checkbox" id="12" (click)="addseat(12)" [disabled]="disabledseats[11]"/>
                 <label for="12">12</label>
             </td>
           </tr><tr>
             <td class="seat">
-                <input type="checkbox" id="13" (click)="addseat(13)" [disabled]="disabledseats[13]"/>
+                <input type="checkbox" id="13" (click)="addseat(13)" [disabled]="disabledseats[12]"/>
                 <label for="13">13</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="14" (click)="addseat(14)" [disabled]="disabledseats[14]"/>
+                <input type="checkbox" id="14" (click)="addseat(14)" [disabled]="disabledseats[13]"/>
                 <label for="14">14</label>
             </td>
             <td class="seat">
@@ -239,7 +239,7 @@
             </td>
             <td><ul></ul></td>
             <td class="seat">
-                <input type="checkbox" id="52" (click)="addseat(52)" [disabled]="disabledseats[52]"/>
+                <input type="checkbox" id="52" (click)="addseat(52)" [disabled]="disabledseats[53]"/>
                 <label for="52">52</label>
             </td>
             <td class="seat">
@@ -247,7 +247,7 @@
                 <label for="53">53</label>
             </td>
             <td class="seat">
-                <input type="checkbox" id="54" (click)="addseat(54)" [disabled]="disabledseats[54]"/>
+                <input type="checkbox" id="54" (click)="addseat(54)" [disabled]="disabledseats[53]"/>
                 <label for="54">54</label>
             </td>
           </tr>

@@ -139,6 +139,10 @@ export class AirlineService
  }
  getSeatsByFlightId(id:number) :Observable<number[]>
  {
-   return this.myhttp.get<number[]>(this.baseurl+"getSeatsByFlightId"+id);
+   return this.myhttp.get<number[]>(this.baseurl+"getSeatsByFlightId/"+id);
+ }
+ getTicketByUserId(n:number):Observable<Ticket[]>
+ {
+  return this.myhttp.get<Ticket[]>(this.baseurl+"getTicketByUserId/"+n);
  }
 }

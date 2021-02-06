@@ -25,7 +25,7 @@ export class PaymentComponent implements OnInit {
   seats:number[]=JSON.parse(localStorage.getItem("seatsselected"))
   flight:string[][]=[[],[]];
   flights:FlightDetails[]=[];
-  totalprice:number;
+  totalprice:number=0;
   displayticket(){
         this.flight[0][0]=this.flightid.toString();
         this.flight[0][1]=this.source;
@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
         this.flight[0][7]=this.price.toString();
         this.flight[0][8]=this.class;
         this.flight[0][9]=this.noofpassengers.toString();
-        this.totalprice+=this.price*this.noofpassengers;
+        this.totalprice=this.totalprice+(this.price*this.noofpassengers);
         if(this.journeytype==2)
         {
           let f=new FlightBySrcAndDestDto();
@@ -55,7 +55,7 @@ export class PaymentComponent implements OnInit {
             this.flight[1][7]=this.price.toString();
             this.flight[1][8]=this.class;
             this.flight[1][9]=this.noofpassengers.toString();
-            this.totalprice+=this.price*this.noofpassengers;
+            this.totalprice=this.totalprice+this.price*this.noofpassengers;
           })
         }
   }
@@ -84,13 +84,11 @@ export class PaymentComponent implements OnInit {
         let fdto=new FlightBySrcAndDestDto();
         fdto.destination=this.source;
         fdto.source=this.destination;
-        let flights:FlightDetails[];
+        let flightid:number;
         this.service.getFlightsBySrcDest(fdto).subscribe(data=>{
-          flights=data;
-          console.log("flights are"+flights)
+          flightid=data[0].flightid
         })
-        book.flightid=flights[0].flightid;
-        console.log(book.flightid)
+        book.flightid=flightid
         book.price=this.price;
         book.returndate=this.returndate;
         book.status="active";
@@ -102,7 +100,7 @@ export class PaymentComponent implements OnInit {
       })
       }
     }
-    alert(count+" tickets created")
+    alert(count+" tickets inserted")
     this.router.navigate([''])    
   }
   constructor(private service:AirlineService,private router:Router) { }
