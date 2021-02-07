@@ -45,8 +45,6 @@ export class FlightSelectComponent implements OnInit {
       localStorage.setItem("classprice",flight.businessClassPrice.toString())
       this.classprice=flight.businessClassPrice.toString();  
      }
-     console.log(this.type)
-     console.log(this.classprice)
      localStorage.setItem("flightid",flight.flightid.toString());
      localStorage.setItem("source",flight.source.toString());
      localStorage.setItem("destination",flight.destination.toString());

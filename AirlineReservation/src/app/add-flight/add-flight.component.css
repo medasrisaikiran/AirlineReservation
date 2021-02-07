@@ -3,8 +3,7 @@
 }
 body{
 	background-color:rgb(231, 209, 175);
-	display:inline-block;
-    position:fixed;
+    position:absolute;
 	top:70px;
 	width:100%;
 	min-height:80%;
@@ -69,7 +68,7 @@ button{
 }
 button:enabled:hover{
 	background-color:#47b8c7;
-	width:15%;
+	width:75%;
 }
 tr:nth-child(odd) td{
 	padding:5px 20px;

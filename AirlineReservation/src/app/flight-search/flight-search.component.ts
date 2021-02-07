@@ -28,7 +28,6 @@ export class FlightSearchComponent implements OnInit {
     }
   }
   flightsearch(){
-    alert("welcome "+this.trip+","+this.Source+","+this.Destination+","+this.Departuredate+","+this.Returndate+","+this.Passengers);
     let f=new FlightBySrcAndDestDto();
     f.source=this.Source;
     f.destination=this.Destination;

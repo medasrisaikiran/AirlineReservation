@@ -1,0 +1,26 @@
+body{
+    position:absolute;
+    top:80px;
+    min-height:82%;
+}
+table{
+    background-color:rgb(241, 226, 202);
+    position:absolute;
+    width:80%;
+    left:10%;
+    top:10px;
+}
+td,th{
+    padding:10px 15px;
+}
+tr th{
+    border-bottom:1px solid black;
+    text-align:left;
+}
+button{
+    width:50px;
+    height:30px;
+}
+i{
+    font-size:20px;
+}

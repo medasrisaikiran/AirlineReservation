@@ -25,7 +25,9 @@ export class PaymentComponent implements OnInit {
   seats:number[]=JSON.parse(localStorage.getItem("seatsselected"))
   flight:string[][]=[[],[]];
   flights:FlightDetails[]=[];
+  returnflight:number=0;
   totalprice:number=0;
+  ticketcount:number=0
   displayticket(){
         this.flight[0][0]=this.flightid.toString();
         this.flight[0][1]=this.source;
@@ -46,6 +48,7 @@ export class PaymentComponent implements OnInit {
           this.service.getFlightsBySrcDest(f).subscribe(data=>{
             this.flights=data;
             this.flight[1][0]=data[0].flightid.toString();
+            this.returnflight=data[0].flightid
             this.flight[1][1]=data[0].source;
             this.flight[1][2]=data[0].destination;
             this.flight[1][3]=data[0].arrivalTime.toString();
@@ -61,8 +64,6 @@ export class PaymentComponent implements OnInit {
   }
   bookTicket()
   {
-    
-    let count=0;
     for(var x=0;x<this.noofpassengers;x++)
     {
         let book=new BookingDto();
@@ -75,7 +76,7 @@ export class PaymentComponent implements OnInit {
         console.log("seat is:"+book.seatno)
         book.userid=parseInt(localStorage.getItem("userid"));
         this.service.addBooking(book).subscribe(data=>{
-        count++;
+        this.ticketcount=this.ticketcount+1;
       })
       if(this.journeytype==2)
       {
@@ -84,10 +85,7 @@ export class PaymentComponent implements OnInit {
         let fdto=new FlightBySrcAndDestDto();
         fdto.destination=this.source;
         fdto.source=this.destination;
-        let flightid:number;
-        this.service.getFlightsBySrcDest(fdto).subscribe(data=>{
-          flightid=data[0].flightid
-        })
+        let flightid:number=this.returnflight;
         book.flightid=flightid
         book.price=this.price;
         book.returndate=this.returndate;
@@ -96,11 +94,12 @@ export class PaymentComponent implements OnInit {
         console.log("seat is:"+book.seatno)
         book.userid=parseInt(localStorage.getItem("userid"));
         this.service.addBooking(book).subscribe(data=>{
-        count++;
+        this.ticketcount=this.ticketcount+1;
       })
       }
     }
-    alert(count+" tickets inserted")
+    alert("payment successful");
+    alert("Booking done")
     this.router.navigate([''])    
   }
   constructor(private service:AirlineService,private router:Router) { }

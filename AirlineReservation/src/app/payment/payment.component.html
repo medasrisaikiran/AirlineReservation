@@ -28,7 +28,7 @@
             <td>{{flight[i][4]|date:'shortTime'}}</td>
             <td>{{flight[i][5]|date:'dd:MM:yyyy'}}</td>
             <td>{{flight[i][6]|date:'dd:MM:yyyy'}}</td>
-            <td>{{flight[i][7]}}</td>
+            <td>{{flight[i][7]|currency:'INR'}}</td>
             <td>{{flight[i][8]}}</td>
             <td>{{flight[i][9]}}</td>
         </tr>
@@ -36,7 +36,7 @@
     </td>
     </tr>
     <tr>
-        <td colspan="9" align="center"><button type="submit" [disabled]="!paymentform.valid">pay {{totalprice}}</button></td>
+        <td colspan="9" align="center"><button type="submit" [disabled]="!paymentform.valid">pay {{totalprice|currency:'INR'}}</button></td>
     </tr>
     </table>
     </form>

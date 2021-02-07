@@ -12,6 +12,8 @@ import {ViewAllFlightsComponent} from './view-all-flights/view-all-flights.compo
 import {UpdateFlightComponent} from './update-flight/update-flight.component';
 import {PaymentComponent} from './payment/payment.component';
 import { AppComponent } from './app.component';
+import { ErrorComponent } from './error/error.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 const routes: Routes = [
   {path:'',component:AppComponent},
@@ -26,7 +28,8 @@ const routes: Routes = [
   {path:'viewflights',component:ViewAllFlightsComponent},
   {path:'updateflight',component:UpdateFlightComponent},
   {path:'payment',component:PaymentComponent},
-  {path:'**',component:AppComponent}
+  {path:'tickets',component:TicketComponent},
+  {path:'**',component:ErrorComponent}
 ];
 
 @NgModule({

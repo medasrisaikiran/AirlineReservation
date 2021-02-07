@@ -1,0 +1,20 @@
+<body>
+    <table align="center">
+        <tr>
+          <th>TICKET ID</th>
+          <th>SEAT NUMBER</th>
+          <th>PRICE</th>
+          <th>JOURNEY DATE</th>
+          <th>RETURN DATE</th>
+          <th>CANCEL</th>
+        </tr>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ticket.ticketid}}</td>
+        <td>{{ticket.seatnumber}}</td>
+        <td>{{ticket.price}}</td>
+        <td>{{ticket.departureDate|date:'dd/MM/yyyy'}}</td>
+        <td>{{ticket.returnDate|date:'dd/MM/yyyy'}}</td>
+        <td><button (click)="delete(ticket)"><i class="fa fa-times"></i></button></td>
+      </tr>
+    </table>
+</body>

@@ -1,0 +1,16 @@
+body{
+    width:100%;
+    position:absolute;
+    top:70px;
+    left:0px;
+    background-image:url('./../../assets/error.jpg');
+    background-size:1500px 500px;
+    opacity:0.5;
+    height:80%;
+}
+p,h2{
+    color:white;
+}
+a{
+    color:blanchedalmond
+}

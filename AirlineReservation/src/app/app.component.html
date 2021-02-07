@@ -5,31 +5,24 @@
     <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-<body (load)="displayTickets()">
+<body>
   <table class="header">
     <tr>
-      <td><a class="ar" routerLink="../">Airline Reservation</a></td>
-      <td><a routerLink="../userlogin" title="login">login&nbsp;<i class="fa fa-user-circle"></i></a></td>
-      <td><a routerLink="../register" title="signup">signup&nbsp;<i class="fa fa-sign-in"></i></a></td>
+      <td class="ar"><a routerLink="">Airline Reservation</a></td>
+      <td *ngIf="user==null;else welcome">
+        <a routerLink="../userlogin" title="login">login&nbsp;<i class="fa fa-user-circle"></i></a>
+      </td>
+      <ng-template #welcome>
+      <td><p align="center"><a routerLink="../"><i class="fa fa-user"></i>&nbsp;{{user}}</a></p></td>
+      <td align="center"><a routerLink="../tickets" title="view bookings">your bookings&nbsp;<i class="fa fa-ticket"></i></a></td>
+      </ng-template>
+      <td *ngIf="user==null;else signout">
+        <a routerLink="../register" title="signup">signup&nbsp;<i class="fa fa-sign-in"></i></a>
+      </td>
+      <ng-template #signout>
+      <td><a routerLink="../" title="signout" (click)="logout()">signout&nbsp;<i class="fa fa-sign-out"></i></a></td>
+      </ng-template>
       <td><a routerLink="../flightsearch" title="search flights">search flights&nbsp;<i class="fa fa-plane"></i></a>
-    </tr>
-  </table>
-  <table align="center">
-      <tr>
-        <th>TICKET ID</th>
-        <th>SEAT NUMBER</th>
-        <th>PRICE</th>
-        <th>JOURNEY DATE</th>
-        <th>RETURN DATE</th>
-        <th>CANCEL</th>
-      </tr>
-    <tr *ngFor="let ticket of tickets">
-      <td>{{ticket.ticketid}}</td>
-      <td>{{ticket.seatnumber}}</td>
-      <td>{{ticket.price}}</td>
-      <td>{{ticket.departureDate|date:'dd/MM/yyyy'}}</td>
-      <td>{{ticket.returnDate|date:'dd/MM/yyyy'}}</td>
-      <td><button (click)="delete(ticket)"><i class="fa fa-times"></i></button></td>
     </tr>
   </table>
   <div class="footer">

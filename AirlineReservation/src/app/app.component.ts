@@ -1,33 +1,22 @@
-import { Component } from '@angular/core';
-import { AirlineService } from './airline.service';
-import { Ticket } from './ticket';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'AirlineReservation';
-  user:string="sai";
-  time:Date=new Date();
-  tickets:Ticket[]
-  displayTickets(){
-    this.service.getTicketByUserId(parseInt(localStorage.getItem("userid"))).subscribe(
-      data=>{
-        this.tickets=data;
-      }
-    )
+  user=localStorage.getItem("username")
+  logout(){
+    localStorage.clear();
+    this.ngOnInit();
+    this.router.navigate(['']);
+    alert("logged out successfully")
   }
-  delete(ticket:Ticket)
-  {
-    this.service.deleteTicket(ticket.ticketid).subscribe(data=>{
-      alert("deleted successfully");
-      this.displayTickets();
-    })
-  }
-  constructor(private service:AirlineService){}
-  ngOnInit(){
-    this.displayTickets();
+  constructor(private router:Router){}
+  ngOnInit():void {
+
   }
 }
