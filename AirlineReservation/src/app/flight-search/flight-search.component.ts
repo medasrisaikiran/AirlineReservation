@@ -16,7 +16,7 @@ export class FlightSearchComponent implements OnInit {
   Departuredate:Date;
   Returndate:Date;
   Passengers:number;
-  trip:number;
+  trip:number=0;
   flights:FlightDetails[];
   assign(s:string){
     if(s=="oneway")
@@ -28,21 +28,33 @@ export class FlightSearchComponent implements OnInit {
     }
   }
   flightsearch(){
-    let f=new FlightBySrcAndDestDto();
-    f.source=this.Source;
-    f.destination=this.Destination;
-    localStorage.setItem("journeytype",this.trip.toString())
-    localStorage.setItem("source",this.Source);
-    localStorage.setItem("destination",this.Destination)
-    localStorage.setItem("noofpassengers",this.Passengers.toString())
-    localStorage.setItem("departuredate",this.Departuredate.toString())
-    localStorage.setItem("returndate",this.Returndate.toString())
-    console.log(f.source+" "+f.destination);
-    this.a.getFlightsBySrcDest(f).subscribe(data=>{
-    console.log(data);
-    this.flights=data;
-    });
-    this.router.navigate(['flightselect']);
+    if(this.Source!==this.Destination&&this.trip!=0&&this.Returndate>=this.Departuredate)
+    {
+      let f=new FlightBySrcAndDestDto();
+      f.source=this.Source;
+      f.destination=this.Destination;
+      localStorage.setItem("journeytype",this.trip.toString())
+      localStorage.setItem("source",this.Source);
+      localStorage.setItem("destination",this.Destination)
+      localStorage.setItem("noofpassengers",this.Passengers.toString())
+      localStorage.setItem("departuredate",this.Departuredate.toString())
+      localStorage.setItem("returndate",this.Returndate.toString())
+      console.log(f.source+" "+f.destination);
+      this.a.getFlightsBySrcDest(f).subscribe(data=>{
+      console.log(data);
+      this.flights=data;
+      });
+      this.router.navigate(['flightselect']);
+    }
+    else if(this.trip==0){
+      alert("please select trip type(oneway or roundtrip)!")
+    }
+    else if(this.Returndate<this.Departuredate){
+      alert("cannot return before departure!")
+    }
+    else{
+      alert("source and destination cannot be same!");
+    }
   }
   constructor(private a:AirlineService,private router:Router) { }
 

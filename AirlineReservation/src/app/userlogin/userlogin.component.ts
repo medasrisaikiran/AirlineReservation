@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AirlineService } from '../airline.service';
-import { Userdetails } from '../userdetails';
 import { UsersByEmailIdAndPasswordDto } from '../users-by-email-id-and-password-dto';
 
 @Component({
@@ -28,10 +27,7 @@ export class UserloginComponent implements OnInit {
         console.log(data.email);
         this.router.navigate(['']);
       }
-      else{
-        alert("login denied Invalid credentials");
-      }
-    })
+    },err=>{alert("login denied Invalid credentials");})
   }
   constructor(private as:AirlineService,private router:Router) { }
 
