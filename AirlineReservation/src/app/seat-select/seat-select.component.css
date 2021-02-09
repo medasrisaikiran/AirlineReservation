@@ -11,8 +11,8 @@
   div{
     position:absolute;
     top:505px;
-    left:45%;
-    width:10%;
+    left:40%;
+    width:20%;
   }
   button{
     width:80%;
@@ -24,7 +24,7 @@
   }
   button:hover{
     background-color:#47b8c7;
-    width:100%;
+    width:85%;
   }
   table.outer{
     background-color:rgb(235, 239, 247);

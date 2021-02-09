@@ -2,6 +2,7 @@
     <head>
         <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <form #flightsearchform="ngForm" (ngSubmit)="flightsearch()">
@@ -45,50 +46,53 @@
                 <td class="error">
                     <div *ngIf="!destination?.valid&&(destination?.dirty||destination?.touched)">
                         <div *ngIf="destination?.errors.required">
-                            <p>please enter source!</p>
+                            <p>please enter destination!</p>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>departure date<input type="date" required [(ngModel)]="Departuredate" name="Departuredate" #ddate="ngModel">
+                <td>Departure Date<input type="date" required [(ngModel)]="Departuredate" name="Departuredate" #ddate="ngModel">
                 </td>
-                <td>return date<input type="date" required [(ngModel)]="Returndate" 
-                    min=ddate name="Returndate" #rdate="ngModel">
+                <td>Return Date<input type="date" required [(ngModel)]="Returndate" 
+                    name="Returndate" #rdate="ngModel">
                 </td>
             </tr>
             <tr>
                 <td class="error">
                     <div *ngIf="!ddate?.valid&&(ddate?.dirty||ddate?.touched)">
                         <div *ngIf="ddate?.errors.required">
-                            <p>please enter source!</p>
+                            <p>please enter departuredate!</p>
                         </div>
                     </div>
                 </td>
                 <td class="error">
                     <div *ngIf="!rdate?.valid&&(rdate?.dirty||rdate?.touched)">
                         <div *ngIf="rdate?.errors.required">
-                            <p>please enter source!</p>
+                            <p>please enter returndate!</p>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>passengers<br>
-                <input type="text" maxlength="1" [(ngModel)]="Passengers" required name="Passengers" #passengers="ngModel">
+                <td>Number of Passengers<br>
+                <input type="number" min="0" [(ngModel)]="Passengers" required name="Passengers" #passengers="ngModel">
                 </td>
             </tr>
             <tr>
                 <td class="error">
                     <div *ngIf="!passengers?.valid&&(passengers?.dirty||passengers?.touched)">
                         <div *ngIf="passengers?.errors.required">
-                            <p>please enter source!</p>
+                            <p>please enter passengers!</p>
+                        </div>
+                        <div *ngIf="passengers?.errors.min">
+                            <p>cannot enter negative value!</p>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><button type="submit" [disabled]="!flightsearchform.valid">search</button></td>
+                <td colspan="2"><button type="submit" [disabled]="!flightsearchform.valid">Search Flights&nbsp;<i class="fa fa-plane"></i></button></td>
             </tr>
         </table>
         <router-outlet></router-outlet>

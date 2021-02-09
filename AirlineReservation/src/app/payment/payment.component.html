@@ -12,13 +12,13 @@
             <th>FLIGHTID</th>
             <th>SOURCE</th>
             <th>DESTINATION</th>
-            <th>DEPARTURE_TIME</th>
-            <th>ARRIVAL_TIME</th>
-            <th>JOURNEY_DATE</th>
-            <th>RETURN_DATE</th>
-            <th>PRICE/SEAT</th>
+            <th>DEPARTURE TIME</th>
+            <th>ARRIVAL TIME</th>
+            <th>JOURNEY DATE</th>
+            <th>RETURN DATE</th>
+            <th>PRICE</th>
             <th>CLASS</th>
-            <th>NO_OF_SEATS</th>
+            <th>NO OF SEATS</th>
         </tr>
         <tr *ngFor="let f of flight;let i=index">
             <td>{{flight[i][0]}}</td>
@@ -36,7 +36,7 @@
     </td>
     </tr>
     <tr>
-        <td colspan="9" align="center"><button type="submit" [disabled]="!paymentform.valid">pay {{totalprice|currency:'INR'}}</button></td>
+        <td colspan="10" align="center"><button type="submit">pay {{totalprice|currency:'INR'}}</button></td>
     </tr>
     </table>
     </form>

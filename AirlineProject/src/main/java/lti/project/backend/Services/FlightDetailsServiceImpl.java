@@ -85,8 +85,8 @@ public class FlightDetailsServiceImpl implements FlightDetailsService
 			}
 			catch(FlightDetailsNotFoundException fe)
 			{
-				System.out.println("error"+e);	
-			};
+				System.out.println("error"+fe);	
+			}
 		}		
 	}
 	

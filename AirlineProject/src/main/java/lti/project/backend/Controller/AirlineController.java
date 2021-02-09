@@ -16,18 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import lti.project.backend.Exceptions.UserDetailsException;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
-import lti.project.backend.Pojos.Ticket;
-import lti.project.backend.Pojos.Userdetails;
 import lti.project.backend.Services.BookingDetailsService;
 import lti.project.backend.Services.FlightDetailsService;
 import lti.project.backend.Services.TicketService;
 import lti.project.backend.Services.UserDetailsService;
 import lti.project.backend.dto.FlightBySrcAndDestDto;
 import lti.project.backend.dto.FlightDetailDto;
-import lti.project.backend.dto.UsersByEmailIdAndPasswordDto;
 
 
 @RestController

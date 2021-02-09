@@ -15,7 +15,6 @@ export class AddFlightComponent implements OnInit {
   Arrive:Date;
   Duration:Date;
   Cabin:string;
-  user=localStorage.getItem("user");
   
   constructor(private als:AirlineService) {}
 
@@ -23,7 +22,7 @@ export class AddFlightComponent implements OnInit {
   }
   addFlight()
   {
-    if(this.Arrive>this.Depart){
+    if(this.Arrive>this.Depart&&this.Source!=this.Destination){
       let d=new FlightDetails();
       d.capacity=54;
       d.cabin=this.Cabin;
@@ -45,13 +44,12 @@ export class AddFlightComponent implements OnInit {
       d.duration=date;
       d.businessClassPrice=30000;
       d.economyClassPrice=20000;
-      if(this.Arrive>this.Depart){
         this.als.addFlight(d).subscribe((data:FlightDetails)=>{alert("added successsfully");},
       (err)=>{alert("failure");});
-      }
-      else{
-        alert("arrival time <= departure time");
-      }
+    }
+    else if(this.Source==this.Destination)
+    {
+      alert("source and destination cannot be same");
     }
     else{
       alert("return time should be greater")

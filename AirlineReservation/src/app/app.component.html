@@ -1,6 +1,5 @@
 <html>
   <head>
-    <title>www.airlinereservation.com</title>
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -8,21 +7,24 @@
 <body>
   <table class="header">
     <tr>
-      <td class="ar"><a routerLink="">Airline Reservation</a></td>
+      <td class="ar"><a routerLink="">FlyHigh.com</a></td>
       <td *ngIf="user==null;else welcome">
-        <a routerLink="../userlogin" title="login">login&nbsp;<i class="fa fa-user-circle"></i></a>
+        <a routerLink="../userlogin" title="login">Login&nbsp;<i class="fa fa-user-circle"></i></a>
       </td>
       <ng-template #welcome>
-      <td><p align="center"><a routerLink="../"><i class="fa fa-user"></i>&nbsp;{{user}}</a></p></td>
-      <td align="center"><a routerLink="../tickets" title="view bookings">your bookings&nbsp;<i class="fa fa-ticket"></i></a></td>
+      <td><p align="center"><a routerLink=""><i class="fa fa-user"></i>&nbsp;{{user|titlecase}}</a></p></td>
+      <td *ngIf="user!='admin';else adminfunctionality"align="center"><a routerLink="../tickets" title="mybookings">MyBookings&nbsp;<i class="fa fa-calendar"></i></a></td>
+      <ng-template #adminfunctionality>
+        <td><p align="center"><a routerLink="../addflight">Edit&nbsp;<i class="fa fa-wrench"></i></a></p></td>  
+        </ng-template>
       </ng-template>
       <td *ngIf="user==null;else signout">
-        <a routerLink="../register" title="signup">signup&nbsp;<i class="fa fa-sign-in"></i></a>
+        <a routerLink="../register" title="Signup">signup&nbsp;<i class="fa fa-sign-in"></i></a>
       </td>
       <ng-template #signout>
-      <td><a routerLink="../" title="signout" (click)="logout()">signout&nbsp;<i class="fa fa-sign-out"></i></a></td>
+      <td><a routerLink="../" title="signout" (click)="logout()">Signout&nbsp;<i class="fa fa-sign-out"></i></a></td>
       </ng-template>
-      <td><a routerLink="../flightsearch" title="search flights">search flights&nbsp;<i class="fa fa-plane"></i></a>
+      <td><a routerLink="../flightsearch" title="search flights" class="blink">Search Flights&nbsp;<i class="fa fa-plane"></i></a></td>
     </tr>
   </table>
   <div class="footer">

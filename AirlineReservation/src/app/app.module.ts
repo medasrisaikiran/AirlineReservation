@@ -19,6 +19,7 @@ import {FormsModule} from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { ErrorComponent } from './error/error.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { ErrorComponent } from './error/error.component';
     PaymentComponent,
     TicketComponent,
     ErrorComponent,
+    AboutusComponent,
   ],
   imports: [
     BrowserModule,

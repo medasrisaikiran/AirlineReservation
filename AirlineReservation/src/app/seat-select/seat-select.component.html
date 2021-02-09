@@ -4,10 +4,10 @@
   <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
 <title>Seat Select</title>
 </head>
-<body (load)="blockseats()">
+<body>
   <form #seatselectform="ngForm" (ngSubmit)="seatselect()">
   <table class="outer" align="center">
-    <caption>Select seat(s)</caption>
+    <caption>Select your seats</caption>
     <tr>
       <td>
         <table class="inner" align="center">
@@ -256,7 +256,7 @@
     </tr>
   </table>
   <div align="center">
-    <button type="submit" [disabled]="!seatselectform.valid">payment</button>
+    <button type="submit" [disabled]="!seatselectform.valid">Proceed to Payment</button>
   </div>
 </form>
 <router-outlet></router-outlet>

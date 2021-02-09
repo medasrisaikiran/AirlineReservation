@@ -40,12 +40,12 @@ export class UpdateFlightComponent implements OnInit {
     d.source=this.Source;
     let arrd=new Date();
     let arrive=this.Arrive.toString();
-    arrd.setHours(parseInt(arrive.split(':')[0]),parseInt(arrive.split(':')[1])) 
+    arrd.setHours(parseInt(arrive.split(':')[0])+5,parseInt(arrive.split(':')[1])+30,0) 
     console.log("arrd"+arrd);
     d.arrivalTime=arrd;
     let depd=new Date();
     let depart=this.Depart.toString();
-    depd.setHours(parseInt(depart.split(':')[0]),parseInt(depart.split(':')[1])) 
+    depd.setHours(parseInt(depart.split(':')[0])+5,parseInt(depart.split(':')[1])+30,0) 
     console.log("depd"+depd);
     d.departureTime=depd;
     let date=new Date();
@@ -59,7 +59,7 @@ export class UpdateFlightComponent implements OnInit {
     (err)=>{alert("failure");});
     }
     else{
-      alert("arrival time <= departure time");
+      alert("arrival time > departure time");
     }
   }
   constructor(private a:AirlineService) { }

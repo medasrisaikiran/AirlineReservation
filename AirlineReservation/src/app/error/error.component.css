@@ -1,15 +1,17 @@
 body{
     width:100%;
     position:absolute;
-    top:70px;
+    top:50px;
     left:0px;
     background-image:url('./../../assets/error.jpg');
-    background-size:1500px 500px;
+    background-size:1500px 600px;
     opacity:0.5;
     height:80%;
+    min-height:88%;
 }
 p,h2{
     color:white;
+    text-indent:10%;
 }
 a{
     color:blanchedalmond

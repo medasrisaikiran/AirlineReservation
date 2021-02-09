@@ -13,6 +13,7 @@ export class AdminloginComponent implements OnInit {
 
   login(){
     alert("login success")
+    localStorage.setItem("username","admin");
     this.router.navigate(['addflight']);
   }
   constructor(private router:Router) { }

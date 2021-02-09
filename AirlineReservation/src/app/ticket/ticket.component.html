@@ -1,12 +1,13 @@
 <body>
     <table align="center">
+      <caption>My Bookings</caption>
         <tr>
           <th>TICKET ID</th>
           <th>SEAT NUMBER</th>
           <th>PRICE</th>
           <th>JOURNEY DATE</th>
           <th>RETURN DATE</th>
-          <th>CANCEL</th>
+          <th>CANCEL TICKET</th>
         </tr>
       <tr *ngFor="let ticket of tickets">
         <td>{{ticket.ticketid}}</td>

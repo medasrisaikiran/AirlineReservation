@@ -20,11 +20,10 @@ export class UserloginComponent implements OnInit {
     this.as.getUser(this.user).subscribe(data=>{
       if(data!=null)
       {
-        alert(data.firstname  +" login success");
+        alert(data.firstname+""+data.lastname+" -login success");
         localStorage.setItem("user",data.email);
         localStorage.setItem("userid",data.userid.toString());
         localStorage.setItem("username",data.firstname+""+data.lastname);
-        console.log(data.email);
         this.router.navigate(['']);
       }
     },err=>{alert("login denied Invalid credentials");})

@@ -3,6 +3,7 @@
     <body (load)="getFlights()">
         <form #flightselectform="ngForm">
         <table class="outer" *ngFor="let flight of flights">
+            <caption>Flights Available from {{flights[0].source}} to {{flights[0].destination}}</caption>
             <tr>
                 <td>
                     <table>
@@ -16,15 +17,15 @@
                             <td>{{flight.arrivalTime|date:'shortTime'}}-{{flight.departureTime|date:'shortTime'}}</td>
                         </tr>
                         <tr>
-                            <td>{{flight.duration|date:'shortTime'}}</td>
+                            <td>{{flight.duration|date:'hh:mm'}}</td>
                         </tr>
                     </table>
                 </td>
-                <td><input type="radio" name="type" id="economy" value="economy" (click)="assign('economy')"><b>Economy class price:</b><br>{{flight.economyClassPrice}}&#8377;</td>
-                <td><input type="radio" name="type" id="business" value="business" (click)="assign('business')"><b>Business class price:</b><br>{{flight.businessClassPrice}}&#8377;</td>
+                <td><input type="radio" name="type" id="economy" value="economy" (click)="assign('economy')"><b>Economy class price:</b><br>{{flight.economyClassPrice|currency:'INR'}}</td>
+                <td><input type="radio" name="type" id="business" value="business" (click)="assign('business')"><b>Business class price:</b><br>{{flight.businessClassPrice|currency:'INR'}}</td>
             </tr>
             <tr align="center">
-                <td colspan="3"><button type="submit" (click)="booknow(flight)">BOOK NOW</button></td>
+                <td colspan="3"><button type="submit" (click)="booknow(flight)">BOOK FLIGHT</button></td>
             </tr>
         </table>
         </form>

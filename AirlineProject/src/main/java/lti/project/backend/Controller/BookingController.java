@@ -1,6 +1,5 @@
 package lti.project.backend.Controller;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;

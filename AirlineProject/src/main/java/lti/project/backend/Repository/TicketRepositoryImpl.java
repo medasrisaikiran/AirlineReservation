@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import lti.project.backend.Exceptions.EmptyTicketException;
 import lti.project.backend.Pojos.Bookingdetails;
 import lti.project.backend.Pojos.Flightdetails;
 import lti.project.backend.Pojos.Ticket;

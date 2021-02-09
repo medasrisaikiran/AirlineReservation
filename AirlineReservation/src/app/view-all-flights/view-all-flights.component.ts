@@ -15,7 +15,7 @@ export class ViewAllFlightsComponent implements OnInit {
   sortFlights(){
     if(this.sortby==='flightid')
     {
-      this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
+      this.als.sortFlightsById().subscribe((data:FlightDetails[])=>{
         this.flights=data;},
         (err)=>{
           console.log(err);
@@ -55,7 +55,7 @@ export class ViewAllFlightsComponent implements OnInit {
   }
   constructor(private als:AirlineService) {}
   ngOnInit(): void {
-  this.als.findAllFlights().subscribe((data:FlightDetails[])=>{
+  this.als.sortFlightsById().subscribe((data:FlightDetails[])=>{
     this.flights=data;
     this.tempflights=data;},
     (err)=>{

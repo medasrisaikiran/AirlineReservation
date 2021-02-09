@@ -12,7 +12,7 @@
                 <td class="untoggle"><a href="../viewflights">View Flights</a></td>
             </tr>
             <tr>
-                <td colspan="2"><form #searchform="ngForm" (keyup)="viewFlights()" (blur)="viewFlights()">
+                <td colspan="2"><form #searchform="ngForm" (keyup)="viewFlights()">
                     <input type="text" class="search" placeholder="search by flightid" [(ngModel)]="searchfor" #search="ngModel" name="searchfor">
                 </form></td>
                 <td colspan="2" align="right"><form #sortform="ngForm" (change)="sortFlights()">
@@ -31,8 +31,8 @@
                         <th>FlightId</th>
                         <th>Source</th>
                         <th>Destination</th>
-                        <th>ArrivalTime</th>
                         <th>DepartureTime</th>
+                        <th>ArrivalTime</th>
                         <th>Duration</th>
                         <th>Economyclassprice</th>
                         <th>Businessclassprice</th>
@@ -43,11 +43,11 @@
                         <td>{{f.flightid}}</td>
                         <td>{{f.source}}</td>
                         <td>{{f.destination}}</td>
-                        <td>{{f.arrivalTime|date:'shortTime'}}</td>
                         <td>{{f.departureTime|date:'shortTime'}}</td>
-                        <td>{{f.duration|date:'shortTime'}}</td>
-                        <td>{{f.economyClassPrice}}</td>
-                        <td>{{f.businessClassPrice}}</td>
+                        <td>{{f.arrivalTime|date:'shortTime'}}</td>
+                        <td>{{f.duration|date:'hh:mm'}}</td>
+                        <td>{{f.economyClassPrice|currency:'INR'}}</td>
+                        <td>{{f.businessClassPrice|currency:'INR'}}</td>
                         <td>{{f.capacity}}</td>
                         <td>{{f.cabin}}</td>
                     </tr>

@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">From</td>
-                    <td colspan="2"><select class="select-css" [(ngModel)]="Source" required name="Source" #source="ngModel">
+                    <td colspan="2"><select [(ngModel)]="Source" required name="Source" #source="ngModel">
                         <option value="Hyderabad">Hyderabad</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="Bengaluru">Bangalore</option>
@@ -112,10 +112,9 @@
                     </td>
                 </tr>
                 <tr>
-                        <td colspan="4" align="center"><button type="submit" [disabled]="!addflightform.valid">ADD</button></td>
+                        <td colspan="4" align="center"><button type="submit" [disabled]="!addflightform.valid">ADD FLIGHT&nbsp;<i class="fa fa-plane"></i></button></td>
                  </tr>
             </table>
         </td></tr></table>
-        <ul>welcome{{user}}</ul>
     </form>
 </html>

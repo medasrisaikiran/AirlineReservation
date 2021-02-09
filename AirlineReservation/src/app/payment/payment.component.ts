@@ -48,7 +48,7 @@ export class PaymentComponent implements OnInit {
           this.service.getFlightsBySrcDest(f).subscribe(data=>{
             this.flights=data;
             this.flight[1][0]=data[0].flightid.toString();
-            this.returnflight=data[0].flightid
+            this.returnflight=data[0].flightid;
             this.flight[1][1]=data[0].source;
             this.flight[1][2]=data[0].destination;
             this.flight[1][3]=data[0].arrivalTime.toString();
@@ -76,17 +76,12 @@ export class PaymentComponent implements OnInit {
         console.log("seat is:"+book.seatno)
         book.userid=parseInt(localStorage.getItem("userid"));
         this.service.addBooking(book).subscribe(data=>{
-        this.ticketcount=this.ticketcount+1;
       })
       if(this.journeytype==2)
       {
         let book=new BookingDto();
         book.departuredate=this.returndate;
-        let fdto=new FlightBySrcAndDestDto();
-        fdto.destination=this.source;
-        fdto.source=this.destination;
-        let flightid:number=this.returnflight;
-        book.flightid=flightid
+        book.flightid=this.returnflight;
         book.price=this.price;
         book.returndate=this.returndate;
         book.status="active";
@@ -94,7 +89,6 @@ export class PaymentComponent implements OnInit {
         console.log("seat is:"+book.seatno)
         book.userid=parseInt(localStorage.getItem("userid"));
         this.service.addBooking(book).subscribe(data=>{
-        this.ticketcount=this.ticketcount+1;
       })
       }
     }

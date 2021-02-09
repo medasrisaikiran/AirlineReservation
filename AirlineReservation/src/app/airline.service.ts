@@ -25,6 +25,10 @@ export class AirlineService
   {
     return this.myhttp.get<FlightDetails>(this.baseurl+"getFlightsById/"+fn);
   }
+  sortFlightsById() :Observable<FlightDetails[]>
+  {
+    return this.myhttp.get<FlightDetails[]>(this.baseurl+"sortflightsById");
+  }
   sortFlightsBySource() :Observable<FlightDetails[]>
   {
     return this.myhttp.get<FlightDetails[]>(this.baseurl+"sortflightsBySrc");
@@ -45,7 +49,7 @@ export class AirlineService
   {
     return this.myhttp.post<FlightDetails>(this.baseurl+"addflight/",fd);
   }
-  deleteFlight(id:number)
+  deleteFlight(id:number):Observable<FlightDetails>
   {
     return this.myhttp.delete<FlightDetails>(this.baseurl+"deleteflight/"+id);
   }

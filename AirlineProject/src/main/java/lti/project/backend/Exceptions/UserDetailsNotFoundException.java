@@ -2,6 +2,11 @@ package lti.project.backend.Exceptions;
 
 public class UserDetailsNotFoundException extends UserDetailsException{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public UserDetailsNotFoundException()
 	{
 		super();

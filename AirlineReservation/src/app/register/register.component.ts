@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Userdetails } from '../userdetails';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AirlineService } from '../airline.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -35,9 +36,11 @@ export class RegisterComponent implements OnInit {
     this.user.email=this.Email;
 
     this.userservice.addUser(this.user)
-    .subscribe(data => {alert("you have registered successfully!!");});
+    .subscribe(data => {alert("you have registered successfully!!");
+    this.router.navigate(['userlogin'])
+    });
   }
-  constructor(private userservice: AirlineService) { }
+  constructor(private userservice: AirlineService,private router:Router) { }
 
   ngOnInit(): void {
   }

@@ -16,9 +16,8 @@ i{
 }
 .ar{
     padding:0px;
-    padding-top:10px;
     height:40px;
-    width:50%;
+    width:40%;
     text-indent: 20%;
 }
 .ar a{
@@ -52,7 +51,49 @@ a{
     font:20px Alike;
     color:white;
 }
+td{
+    width:15%;
+    text-align:center;
+}
 p{
     color:white;
     font-family:Alike
+}
+.blink{
+    animation:animate 1.5s linear infinite;
+}
+@keyframes animate{
+    0%{
+        color:cyan;
+    }
+    10%{
+        color:rgb(3, 184, 190);
+    }
+    20%{
+        color:rgb(0, 255, 213);
+    }
+    30%{
+        color:rgb(0, 255, 149);
+    }
+    40%{
+        color:rgb(135, 235, 173);
+    }
+    50%{
+        color:rgb(0, 255, 0);
+    }
+    60%{
+        color:rgb(27, 204, 11);
+    }
+    70%{
+        color:rgb(51, 255, 0);
+    }
+    80%{
+        color:rgb(166, 255, 0);
+    }
+    90%{
+        color:rgb(193, 245, 4);
+    }
+    100%{
+        color:rgb(255, 238, 1);
+    }
 }

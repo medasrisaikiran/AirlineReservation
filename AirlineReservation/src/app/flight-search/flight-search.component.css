@@ -30,13 +30,13 @@ input[type="radio"]{
   display:inline;
 }
 input[type="radio"]:checked + .oneway{
-	  background-color: rgb(0, 255, 0);   
+	  background-color: rgb(4, 138, 4);   
 	  color:white;
 	  animation-name: rubberBand;
 	  animation-duration: 400ms;
 }
 input[type="radio"]:checked + .roundtrip{
-    background-color: rgb(0, 255, 0);   
+    background-color: rgb(4, 138, 4);   
 	color:white;
 	animation-name: rubberBand;
 	animation-duration: 400ms;
@@ -52,7 +52,7 @@ input[type="radio"]:checked + .roundtrip{
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 50px;
-	background:rgb(255, 0, 0);
+	background:rgb(185, 52, 29);
 	border-radius: 5px;
 	margin-bottom:5%;
   }
@@ -66,13 +66,13 @@ input[type="radio"]:checked + .roundtrip{
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 50px;
-	background:rgb(255, 0, 0);
+	background:rgb(185, 52, 29);
 	border-radius: 5px;
 	margin-bottom:5%;
 }
 	label:hover {
 	  cursor: pointer;
-	  background-color:rgb(40, 40, 214);
+	  background-color:rgb(9, 156, 241);
 	  color:white;
 	}
 input,select{
@@ -94,7 +94,7 @@ button{
 	background-color: #b0e0e6;
 	transition:background-color 0.3s,width 0.5s ease-in-out;
 }
-button:hover{
+button:enabled:hover{
 	background-color:#47b8c7;
 	width:75%;
 }

@@ -43,3 +43,12 @@ button:hover{
 	background-color:#47b8c7;
 	width:15%;
 }
+caption{
+	color:blue;
+	font-weight:700;
+	font-size:20px;
+	width:100%;
+	background-color:floralwhite;
+	padding:3px 0;
+	margin:5px 0;
+}

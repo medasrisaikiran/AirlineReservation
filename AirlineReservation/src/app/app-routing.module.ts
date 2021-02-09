@@ -14,6 +14,7 @@ import {PaymentComponent} from './payment/payment.component';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 const routes: Routes = [
   {path:'',component:AppComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'viewflights',component:ViewAllFlightsComponent},
   {path:'updateflight',component:UpdateFlightComponent},
   {path:'payment',component:PaymentComponent},
+  {path:'aboutus',component:AboutusComponent},
   {path:'tickets',component:TicketComponent},
   {path:'**',component:ErrorComponent}
 ];
